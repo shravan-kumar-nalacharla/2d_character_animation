@@ -1,0 +1,51 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="46.397" height="3.573" viewBox="63.059 39.377 46.397 3.573">
+<ns0:defs>
+<ns0:clipPath id="clip_1">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M218.373 532.91506H328.8288V576.8655H218.373Z" clip-rule="evenodd" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_2">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_3">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_4">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_5">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_6">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_7">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_8">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_9">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_10">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_11">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_12">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_13">
+<ns0:path transform="matrix(1,0,0,-1,-218.373,576.8655)" d="M0 841.89H595.276V0H0Z" />
+</ns0:clipPath>
+</ns0:defs>
+<ns0:g clip-path="url(#clip_1)">
+<ns0:g ns1:groupmode="layer" ns1:label="closed eyes">
+<ns0:g clip-path="url(#clip_11)">
+<ns0:path transform="matrix(1,0,0,-1,68.40181,40.40747)" d="M0 0H35.401C35.401 0 40.054-1.532 35.401-1.537 30.749-1.543 0-1.537 0-1.537 0-1.537-4.343-.74 .752 .03" fill="#030405" />
+<ns0:path transform="matrix(1,0,0,-1,68.40181,40.40747)" stroke-width="1" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#030405" d="M0 0H35.401C35.401 0 40.054-1.532 35.401-1.537 30.749-1.543 0-1.537 0-1.537 0-1.537-4.343-.74 .752 .03" />
+</ns0:g>
+</ns0:g>
+</ns0:g>
+</ns0:svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 87.2 89.9">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>
+  <g id="left_hand" data-name="left hand">
+    <g id="left_hand-2" data-name="left hand">
+      <path id="left_hand-3" data-name="left hand" class="cls-1" d="m5,5c25.7,26.6,51.5,53.2,77.2,79.9"/>
+    </g>
+  </g>
+</svg>

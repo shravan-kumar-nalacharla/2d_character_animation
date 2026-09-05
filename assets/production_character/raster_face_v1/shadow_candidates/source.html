@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>*{box-sizing:border-box}html,body{margin:0;width:896px;height:1024px;overflow:hidden;background:#eef2f5}svg{display:block;width:896px;height:1024px}</style></head><body>
+<svg viewBox="755 15 280 350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="angerFade" x1="0" y1="0" x2="0" y2="1">
+      <stop id="shadowTop" offset="0" stop-color="#05070a" stop-opacity=".98"/>
+      <stop id="shadowHold" offset=".50" stop-color="#05070a" stop-opacity="1"/>
+      <stop id="shadowTail" offset="1" stop-color="#171b24" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="headOnly" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+      <image href="/production_character/illustrator2024/head/head.svg" width="1920" height="1080"/>
+    </mask>
+  </defs>
+  <g transform="matrix(.65 0 0 .65 221.95 -72.55)">
+    <image href="/production_character/illustrator2024/head/head.svg" width="1920" height="1080"/>
+    <image href="/production_character/illustrator2024/head/ears.svg" width="1920" height="1080"/>
+  </g>
+  <image href="/production_character/illustrator2024/eyes/normal-eyes-2/brow-l.svg" x="840" y="142" width="36" height="18"/>
+  <image href="/production_character/illustrator2024/eyes/normal-eyes-2/brow-r.svg" x="912" y="142" width="36" height="18"/>
+  <image href="/production_character/illustrator2024/eyes/normal-eyes-2/eye-l.svg" x="849" y="159" width="18" height="34"/>
+  <image href="/production_character/illustrator2024/eyes/normal-eyes-2/eye-r.svg" x="921" y="159" width="18" height="34"/>
+  <g transform="matrix(.65 0 0 .65 221.95 -72.55)" mask="url(#headOnly)">
+    <rect id="angerShadow" x="0" y="255" width="1920" height="270" fill="url(#angerFade)"/>
+  </g>
+  <image href="/production_character/illustrator2024/face/mouths/v3/REST.svg" x="874" y="212" width="39" height="20"/>
+  <g transform="matrix(.65 0 0 .65 221.95 -72.55)">
+    <image href="/production_character/illustrator2024/head/hair.svg" width="1920" height="1080"/>
+  </g>
+</svg>
+<script>
+const variants={
+ A:{y:255,h:245,hold:.50,opacity:1,color:'#030407'},
+ B:{y:250,h:275,hold:.58,opacity:1,color:'#000000'},
+ C:{y:258,h:220,hold:.48,opacity:1,color:'#07090d'},
+ D:{y:252,h:260,hold:.52,opacity:1,color:'#040509'},
+ E:{y:255,h:235,hold:.55,opacity:1,color:'#020305'},
+ F:{y:250,h:300,hold:.54,opacity:1,color:'#030407'}
+};
+const v=variants[new URLSearchParams(location.search).get('v')]||variants.A;
+const rect=document.querySelector('#angerShadow');
+rect.setAttribute('y',v.y); rect.setAttribute('height',v.h);
+document.querySelector('#shadowTop').setAttribute('stop-color',v.color);
+document.querySelector('#shadowTop').setAttribute('stop-opacity',v.opacity);
+document.querySelector('#shadowHold').setAttribute('offset',v.hold);
+</script>
+</body></html>

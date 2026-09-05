@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "type": "mouth-pack",
+  "character": "algowzxd_2024",
+  "viewBox": "0 0 200 100",
+  "anchor": { "x": 0.5, "y": 0.5 },
+  "visemes": {
+    "REST": { "file": "REST.svg", "scale": 0.88 }, "MBP": { "file": "MBP.svg", "scale": 0.92 },
+    "FV": { "file": "FV.svg", "scale": 0.96 }, "L": { "file": "L.svg", "scale": 0.98 },
+    "TDN": { "file": "TDN.svg", "scale": 0.98 }, "KG": { "file": "KG.svg", "scale": 1 },
+    "CHJSH": { "file": "CHJSH.svg", "scale": 1 }, "SZ": { "file": "SZ.svg", "scale": 1 },
+    "R": { "file": "R.svg", "scale": 0.94 }, "AA": { "file": "AA.svg", "scale": 1.08 },
+    "AEE": { "file": "AEE.svg", "scale": 1.02 }, "EEI": { "file": "EEI.svg", "scale": 1.04 },
+    "UH": { "file": "UH.svg", "scale": 0.92 }, "OH": { "file": "OH.svg", "scale": 1 },
+    "OOW": { "file": "OOW.svg", "scale": 0.88 }
+  }
+}

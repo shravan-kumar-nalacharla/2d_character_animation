@@ -1,0 +1,17 @@
+Adobe After Effects v23.2.1 Windows 64 render log for project “algowzxd full body duik.aep”
+
+Rendering started on 26-03-2024 at 18:50:51
+
+  26-03-2024 18:50:51: Starting composition “algowz xd character final illustratoR 1r 2”.
+
+  Output To: E:\youtube related\algowzxd character animation related\algowzxd character parts (imp)\algowzxd character faces new\algowz xd character final illustratoR 1r 2 (0-00-00-00).psd    26-03-2024 18:50:51: Finished composition “algowz xd character final illustratoR 1r 2”.
+
+
+  26-03-2024 18:50:51: Starting composition “algowz xd character final illustratoR 1r 2”.
+
+  Output To: E:\youtube related\algowzxd character animation related\algowzxd character parts (imp)\algowzxd character faces new\algowzxd slightly smile.png    26-03-2024 18:50:51: Finished composition “algowz xd character final illustratoR 1r 2”.
+
+
+  Total Time Elapsed: 0 Seconds
+Log closed on 26-03-2024 at 18:50:51
+

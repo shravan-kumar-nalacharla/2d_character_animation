@@ -1,0 +1,19 @@
+{
+  "characterId": "algowzxd_2024_duik",
+  "sourceDirectory": "adobe animate and illustrator saves (imp)/illustrator/algowzxd new 2024/full body rigging duik",
+  "primaryProject": "algowzxd full body duik.aep",
+  "primarySha256": "F8669CE538330929188F1C5FFF43487DCAAEC4342BF0CD51FE059D420BFFCAC6",
+  "primaryBytes": 4603306,
+  "modified": "2024-03-26T20:03:39+05:30",
+  "fallbackProject": "Adobe After Effects Auto-Save/algowzxd full body duik Auto-Save 49.aep",
+  "projectsFound": 9,
+  "renderLogsFound": 7,
+  "staticEvidence": [
+    "Duik controller metadata",
+    "2D slider pseudo-effects",
+    "Duik connector expressions",
+    "Puppet pins for hands and legs",
+    "Mouth, eyes and eyebrows controls"
+  ],
+  "status": "awaiting-ae-export"
+}

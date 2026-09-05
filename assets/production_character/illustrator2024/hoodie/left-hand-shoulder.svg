@@ -1,0 +1,52 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="1920" height="1080" viewBox="0 0 1920 1080">
+<ns0:defs>
+<ns0:clipPath id="clip_1">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_2">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_3">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_4">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_5">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_6">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_7">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_8">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_9">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_10">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_11">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_12">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_13">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+<ns0:clipPath id="clip_14">
+<ns0:path transform="matrix(1,0,0,-1,0,1080)" d="M0 1080H1920V0H0Z" />
+</ns0:clipPath>
+</ns0:defs>
+<ns0:g ns1:groupmode="layer" ns1:label="left hand shoulder">
+<ns0:g clip-path="url(#clip_9)">
+<ns0:path transform="matrix(1,0,0,-1,1025.4183,411.55329)" d="M0 0-22.243 84.317C-23.288 87.504-24.113 91.377-25.123 96.045-25.933 100.61-30.003 104.755-36.824 108.569-37.374 108.885-37.955 109.171-38.522 109.47-39.664 108.543-41.001 107.785-42.461 107.241-48.215 105.096-55.153 102.92-61.226 99.754-62.581 97.099-64.307 94.699-66.473 92.418-67.009 90.916-67.461 89.38-67.901 87.867-68.843 84.624-71.042 82.615-73.647 81.681L-51.657-6.423C-50.076-12.785-46.132-18.014-40.126-21.908-34.216-25.601-27.851-27.131-21.235-26.591-20.93-26.598-20.522-26.509-20.113-26.419L-20.012-26.422C-18.382-26.261-16.85-25.901-15.521-25.537-10.611-24.068-6.485-21.396-3.547-17.312 .33-12.163 1.581-6.361 0 0" fill="#e70000" />
+<ns0:path transform="matrix(1,0,0,-1,1025.52,411.5556)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0-22.345 84.32C-23.489 87.607-24.312 91.579-25.327 96.05-26.136 100.615-29.902 104.753-36.827 108.47-37.42 108.812-38.046 109.122-38.66 109.444-39.794 108.53-41.118 107.782-42.562 107.244-48.317 105.098-55.255 102.922-61.328 99.757-62.683 97.102-64.409 94.701-66.575 92.42-67.11 90.918-67.563 89.382-68.003 87.869-68.934 84.665-71.091 82.661-73.655 81.713L-51.657-6.423C-50.076-12.785-46.132-18.014-40.126-21.908-34.216-25.601-27.851-27.131-21.235-26.591-20.93-26.598-20.522-26.509-20.113-26.419L-20.012-26.422C-18.383-26.261-16.85-25.901-15.521-25.537-10.611-24.068-6.486-21.396-3.547-17.312 .33-12.163 1.581-6.361 0 0Z" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

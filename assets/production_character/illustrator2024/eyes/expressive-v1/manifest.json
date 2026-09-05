@@ -1,0 +1,16 @@
+{
+  "id": "algowzxd-expressive-v1",
+  "character": "Algowzxd 2024",
+  "kind": "parametric-eye-pack",
+  "renderer": "src/editor/FaceRig.tsx",
+  "designs": "src/character/EyePresets.ts",
+  "sides": ["left", "right"],
+  "capabilities": ["independent-expression", "independent-transform", "gaze", "blink", "squint", "pupil-scale", "highlights"],
+  "tiers": {
+    "0": "neutral baseline",
+    "1": "subtle acting",
+    "2": "strong emotion",
+    "3": "extreme/comedic/anime"
+  },
+  "legacyPack": "../"
+}

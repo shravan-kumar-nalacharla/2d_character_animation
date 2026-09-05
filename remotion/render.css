@@ -1,0 +1,11 @@
+html, body, #root { margin: 0; width: 100%; height: 100%; overflow: hidden; background: transparent; }
+.remotion-root .viewport-shell { width: 100%; height: 100%; display: block; background: transparent; }
+.remotion-root .viewport-toolbar,
+.remotion-root .viewport-footer,
+.remotion-root .safe-frame,
+.remotion-root .face-debug,
+.remotion-root .anchor-debug,
+.remotion-root .viewport-error { display: none !important; }
+.remotion-root .viewport-canvas { width: 100%; height: 100%; background: transparent; }
+.remotion-root .character-stage { width: 100%; height: 100%; }
+.remotion-root.fit-fill .character-stage { preserve-aspect-ratio: xMidYMid slice; }

@@ -1,0 +1,13 @@
+{
+  "id": "algowzxd-face-accessories-v1",
+  "assets": [
+    {
+      "id": "blackClassic",
+      "name": "Black sunglasses",
+      "file": "black-sunglasses.svg",
+      "independent": true,
+      "keyframable": true,
+      "controls": ["visible", "scale", "offsetX", "offsetY", "rotation", "opacity"]
+    }
+  ]
+}
