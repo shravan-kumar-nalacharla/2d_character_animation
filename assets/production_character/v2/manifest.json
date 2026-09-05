@@ -1,0 +1,6751 @@
+{
+  "schemaVersion": 2,
+  "id": "algowzxd-production-character-v2",
+  "character": "Algowzxd",
+  "revision": 1,
+  "sideConvention": "character",
+  "designRules": {
+    "ageStyle": "teen",
+    "facialHair": false,
+    "eyebrowColor": "black",
+    "pupilPalette": [
+      "#080a0d",
+      "#111318",
+      "#2d3540"
+    ]
+  },
+  "assets": [
+    {
+      "id": "expression.confident-grin.left-eye",
+      "path": "face/expressions/left-eye/01-confident-grin_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 138,
+        "width": 430,
+        "height": 235
+      },
+      "tags": [
+        "expression",
+        "confident-grin",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "8d480f6783787581960635ac8e6c661ec93649fd017c348df9e2979a3fa4c04a"
+    },
+    {
+      "id": "expression.serious-tired.left-eye",
+      "path": "face/expressions/left-eye/02-serious-tired_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 51,
+        "y": 194,
+        "width": 410,
+        "height": 124
+      },
+      "tags": [
+        "expression",
+        "serious-tired",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "65c1105758c622039157966a438a97eec2bfe5f7236c0b592dd4aa330bd7648e"
+    },
+    {
+      "id": "expression.shocked-alert.left-eye",
+      "path": "face/expressions/left-eye/03-shocked-alert_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 51,
+        "y": 81,
+        "width": 410,
+        "height": 350
+      },
+      "tags": [
+        "expression",
+        "shocked-alert",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "ab5919297f235d5dde7cb04d9c93ca61915a98708ce0867018fe56e589dd1fbb"
+    },
+    {
+      "id": "expression.angry-gritted-teeth.left-eye",
+      "path": "face/expressions/left-eye/04-angry-gritted-teeth_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 171,
+        "width": 430,
+        "height": 170
+      },
+      "tags": [
+        "expression",
+        "angry-gritted-teeth",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "462f02b2e9238a7734b5ac9042eb001be4f0636754e70fc11e443aa7450059e2"
+    },
+    {
+      "id": "expression.calm-knowing-smile.left-eye",
+      "path": "face/expressions/left-eye/05-calm-knowing-smile_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 184,
+        "width": 430,
+        "height": 143
+      },
+      "tags": [
+        "expression",
+        "calm-knowing-smile",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "4543e4e73b6064715992f2f322d8246e7f214963139f3c4995c9c0da3a65cd40"
+    },
+    {
+      "id": "expression.rage-scream.left-eye",
+      "path": "face/expressions/left-eye/06-rage-scream_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 115,
+        "width": 430,
+        "height": 281
+      },
+      "tags": [
+        "expression",
+        "rage-scream",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "8770525922c37aa2f3987226e0f83e28d59256f601a1d6c01b1e66c8a3f872f5"
+    },
+    {
+      "id": "expression.intense-shadow-stare.left-eye",
+      "path": "face/expressions/left-eye/07-intense-shadow-stare_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 129,
+        "width": 430,
+        "height": 254
+      },
+      "tags": [
+        "expression",
+        "intense-shadow-stare",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "5c66a51e73ef3ffc75b8f1da6e900ad982d6a1b2044486bb8723cf292728cfcb"
+    },
+    {
+      "id": "expression.power-rage.left-eye",
+      "path": "face/expressions/left-eye/08-power-rage_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 51,
+        "y": 70,
+        "width": 410,
+        "height": 372
+      },
+      "tags": [
+        "expression",
+        "power-rage",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "e388780ede78b8f425afc33b461258e30d76989c863ac9aac33b41bd0c0cf086"
+    },
+    {
+      "id": "expression.soft-surprise.left-eye",
+      "path": "face/expressions/left-eye/09-soft-surprise_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 62,
+        "y": 60,
+        "width": 388,
+        "height": 392
+      },
+      "tags": [
+        "expression",
+        "soft-surprise",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "ae7e85e8e7ea1b396f90c659db10edae5a0120e7a619c7d947ce5755e2a072da"
+    },
+    {
+      "id": "expression.soft-toothy-grin.left-eye",
+      "path": "face/expressions/left-eye/10-soft-toothy-grin_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 76,
+        "y": 62,
+        "width": 360,
+        "height": 388
+      },
+      "tags": [
+        "expression",
+        "soft-toothy-grin",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "5a4f241ab5b5da7773d609a5746cf51b75e27176311d8200e273cb19749499e4"
+    },
+    {
+      "id": "expression.soft-cheerful-open-smile.left-eye",
+      "path": "face/expressions/left-eye/11-soft-cheerful-open-smile_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 86,
+        "y": 87,
+        "width": 339,
+        "height": 338
+      },
+      "tags": [
+        "expression",
+        "soft-cheerful-open-smile",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "b1eb9b42c8325288bbd65604f065ec7ce8bfde47aa54e983e7d34afc5cb60c41"
+    },
+    {
+      "id": "expression.extreme-eye-shock.left-eye",
+      "path": "face/expressions/left-eye/12-extreme-eye-shock_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 71,
+        "y": 42,
+        "width": 369,
+        "height": 428
+      },
+      "tags": [
+        "expression",
+        "extreme-eye-shock",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "4f247e7776c00024c80b6fa7182e750d2a01e821b65cd3ecfcfee1db81453fa9"
+    },
+    {
+      "id": "expression.stern-focused.left-eye",
+      "path": "face/expressions/left-eye/13-stern-focused_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 178,
+        "width": 430,
+        "height": 156
+      },
+      "tags": [
+        "expression",
+        "stern-focused",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "4cf69164051bcf76c851310b3d37eb4171da5ddcdd1123e0d2c39ac3523a7452"
+    },
+    {
+      "id": "expression.narrowed-suspicious.left-eye",
+      "path": "face/expressions/left-eye/14-narrowed-suspicious_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 167,
+        "width": 430,
+        "height": 178
+      },
+      "tags": [
+        "expression",
+        "narrowed-suspicious",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "5778f4118b50715b7a6bb78deb911106dce5a2394b13fd4e5c22576e5a3a173b"
+    },
+    {
+      "id": "expression.neutral-attentive.left-eye",
+      "path": "face/expressions/left-eye/15-neutral-attentive_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 63,
+        "y": 77,
+        "width": 386,
+        "height": 358
+      },
+      "tags": [
+        "expression",
+        "neutral-attentive",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "1c96612e7b5f40626bc270e908a8316e5028580563c19d7dcdaa676f3d7c5dc9"
+    },
+    {
+      "id": "expression.happy-closed-eye-smile.left-eye",
+      "path": "face/expressions/left-eye/16-happy-closed-eye-smile_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 168,
+        "width": 430,
+        "height": 175
+      },
+      "tags": [
+        "expression",
+        "happy-closed-eye-smile",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "cf85c8de3e87c70e70d9cbf3fba2d9d33cf36b53406780d889a907cb72d32507"
+    },
+    {
+      "id": "expression.sad-teary.left-eye",
+      "path": "face/expressions/left-eye/17-sad-teary_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 141,
+        "width": 430,
+        "height": 229
+      },
+      "tags": [
+        "expression",
+        "sad-teary",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "7ab6c32c616a9ede1e9554e0bbe4b8805111edb11fcd1ae89aaad77dfe641e36"
+    },
+    {
+      "id": "expression.crying-breakdown.left-eye",
+      "path": "face/expressions/left-eye/18-crying-breakdown_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 69,
+        "y": 174,
+        "width": 374,
+        "height": 164
+      },
+      "tags": [
+        "expression",
+        "crying-breakdown",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "e4772d35ee66a2eb5dea8f4287f6f4eba4711b9db8cb370c1306136966da3768"
+    },
+    {
+      "id": "expression.worried-anxious.left-eye",
+      "path": "face/expressions/left-eye/19-worried-anxious_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 83,
+        "y": 110,
+        "width": 345,
+        "height": 292
+      },
+      "tags": [
+        "expression",
+        "worried-anxious",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "c991bd18aee52e9b61a10fc0fc8ab6221755ec539f65028d91328e793250a781"
+    },
+    {
+      "id": "expression.scared-terrified.left-eye",
+      "path": "face/expressions/left-eye/20-scared-terrified_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 86,
+        "y": 95,
+        "width": 340,
+        "height": 321
+      },
+      "tags": [
+        "expression",
+        "scared-terrified",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "39ea9fd647f6ba311d8e1af98a197661d71978b45eb518fd4e5808c1a4b17355"
+    },
+    {
+      "id": "expression.confused.left-eye",
+      "path": "face/expressions/left-eye/21-confused_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 127,
+        "width": 430,
+        "height": 258
+      },
+      "tags": [
+        "expression",
+        "confused",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "5e7a3459778dbfd4b31875dd5b9eeef10822e247cf876849de54335454b8ed25"
+    },
+    {
+      "id": "expression.disgusted.left-eye",
+      "path": "face/expressions/left-eye/22-disgusted_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 153,
+        "width": 430,
+        "height": 205
+      },
+      "tags": [
+        "expression",
+        "disgusted",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "6e4df9cca64245276d69c6da22787a1b8cb879be252d8c366d7408c78e60b938"
+    },
+    {
+      "id": "expression.embarrassed-blush.left-eye",
+      "path": "face/expressions/left-eye/23-embarrassed-blush_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 50,
+        "y": 106,
+        "width": 411,
+        "height": 300
+      },
+      "tags": [
+        "expression",
+        "embarrassed-blush",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "51a8fc78d5729bc4d4198c4d6fd2e8c43ace24d1ac058e4dca4e8d2bf125e416"
+    },
+    {
+      "id": "expression.excited-delight.left-eye",
+      "path": "face/expressions/left-eye/24-excited-delight_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 76,
+        "width": 430,
+        "height": 360
+      },
+      "tags": [
+        "expression",
+        "excited-delight",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "61b44b7b43616b8f910f8315895cc25c1209edb7503efcdd1ac01a72d635a5c6"
+    },
+    {
+      "id": "expression.sleepy-drowsy.left-eye",
+      "path": "face/expressions/left-eye/25-sleepy-drowsy_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 65,
+        "y": 142,
+        "width": 382,
+        "height": 228
+      },
+      "tags": [
+        "expression",
+        "sleepy-drowsy",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "2ccdf5a936fb589f6b019d55c09b9858b4fea115e2b35e936353e878f5779897"
+    },
+    {
+      "id": "expression.bored-unimpressed.left-eye",
+      "path": "face/expressions/left-eye/26-bored-unimpressed_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 115,
+        "width": 430,
+        "height": 282
+      },
+      "tags": [
+        "expression",
+        "bored-unimpressed",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "8b91d9121b3c6f10490acc0488c32241a5c301839a3430fa36dd7a0e1e919d23"
+    },
+    {
+      "id": "expression.mischievous-smirk.left-eye",
+      "path": "face/expressions/left-eye/27-mischievous-smirk_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 67,
+        "y": 146,
+        "width": 378,
+        "height": 219
+      },
+      "tags": [
+        "expression",
+        "mischievous-smirk",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "3673a3bef854f0ad76862de7705ee8410123ec6d951d5319b4cf5cd0432a36ce"
+    },
+    {
+      "id": "expression.determined-heroic.left-eye",
+      "path": "face/expressions/left-eye/28-determined-heroic_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 69,
+        "y": 119,
+        "width": 374,
+        "height": 273
+      },
+      "tags": [
+        "expression",
+        "determined-heroic",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "a1c1d9315885a938d9551c5cd3494e6d3555a9b99282dbe82af9c54ab351831c"
+    },
+    {
+      "id": "expression.laughing-hard.left-eye",
+      "path": "face/expressions/left-eye/29-laughing-hard_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 84,
+        "y": 179,
+        "width": 344,
+        "height": 154
+      },
+      "tags": [
+        "expression",
+        "laughing-hard",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "60fbb4c768669cce42aa32d18818e0510ea47722c5cd54f71a7051bbb677e5f2"
+    },
+    {
+      "id": "expression.pain-wince.left-eye",
+      "path": "face/expressions/left-eye/30-pain-wince_left-eye.png",
+      "format": "png",
+      "slot": "eye.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 166,
+        "width": 430,
+        "height": 180
+      },
+      "tags": [
+        "expression",
+        "pain-wince",
+        "left-eye"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "530d2cb351f74a46d8f4a53f78d12cb247de3406ea0a80b12bec76bbf3f3bdf9"
+    },
+    {
+      "id": "expression.confident-grin.right-eye",
+      "path": "face/expressions/right-eye/01-confident-grin_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 138,
+        "width": 430,
+        "height": 236
+      },
+      "tags": [
+        "expression",
+        "confident-grin",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "0cc8f5589877e4cb513a7dfc7fc00a3669d3d75b2dfefc547e8d3326d4dbaffc"
+    },
+    {
+      "id": "expression.serious-tired.right-eye",
+      "path": "face/expressions/right-eye/02-serious-tired_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 55,
+        "y": 194,
+        "width": 402,
+        "height": 123
+      },
+      "tags": [
+        "expression",
+        "serious-tired",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "696519806e7b49d7d4ab7f6bcb79910838099c2897b4bed7dad6fd7bfeb93433"
+    },
+    {
+      "id": "expression.shocked-alert.right-eye",
+      "path": "face/expressions/right-eye/03-shocked-alert_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 55,
+        "y": 84,
+        "width": 402,
+        "height": 344
+      },
+      "tags": [
+        "expression",
+        "shocked-alert",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "6e52fb3f34dce20db5b9e99962ae7b72cc7ef37fccfe633ad3964d37e7603fdd"
+    },
+    {
+      "id": "expression.angry-gritted-teeth.right-eye",
+      "path": "face/expressions/right-eye/04-angry-gritted-teeth_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 176,
+        "width": 430,
+        "height": 160
+      },
+      "tags": [
+        "expression",
+        "angry-gritted-teeth",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "ee915fb0255ff2d861174ed8391dfc2e1c92b0b5164e9edf7ae188636be27524"
+    },
+    {
+      "id": "expression.calm-knowing-smile.right-eye",
+      "path": "face/expressions/right-eye/05-calm-knowing-smile_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 184,
+        "width": 430,
+        "height": 144
+      },
+      "tags": [
+        "expression",
+        "calm-knowing-smile",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "fa962e5aeabd0a2e0a2c0eede68a3183957b10121a47d04551cf77257d974d99"
+    },
+    {
+      "id": "expression.rage-scream.right-eye",
+      "path": "face/expressions/right-eye/06-rage-scream_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 47,
+        "y": 112,
+        "width": 418,
+        "height": 288
+      },
+      "tags": [
+        "expression",
+        "rage-scream",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "397ac0426b70b4fa4100e47be8d5fae0def576009cb5aceb2635a3aafc28617c"
+    },
+    {
+      "id": "expression.intense-shadow-stare.right-eye",
+      "path": "face/expressions/right-eye/07-intense-shadow-stare_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 129,
+        "width": 430,
+        "height": 253
+      },
+      "tags": [
+        "expression",
+        "intense-shadow-stare",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "c57a0a9e9e3aa232aec69940a9b67b638b358c8e5dd3a1d12a5f7e9095713dd0"
+    },
+    {
+      "id": "expression.power-rage.right-eye",
+      "path": "face/expressions/right-eye/08-power-rage_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 51,
+        "y": 71,
+        "width": 410,
+        "height": 370
+      },
+      "tags": [
+        "expression",
+        "power-rage",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "c87ab95ccbc70861cd285dcc869a7fb564310dc04603ab57b71d9af7c04d7b8a"
+    },
+    {
+      "id": "expression.soft-surprise.right-eye",
+      "path": "face/expressions/right-eye/09-soft-surprise_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 65,
+        "y": 61,
+        "width": 381,
+        "height": 390
+      },
+      "tags": [
+        "expression",
+        "soft-surprise",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "63d6aa916fac214acde081d56fc64b468b3d623541d83e3379e035d6ae3a6f22"
+    },
+    {
+      "id": "expression.soft-toothy-grin.right-eye",
+      "path": "face/expressions/right-eye/10-soft-toothy-grin_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 77,
+        "y": 61,
+        "width": 357,
+        "height": 390
+      },
+      "tags": [
+        "expression",
+        "soft-toothy-grin",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "832677a18cc29abfaea78c39f1fdb682bc5fdd598b499f38eb86b9383f38115d"
+    },
+    {
+      "id": "expression.soft-cheerful-open-smile.right-eye",
+      "path": "face/expressions/right-eye/11-soft-cheerful-open-smile_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 88,
+        "y": 87,
+        "width": 336,
+        "height": 338
+      },
+      "tags": [
+        "expression",
+        "soft-cheerful-open-smile",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "1aaa808432699de9b45fbb93a82034a25035b03f50593cbef0d5ff99840be09c"
+    },
+    {
+      "id": "expression.extreme-eye-shock.right-eye",
+      "path": "face/expressions/right-eye/12-extreme-eye-shock_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 73,
+        "y": 42,
+        "width": 366,
+        "height": 428
+      },
+      "tags": [
+        "expression",
+        "extreme-eye-shock",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "a939e45080f3a624a90740eec416316b4674a063f18872862bb2ffb4dfd3d482"
+    },
+    {
+      "id": "expression.stern-focused.right-eye",
+      "path": "face/expressions/right-eye/13-stern-focused_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 178,
+        "width": 430,
+        "height": 156
+      },
+      "tags": [
+        "expression",
+        "stern-focused",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "2c2fd229119ce57d4578c580405ae2e347cc44daf74ed7bd20b0456d76fac399"
+    },
+    {
+      "id": "expression.narrowed-suspicious.right-eye",
+      "path": "face/expressions/right-eye/14-narrowed-suspicious_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 167,
+        "width": 430,
+        "height": 178
+      },
+      "tags": [
+        "expression",
+        "narrowed-suspicious",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "efe30eeee904c690582906ffe0551e7e75260cb555a4574f2abb81eb08c9e082"
+    },
+    {
+      "id": "expression.neutral-attentive.right-eye",
+      "path": "face/expressions/right-eye/15-neutral-attentive_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 73,
+        "y": 76,
+        "width": 366,
+        "height": 360
+      },
+      "tags": [
+        "expression",
+        "neutral-attentive",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "488e9404d20178d47313400ef026c672535b1bb73ad6617cf892aa86880dce7a"
+    },
+    {
+      "id": "expression.happy-closed-eye-smile.right-eye",
+      "path": "face/expressions/right-eye/16-happy-closed-eye-smile_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 169,
+        "width": 430,
+        "height": 174
+      },
+      "tags": [
+        "expression",
+        "happy-closed-eye-smile",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "f2cf8a4eff08fed02248967cd149b70967c8aa42e75a855db614a2a6ca478c7b"
+    },
+    {
+      "id": "expression.sad-teary.right-eye",
+      "path": "face/expressions/right-eye/17-sad-teary_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 137,
+        "width": 430,
+        "height": 238
+      },
+      "tags": [
+        "expression",
+        "sad-teary",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "af5899e41e231f592cd803f60ca4ddeee07f69e7c5d5d90cd420ec714986fb5e"
+    },
+    {
+      "id": "expression.crying-breakdown.right-eye",
+      "path": "face/expressions/right-eye/18-crying-breakdown_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 80,
+        "y": 177,
+        "width": 352,
+        "height": 158
+      },
+      "tags": [
+        "expression",
+        "crying-breakdown",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "50445545a23050e3886043a8314750b0c8207c2893ec15b81fcace7c3aca8791"
+    },
+    {
+      "id": "expression.worried-anxious.right-eye",
+      "path": "face/expressions/right-eye/19-worried-anxious_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 86,
+        "y": 113,
+        "width": 340,
+        "height": 286
+      },
+      "tags": [
+        "expression",
+        "worried-anxious",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "d0bd6ae1c4c4536e618156fbda653b3fbb72e20e370232caf7fa23f46e800bde"
+    },
+    {
+      "id": "expression.scared-terrified.right-eye",
+      "path": "face/expressions/right-eye/20-scared-terrified_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 84,
+        "y": 97,
+        "width": 344,
+        "height": 318
+      },
+      "tags": [
+        "expression",
+        "scared-terrified",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "0a844389c9d4210cd71732c108c15f9ffe332f631da8cf58c44ff4fbcdbb5a12"
+    },
+    {
+      "id": "expression.confused.right-eye",
+      "path": "face/expressions/right-eye/21-confused_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 50,
+        "y": 68,
+        "width": 412,
+        "height": 376
+      },
+      "tags": [
+        "expression",
+        "confused",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "69c43825fd8e24b4ecd9a5c01dc60f51023a7e0ccaaf499737f3d357e32ed7d3"
+    },
+    {
+      "id": "expression.disgusted.right-eye",
+      "path": "face/expressions/right-eye/22-disgusted_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 152,
+        "width": 430,
+        "height": 208
+      },
+      "tags": [
+        "expression",
+        "disgusted",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "c57b8e99a37a8abea189b05c10ad7ca16cf389f23975ea57f3d2b27baeaacda5"
+    },
+    {
+      "id": "expression.embarrassed-blush.right-eye",
+      "path": "face/expressions/right-eye/23-embarrassed-blush_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 56,
+        "y": 102,
+        "width": 400,
+        "height": 308
+      },
+      "tags": [
+        "expression",
+        "embarrassed-blush",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "81fcbfa3081ac4cb8731c40de29118f375b5140f3299c606c435ba84a92bce12"
+    },
+    {
+      "id": "expression.excited-delight.right-eye",
+      "path": "face/expressions/right-eye/24-excited-delight_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 74,
+        "width": 430,
+        "height": 363
+      },
+      "tags": [
+        "expression",
+        "excited-delight",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "5db0eacc103e53737df11d9df35780017b252e4ee60eb296abedad16770bb454"
+    },
+    {
+      "id": "expression.sleepy-drowsy.right-eye",
+      "path": "face/expressions/right-eye/25-sleepy-drowsy_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 67,
+        "y": 146,
+        "width": 378,
+        "height": 220
+      },
+      "tags": [
+        "expression",
+        "sleepy-drowsy",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "b39ce851db50ed6005034db686439ef22db04274c267cfdf68257c05dd42db08"
+    },
+    {
+      "id": "expression.bored-unimpressed.right-eye",
+      "path": "face/expressions/right-eye/26-bored-unimpressed_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 115,
+        "width": 430,
+        "height": 282
+      },
+      "tags": [
+        "expression",
+        "bored-unimpressed",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "cf9b8b2d1a80bee42ad56e3aa20782acd0c12f4152043911cf76bd6498de189f"
+    },
+    {
+      "id": "expression.mischievous-smirk.right-eye",
+      "path": "face/expressions/right-eye/27-mischievous-smirk_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 65,
+        "y": 152,
+        "width": 381,
+        "height": 207
+      },
+      "tags": [
+        "expression",
+        "mischievous-smirk",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "e9635f5650a8a47f8b9d163617c69856177c236b658fc376a66cc42d6afab5d2"
+    },
+    {
+      "id": "expression.determined-heroic.right-eye",
+      "path": "face/expressions/right-eye/28-determined-heroic_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 71,
+        "y": 119,
+        "width": 370,
+        "height": 273
+      },
+      "tags": [
+        "expression",
+        "determined-heroic",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "fef3feb22603d09b8a12652dca96eb27177b6bd1dafa0f72c0cfde6624e15d65"
+    },
+    {
+      "id": "expression.laughing-hard.right-eye",
+      "path": "face/expressions/right-eye/29-laughing-hard_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 83,
+        "y": 179,
+        "width": 345,
+        "height": 154
+      },
+      "tags": [
+        "expression",
+        "laughing-hard",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "d6aa8d54dd3bd081df893ad1b185402fd0b09eea988a6ae3fb9c4929d84b70e6"
+    },
+    {
+      "id": "expression.pain-wince.right-eye",
+      "path": "face/expressions/right-eye/30-pain-wince_right-eye.png",
+      "format": "png",
+      "slot": "eye.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 140,
+        "width": 430,
+        "height": 231
+      },
+      "tags": [
+        "expression",
+        "pain-wince",
+        "right-eye"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "098ea051b5e5bd2b6462c9496ce1a4148d1a302c19ca445ca1ab8c1e094efd76"
+    },
+    {
+      "id": "expression.confident-grin.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/01-confident-grin_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 182,
+        "width": 430,
+        "height": 148
+      },
+      "tags": [
+        "expression",
+        "confident-grin",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "891c911673abb1c7d537a3181da7ed7e8afa876f83674acf5716108bb6af8338"
+    },
+    {
+      "id": "expression.serious-tired.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/02-serious-tired_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 204,
+        "width": 430,
+        "height": 103
+      },
+      "tags": [
+        "expression",
+        "serious-tired",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "021f3936a9287323d88aa4a122989d4b47eeca1b14f931f1d49955ea75348b6e"
+    },
+    {
+      "id": "expression.shocked-alert.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/03-shocked-alert_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 57,
+        "y": 174,
+        "width": 398,
+        "height": 164
+      },
+      "tags": [
+        "expression",
+        "shocked-alert",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "769fb1fdb66024e93117169c427283f896892133c666c962c673f3c3d0fad428"
+    },
+    {
+      "id": "expression.angry-gritted-teeth.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/04-angry-gritted-teeth_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 192,
+        "width": 430,
+        "height": 128
+      },
+      "tags": [
+        "expression",
+        "angry-gritted-teeth",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "42f1f666d13b77fcd59c492ca465099cd48ce08bec4b422a2d883354796e7f5c"
+    },
+    {
+      "id": "expression.calm-knowing-smile.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/05-calm-knowing-smile_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 193,
+        "width": 430,
+        "height": 125
+      },
+      "tags": [
+        "expression",
+        "calm-knowing-smile",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "5ca4f6283fa99ab694e7b1e6e2684686fa746e1550b6c5048aee70ef3990abc5"
+    },
+    {
+      "id": "expression.rage-scream.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/06-rage-scream_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 152,
+        "width": 430,
+        "height": 207
+      },
+      "tags": [
+        "expression",
+        "rage-scream",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "0888ca2a918f0c0b8e60499dbf978ec0fbdf76bada691f8f84a239d2cf8aa09c"
+    },
+    {
+      "id": "expression.intense-shadow-stare.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/07-intense-shadow-stare_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 192,
+        "width": 430,
+        "height": 128
+      },
+      "tags": [
+        "expression",
+        "intense-shadow-stare",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "00631806d1db597978927aaba79e7cd56cbbc05349dac583041219b07d75ab1b"
+    },
+    {
+      "id": "expression.power-rage.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/08-power-rage_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 158,
+        "width": 430,
+        "height": 196
+      },
+      "tags": [
+        "expression",
+        "power-rage",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "f209f82a35db96a7cb370c7f36fe4167c8793bdcf8a880c1010d2bb671c4e75a"
+    },
+    {
+      "id": "expression.soft-surprise.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/09-soft-surprise_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 203,
+        "width": 430,
+        "height": 106
+      },
+      "tags": [
+        "expression",
+        "soft-surprise",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "0130fc67477a1251f526675f827f1c4a0798549821b2b3bf141d2ffafd62ecd5"
+    },
+    {
+      "id": "expression.soft-toothy-grin.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/10-soft-toothy-grin_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 207,
+        "width": 430,
+        "height": 98
+      },
+      "tags": [
+        "expression",
+        "soft-toothy-grin",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "2f257a60953c3cc87e8f31bcdfa02e1af740f9c48f2c750ba381591860773d78"
+    },
+    {
+      "id": "expression.soft-cheerful-open-smile.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/11-soft-cheerful-open-smile_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 46,
+        "y": 193,
+        "width": 420,
+        "height": 126
+      },
+      "tags": [
+        "expression",
+        "soft-cheerful-open-smile",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "8b1e61ad892dca6f7c51572e70e28ba79d8afe9d3f6c0184afe92d23ad0428bf"
+    },
+    {
+      "id": "expression.extreme-eye-shock.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/12-extreme-eye-shock_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 53,
+        "y": 194,
+        "width": 406,
+        "height": 124
+      },
+      "tags": [
+        "expression",
+        "extreme-eye-shock",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "49f47883f9a4a9779cabd4daf395d044c0a7325b7ff16ad461acd308263b2433"
+    },
+    {
+      "id": "expression.stern-focused.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/13-stern-focused_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 172,
+        "width": 430,
+        "height": 168
+      },
+      "tags": [
+        "expression",
+        "stern-focused",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "f6dee296360ef494d2c112c9d5778941f87f7bf745ef81e582743b219a62b8f2"
+    },
+    {
+      "id": "expression.narrowed-suspicious.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/14-narrowed-suspicious_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 131,
+        "width": 430,
+        "height": 250
+      },
+      "tags": [
+        "expression",
+        "narrowed-suspicious",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "f0bd84eb8aaada7be13c2945c6c69941ed0efbbf36f910d9601f141ff91c18b3"
+    },
+    {
+      "id": "expression.neutral-attentive.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/15-neutral-attentive_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 205,
+        "width": 430,
+        "height": 101
+      },
+      "tags": [
+        "expression",
+        "neutral-attentive",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "f06d75fae3f89b74d51c1b58d773a9876f1fb3adffdf54130186fc13744e7c92"
+    },
+    {
+      "id": "expression.happy-closed-eye-smile.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/16-happy-closed-eye-smile_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 181,
+        "width": 430,
+        "height": 150
+      },
+      "tags": [
+        "expression",
+        "happy-closed-eye-smile",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "63acd0b579a5e107a97043a592939814e00056e6959152b2efcdb3f4fa6f544b"
+    },
+    {
+      "id": "expression.sad-teary.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/17-sad-teary_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 173,
+        "width": 430,
+        "height": 166
+      },
+      "tags": [
+        "expression",
+        "sad-teary",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "74ada3584d44ef1ea89dcb0bb2c7c1728e935091cc0152ec77f0fa5e1d5890df"
+    },
+    {
+      "id": "expression.crying-breakdown.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/18-crying-breakdown_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 66,
+        "y": 170,
+        "width": 380,
+        "height": 172
+      },
+      "tags": [
+        "expression",
+        "crying-breakdown",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "0cef444ac8254901dabd492ea7c5dc714db833200fd2db93ca5203889d35b9be"
+    },
+    {
+      "id": "expression.worried-anxious.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/19-worried-anxious_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 183,
+        "width": 430,
+        "height": 145
+      },
+      "tags": [
+        "expression",
+        "worried-anxious",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "4eb4fa81e75b07e3d2c2d2d60400642e89a1eda36653ae6a58eda7906c8dafca"
+    },
+    {
+      "id": "expression.scared-terrified.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/20-scared-terrified_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 180,
+        "width": 430,
+        "height": 152
+      },
+      "tags": [
+        "expression",
+        "scared-terrified",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "413cafd9a0870d42523e779e18907037d51e5471e09512c8a066cf434d2e6099"
+    },
+    {
+      "id": "expression.confused.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/21-confused_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 202,
+        "width": 430,
+        "height": 108
+      },
+      "tags": [
+        "expression",
+        "confused",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "eba5bfb6d809e4f784c6311e41f9cea06c6fe074299ce6d00379a71d945ec583"
+    },
+    {
+      "id": "expression.disgusted.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/22-disgusted_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 201,
+        "width": 430,
+        "height": 110
+      },
+      "tags": [
+        "expression",
+        "disgusted",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "98842a11b74cb8a07254638c0fc54fa44851a27ffca67aa5b98736e6b8c0a5ad"
+    },
+    {
+      "id": "expression.embarrassed-blush.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/23-embarrassed-blush_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 167,
+        "width": 430,
+        "height": 178
+      },
+      "tags": [
+        "expression",
+        "embarrassed-blush",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "dc1dfcb36048e4df2f8fdcd383fc16f3e11e2f44d0d7c08f5a81f70d79a5981f"
+    },
+    {
+      "id": "expression.excited-delight.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/24-excited-delight_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 197,
+        "width": 430,
+        "height": 118
+      },
+      "tags": [
+        "expression",
+        "excited-delight",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "57ed51ec72cd1328a49c852cbfcef3cd6d1c6ab43d3696cb888b873223422708"
+    },
+    {
+      "id": "expression.sleepy-drowsy.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/25-sleepy-drowsy_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 53,
+        "y": 215,
+        "width": 405,
+        "height": 82
+      },
+      "tags": [
+        "expression",
+        "sleepy-drowsy",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "3b312cbd84ccf1e10ce50a5a0ce4140a25ae2b5d3358cf04b9a7c32eedc065f2"
+    },
+    {
+      "id": "expression.bored-unimpressed.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/26-bored-unimpressed_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 208,
+        "width": 430,
+        "height": 96
+      },
+      "tags": [
+        "expression",
+        "bored-unimpressed",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "e9a270a32c6db779e39d92715bd26bef01ac69ca949bfb097432f1cc590ce509"
+    },
+    {
+      "id": "expression.mischievous-smirk.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/27-mischievous-smirk_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 75,
+        "y": 200,
+        "width": 362,
+        "height": 112
+      },
+      "tags": [
+        "expression",
+        "mischievous-smirk",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "339b981c9e44e063aa3cde4d12c99d62da6fb7e6d933f674f7004f738099141a"
+    },
+    {
+      "id": "expression.determined-heroic.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/28-determined-heroic_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 197,
+        "width": 430,
+        "height": 117
+      },
+      "tags": [
+        "expression",
+        "determined-heroic",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "2bf44d0c4cbedbf8c3800f79d2b0039d7be73664db25bc0917050d6c34c02e42"
+    },
+    {
+      "id": "expression.laughing-hard.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/29-laughing-hard_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 55,
+        "y": 211,
+        "width": 402,
+        "height": 90
+      },
+      "tags": [
+        "expression",
+        "laughing-hard",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "f3a509433c6e3ab5a2617d471301c1b5295cf776f13b5a18f678f8ce328a6353"
+    },
+    {
+      "id": "expression.pain-wince.left-eyebrow",
+      "path": "face/expressions/left-eyebrow/30-pain-wince_left-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.left",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 138,
+        "width": 430,
+        "height": 236
+      },
+      "tags": [
+        "expression",
+        "pain-wince",
+        "left-eyebrow"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "8dc003dc540d8f6a4af10c289555bc47273df0639c3fcd1d79616c799434c0e5"
+    },
+    {
+      "id": "expression.confident-grin.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/01-confident-grin_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 187,
+        "width": 430,
+        "height": 138
+      },
+      "tags": [
+        "expression",
+        "confident-grin",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "f057589b03af5822fe74f9bc6ad71ee5ea6ea516275e138add2895b96a066ad7"
+    },
+    {
+      "id": "expression.serious-tired.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/02-serious-tired_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 45,
+        "y": 204,
+        "width": 422,
+        "height": 104
+      },
+      "tags": [
+        "expression",
+        "serious-tired",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "3b7dde476e3f381395f36f88494b553e1c0998bf4c48003e8df453cf966ac995"
+    },
+    {
+      "id": "expression.shocked-alert.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/03-shocked-alert_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 58,
+        "y": 173,
+        "width": 396,
+        "height": 165
+      },
+      "tags": [
+        "expression",
+        "shocked-alert",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "054a1ab0fb1e528c328851b2c1bfe848336996e8b94e955c0baf68c5e4982ab2"
+    },
+    {
+      "id": "expression.angry-gritted-teeth.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/04-angry-gritted-teeth_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 190,
+        "width": 430,
+        "height": 132
+      },
+      "tags": [
+        "expression",
+        "angry-gritted-teeth",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "c120d22acbaa18805412452d264b296162a89c613d673d74f91e504006bafea8"
+    },
+    {
+      "id": "expression.calm-knowing-smile.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/05-calm-knowing-smile_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 194,
+        "width": 430,
+        "height": 124
+      },
+      "tags": [
+        "expression",
+        "calm-knowing-smile",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "742d8fc84fa49e07a0d0a7da16ea76d2987b0dae5b1457af8819d383f79951d8"
+    },
+    {
+      "id": "expression.rage-scream.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/06-rage-scream_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 153,
+        "width": 430,
+        "height": 205
+      },
+      "tags": [
+        "expression",
+        "rage-scream",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "ce10755907bf51755ba5b8ed22b042c5bacf037e46044ac2465f0a65354f3658"
+    },
+    {
+      "id": "expression.intense-shadow-stare.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/07-intense-shadow-stare_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 190,
+        "width": 430,
+        "height": 132
+      },
+      "tags": [
+        "expression",
+        "intense-shadow-stare",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "ec91d5c5d47f7b537cfc6268940516edc990df227a1278877084f38e2f571c42"
+    },
+    {
+      "id": "expression.power-rage.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/08-power-rage_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 158,
+        "width": 430,
+        "height": 196
+      },
+      "tags": [
+        "expression",
+        "power-rage",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "3cd56111e640713db4c9ce35ef6822f55c1ea9cdf9c74d29e81ad33e5e69ca31"
+    },
+    {
+      "id": "expression.soft-surprise.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/09-soft-surprise_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 203,
+        "width": 430,
+        "height": 106
+      },
+      "tags": [
+        "expression",
+        "soft-surprise",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "751a49f419c1e1d32982beff363962da4ff4ab8782b67dc13db0c7212b84feb5"
+    },
+    {
+      "id": "expression.soft-toothy-grin.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/10-soft-toothy-grin_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 207,
+        "width": 430,
+        "height": 98
+      },
+      "tags": [
+        "expression",
+        "soft-toothy-grin",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "9ee5299342ccb8590f1d454c337d50f6757283d3c42ef346fe16058ba0ce327c"
+    },
+    {
+      "id": "expression.soft-cheerful-open-smile.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/11-soft-cheerful-open-smile_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 58,
+        "y": 193,
+        "width": 396,
+        "height": 126
+      },
+      "tags": [
+        "expression",
+        "soft-cheerful-open-smile",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "f460f55e98e2e6e6d30e102fc43feace5db02d90c6e80879bcb2fa9f362a28e4"
+    },
+    {
+      "id": "expression.extreme-eye-shock.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/12-extreme-eye-shock_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 60,
+        "y": 192,
+        "width": 392,
+        "height": 128
+      },
+      "tags": [
+        "expression",
+        "extreme-eye-shock",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "d50627094d0178aa09ca270f5c8425bfa52915f1e66065bfe9abec90dfd83714"
+    },
+    {
+      "id": "expression.stern-focused.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/13-stern-focused_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 173,
+        "width": 430,
+        "height": 166
+      },
+      "tags": [
+        "expression",
+        "stern-focused",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "4285cc82cb92d26377538ddb38afa658484f024924bb4e830a63ab62dd01a9ac"
+    },
+    {
+      "id": "expression.narrowed-suspicious.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/14-narrowed-suspicious_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 153,
+        "width": 430,
+        "height": 205
+      },
+      "tags": [
+        "expression",
+        "narrowed-suspicious",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "f9b7175da4419c673b13389e92f88f69c2c74857d407de69476e8e5785acfb48"
+    },
+    {
+      "id": "expression.neutral-attentive.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/15-neutral-attentive_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 205,
+        "width": 430,
+        "height": 102
+      },
+      "tags": [
+        "expression",
+        "neutral-attentive",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "46505d7436c14dbea09844e4eb6421d9c045a0100add54342ed365ff8ee961ac"
+    },
+    {
+      "id": "expression.happy-closed-eye-smile.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/16-happy-closed-eye-smile_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 178,
+        "width": 430,
+        "height": 156
+      },
+      "tags": [
+        "expression",
+        "happy-closed-eye-smile",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "2397f62c851afb9e65291924fc379559c60b0464f931c87833f68471104e813c"
+    },
+    {
+      "id": "expression.sad-teary.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/17-sad-teary_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 173,
+        "width": 430,
+        "height": 166
+      },
+      "tags": [
+        "expression",
+        "sad-teary",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "2e0954e30ae87aa0c0bc7cde1a7e88757e3fafdbe9bbac68534d138cdd6bc1d2"
+    },
+    {
+      "id": "expression.crying-breakdown.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/18-crying-breakdown_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 127,
+        "width": 430,
+        "height": 257
+      },
+      "tags": [
+        "expression",
+        "crying-breakdown",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "d1faadc7cad5a592dd81951949c63c435feeb18f22e58dba5bc6f7f046877445"
+    },
+    {
+      "id": "expression.worried-anxious.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/19-worried-anxious_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 42,
+        "y": 183,
+        "width": 428,
+        "height": 146
+      },
+      "tags": [
+        "expression",
+        "worried-anxious",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "f3dca892a981a5cd32a636d67e1db208ebba00afc3fdd3defc0fc86578119ecf"
+    },
+    {
+      "id": "expression.scared-terrified.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/20-scared-terrified_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 179,
+        "width": 430,
+        "height": 153
+      },
+      "tags": [
+        "expression",
+        "scared-terrified",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "d778413caf2c34ea6e7d6931078990146412b42fc258dc6712aa7646c29979a9"
+    },
+    {
+      "id": "expression.confused.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/21-confused_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 170,
+        "width": 430,
+        "height": 171
+      },
+      "tags": [
+        "expression",
+        "confused",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "298f5e783aa9be23e9f78ed3f6c5d2479da9718347231858b98e6c2e7ff1a035"
+    },
+    {
+      "id": "expression.disgusted.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/22-disgusted_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 194,
+        "width": 430,
+        "height": 123
+      },
+      "tags": [
+        "expression",
+        "disgusted",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "7ba94addaba39e0b1765f9bc999e13e0d1225ce3f91941bb31842a16e4b5e0d9"
+    },
+    {
+      "id": "expression.embarrassed-blush.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/23-embarrassed-blush_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 164,
+        "width": 430,
+        "height": 184
+      },
+      "tags": [
+        "expression",
+        "embarrassed-blush",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "22a78b36007073da3ea5e630903b173deb19ecc0844469a0bc8b0cb480dfc0a7"
+    },
+    {
+      "id": "expression.excited-delight.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/24-excited-delight_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 194,
+        "width": 430,
+        "height": 123
+      },
+      "tags": [
+        "expression",
+        "excited-delight",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "ff42c04f82616fb211b23ef6d5957f62d7c24b10f3e9d0a11364bcec32f20527"
+    },
+    {
+      "id": "expression.sleepy-drowsy.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/25-sleepy-drowsy_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 53,
+        "y": 215,
+        "width": 405,
+        "height": 81
+      },
+      "tags": [
+        "expression",
+        "sleepy-drowsy",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "72f6b1b70d1a0601f3c81293747301e71fff020a73f67e319d0d1004af4d5477"
+    },
+    {
+      "id": "expression.bored-unimpressed.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/26-bored-unimpressed_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 209,
+        "width": 430,
+        "height": 94
+      },
+      "tags": [
+        "expression",
+        "bored-unimpressed",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "a8b4ab8b366ca6c1fe993027c6ea606ea60b8046b760bb53e4734a0521264506"
+    },
+    {
+      "id": "expression.mischievous-smirk.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/27-mischievous-smirk_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 59,
+        "y": 200,
+        "width": 393,
+        "height": 111
+      },
+      "tags": [
+        "expression",
+        "mischievous-smirk",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "7183a694de8d0502b8f43933658860adf0edc40273940a6fdaaa8f0876137656"
+    },
+    {
+      "id": "expression.determined-heroic.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/28-determined-heroic_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 197,
+        "width": 430,
+        "height": 118
+      },
+      "tags": [
+        "expression",
+        "determined-heroic",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "60a7b4ed5ff8809f10132e247eea1cc0d42222b890e3171fb7cd1f0621347f42"
+    },
+    {
+      "id": "expression.laughing-hard.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/29-laughing-hard_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 56,
+        "y": 211,
+        "width": 400,
+        "height": 90
+      },
+      "tags": [
+        "expression",
+        "laughing-hard",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "1237f7ca212475c7c8c4eaa0b5c325915e756c830c6b66a585642b58a607171e"
+    },
+    {
+      "id": "expression.pain-wince.right-eyebrow",
+      "path": "face/expressions/right-eyebrow/30-pain-wince_right-eyebrow.png",
+      "format": "png",
+      "slot": "eyebrow.right",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 149,
+        "width": 430,
+        "height": 213
+      },
+      "tags": [
+        "expression",
+        "pain-wince",
+        "right-eyebrow"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "61bfbde846e8b71d7e98a2787804951d314c586b97cded1c8d8b5c3d6c754a2b"
+    },
+    {
+      "id": "expression.confident-grin.mouth",
+      "path": "face/expressions/mouth/01-confident-grin_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 192,
+        "width": 430,
+        "height": 128
+      },
+      "tags": [
+        "expression",
+        "confident-grin",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "56061c285d93c569e2b1d4d15286d0901bef4e7aef27d294a5c5467c407376d6"
+    },
+    {
+      "id": "expression.serious-tired.mouth",
+      "path": "face/expressions/mouth/02-serious-tired_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 119,
+        "y": 226,
+        "width": 274,
+        "height": 60
+      },
+      "tags": [
+        "expression",
+        "serious-tired",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "e8fa93965a18340aa64e47d363e33d4c0b4d6743e24c5a5a7bf561099a6edf9c"
+    },
+    {
+      "id": "expression.shocked-alert.mouth",
+      "path": "face/expressions/mouth/03-shocked-alert_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 67,
+        "y": 201,
+        "width": 378,
+        "height": 110
+      },
+      "tags": [
+        "expression",
+        "shocked-alert",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "8867489ced996766e01d938752223e9a536ae423909a27c7f840b26280e88f5e"
+    },
+    {
+      "id": "expression.angry-gritted-teeth.mouth",
+      "path": "face/expressions/mouth/04-angry-gritted-teeth_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 200,
+        "width": 430,
+        "height": 112
+      },
+      "tags": [
+        "expression",
+        "angry-gritted-teeth",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "d8fa020cad960473ccfaf24fe7837ede874e18131e76b4bab461e39ffe135fae"
+    },
+    {
+      "id": "expression.calm-knowing-smile.mouth",
+      "path": "face/expressions/mouth/05-calm-knowing-smile_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 187,
+        "width": 430,
+        "height": 137
+      },
+      "tags": [
+        "expression",
+        "calm-knowing-smile",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "625a995107dd8988cea0652a4bca2a7ecd4fad6ef34653ca489d0d5dedf05ac4"
+    },
+    {
+      "id": "expression.rage-scream.mouth",
+      "path": "face/expressions/mouth/06-rage-scream_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 67,
+        "y": 41,
+        "width": 377,
+        "height": 430
+      },
+      "tags": [
+        "expression",
+        "rage-scream",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "a8f3b10249f92ad259880943136d2bfd891e4492cee010835de21085b8fba0bf"
+    },
+    {
+      "id": "expression.intense-shadow-stare.mouth",
+      "path": "face/expressions/mouth/07-intense-shadow-stare_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 225,
+        "width": 430,
+        "height": 62
+      },
+      "tags": [
+        "expression",
+        "intense-shadow-stare",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "1f322506c195175d7748389184262f615a9de3a2ff3ccb72e2b050f45f308c1e"
+    },
+    {
+      "id": "expression.power-rage.mouth",
+      "path": "face/expressions/mouth/08-power-rage_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 188,
+        "width": 430,
+        "height": 136
+      },
+      "tags": [
+        "expression",
+        "power-rage",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "61d8a162bb98ef0f000860eaabc2a72e35f4d4d8b17caf1fe0cb7f7c2b3c0fff"
+    },
+    {
+      "id": "expression.soft-surprise.mouth",
+      "path": "face/expressions/mouth/09-soft-surprise_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 150,
+        "y": 82,
+        "width": 212,
+        "height": 348
+      },
+      "tags": [
+        "expression",
+        "soft-surprise",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "af186373af24896ea726628cc03be24917628b7f711edb7685363b41ffd14119"
+    },
+    {
+      "id": "expression.soft-toothy-grin.mouth",
+      "path": "face/expressions/mouth/10-soft-toothy-grin_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 170,
+        "width": 430,
+        "height": 171
+      },
+      "tags": [
+        "expression",
+        "soft-toothy-grin",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "f9daa3f970801111806dbf5b4b821e08b43b3e05e8616fa094b9fdf5ca98e7f1"
+    },
+    {
+      "id": "expression.soft-cheerful-open-smile.mouth",
+      "path": "face/expressions/mouth/11-soft-cheerful-open-smile_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 127,
+        "width": 430,
+        "height": 258
+      },
+      "tags": [
+        "expression",
+        "soft-cheerful-open-smile",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "de93f3bb2db78c5225dcd924a28e170b9ff2538c17112779d70ec621a867e7d1"
+    },
+    {
+      "id": "expression.extreme-eye-shock.mouth",
+      "path": "face/expressions/mouth/12-extreme-eye-shock_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 172,
+        "y": 163,
+        "width": 168,
+        "height": 186
+      },
+      "tags": [
+        "expression",
+        "extreme-eye-shock",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "879040b25b43dc750def489114e2d732305e9e046903fad4ceb08a4eb1ee85d1"
+    },
+    {
+      "id": "expression.stern-focused.mouth",
+      "path": "face/expressions/mouth/13-stern-focused_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 62,
+        "y": 215,
+        "width": 388,
+        "height": 81
+      },
+      "tags": [
+        "expression",
+        "stern-focused",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "010484d481dad6fb9097a411aca041edb2afb2b9d090531bacf4018758cc11e2"
+    },
+    {
+      "id": "expression.narrowed-suspicious.mouth",
+      "path": "face/expressions/mouth/14-narrowed-suspicious_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 68,
+        "y": 205,
+        "width": 376,
+        "height": 102
+      },
+      "tags": [
+        "expression",
+        "narrowed-suspicious",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "5c5d5a501408af782b6272be5f32402b6330432d661334b4421c65b695c4a149"
+    },
+    {
+      "id": "expression.neutral-attentive.mouth",
+      "path": "face/expressions/mouth/15-neutral-attentive_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 80,
+        "y": 206,
+        "width": 352,
+        "height": 100
+      },
+      "tags": [
+        "expression",
+        "neutral-attentive",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "283ceccece34931e853b606c312d51ec319461bd0079ac62bd3a8f1974747f52"
+    },
+    {
+      "id": "expression.happy-closed-eye-smile.mouth",
+      "path": "face/expressions/mouth/16-happy-closed-eye-smile_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 139,
+        "width": 430,
+        "height": 233
+      },
+      "tags": [
+        "expression",
+        "happy-closed-eye-smile",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "8453bfacd35c3a2eaea8f97e19cb3a67740786425edae1327f94fecfbc32f3e0"
+    },
+    {
+      "id": "expression.sad-teary.mouth",
+      "path": "face/expressions/mouth/17-sad-teary_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 140,
+        "y": 242,
+        "width": 232,
+        "height": 28
+      },
+      "tags": [
+        "expression",
+        "sad-teary",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "20e1aba1e7935bdc1807f9b91d14418fdc0d5173d8c8e93e2de3c204758cfbfd"
+    },
+    {
+      "id": "expression.crying-breakdown.mouth",
+      "path": "face/expressions/mouth/18-crying-breakdown_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 116,
+        "width": 430,
+        "height": 280
+      },
+      "tags": [
+        "expression",
+        "crying-breakdown",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "8a5793f2df14e5a3c36706ba9db2a0d8d35f23ce507b868ffbcc082e84e7d13b"
+    },
+    {
+      "id": "expression.worried-anxious.mouth",
+      "path": "face/expressions/mouth/19-worried-anxious_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 112,
+        "y": 228,
+        "width": 288,
+        "height": 56
+      },
+      "tags": [
+        "expression",
+        "worried-anxious",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "aed6e06ec16ad2b504066318aec76e4d23a0f26959e1d8f1a3306b63f4cff662"
+    },
+    {
+      "id": "expression.scared-terrified.mouth",
+      "path": "face/expressions/mouth/20-scared-terrified_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 71,
+        "y": 143,
+        "width": 369,
+        "height": 226
+      },
+      "tags": [
+        "expression",
+        "scared-terrified",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "89866324c892a5436f1fbc9ff74ff641b41f6bdc90d5bd938f9d7cf708ac3b14"
+    },
+    {
+      "id": "expression.confused.mouth",
+      "path": "face/expressions/mouth/21-confused_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 79,
+        "y": 217,
+        "width": 354,
+        "height": 78
+      },
+      "tags": [
+        "expression",
+        "confused",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "0e65155307c74369802093f840eb7ba45bf1527fb26802d495a589d4a776830c"
+    },
+    {
+      "id": "expression.disgusted.mouth",
+      "path": "face/expressions/mouth/22-disgusted_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 174,
+        "width": 430,
+        "height": 164
+      },
+      "tags": [
+        "expression",
+        "disgusted",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "5f9e83befb06cbc09cd34165fce72336380c465f78108de63214a847c328c3ca"
+    },
+    {
+      "id": "expression.embarrassed-blush.mouth",
+      "path": "face/expressions/mouth/23-embarrassed-blush_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 102,
+        "y": 221,
+        "width": 308,
+        "height": 70
+      },
+      "tags": [
+        "expression",
+        "embarrassed-blush",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "2eeee006b22e90d7f33c925d89238206c27cdce2576a1a248ec99885e1c35a1c"
+    },
+    {
+      "id": "expression.excited-delight.mouth",
+      "path": "face/expressions/mouth/24-excited-delight_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 106,
+        "width": 430,
+        "height": 300
+      },
+      "tags": [
+        "expression",
+        "excited-delight",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "dcb720d3a620a5c9859265cc39e4549d091f950677d6b6be59b9ec3fda2077cc"
+    },
+    {
+      "id": "expression.sleepy-drowsy.mouth",
+      "path": "face/expressions/mouth/25-sleepy-drowsy_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 140,
+        "y": 232,
+        "width": 232,
+        "height": 48
+      },
+      "tags": [
+        "expression",
+        "sleepy-drowsy",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "0ca47e6c19d8b0396e8fad8377bbc6075aec0d3addc43e87d253ccc981850e7e"
+    },
+    {
+      "id": "expression.bored-unimpressed.mouth",
+      "path": "face/expressions/mouth/26-bored-unimpressed_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 63,
+        "y": 232,
+        "width": 386,
+        "height": 48
+      },
+      "tags": [
+        "expression",
+        "bored-unimpressed",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "003f4d6c2ac4d908900e2c7ee85db5ae50665d9c51d22e6a8d18b24a5184becd"
+    },
+    {
+      "id": "expression.mischievous-smirk.mouth",
+      "path": "face/expressions/mouth/27-mischievous-smirk_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 50,
+        "y": 171,
+        "width": 412,
+        "height": 170
+      },
+      "tags": [
+        "expression",
+        "mischievous-smirk",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "840c7273659c5e6a23e6c9e4d10742e149d183c39ec3648c5bcbb51ae2a3334c"
+    },
+    {
+      "id": "expression.determined-heroic.mouth",
+      "path": "face/expressions/mouth/28-determined-heroic_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 94,
+        "y": 242,
+        "width": 324,
+        "height": 28
+      },
+      "tags": [
+        "expression",
+        "determined-heroic",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "558c853f0801637331a8c9e902c2132e2c914f562ef8bd0d0355362f42909e4d"
+    },
+    {
+      "id": "expression.laughing-hard.mouth",
+      "path": "face/expressions/mouth/29-laughing-hard_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 126,
+        "width": 430,
+        "height": 260
+      },
+      "tags": [
+        "expression",
+        "laughing-hard",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "5da22a08ba110b9717cdf7d230dc437ffda0fb44f5f16bc5ca6c210a7aa739fb"
+    },
+    {
+      "id": "expression.pain-wince.mouth",
+      "path": "face/expressions/mouth/30-pain-wince_mouth.png",
+      "format": "png",
+      "slot": "mouth.silent",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 180,
+        "width": 430,
+        "height": 152
+      },
+      "tags": [
+        "expression",
+        "pain-wince",
+        "mouth"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "5be20bb50a5be40110c0fe30b4e227ca9c505b87964c04f1a59ba66bae77dc66"
+    },
+    {
+      "id": "expression.confident-grin.face-shading",
+      "path": "face/expressions/face-shading/01-confident-grin_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 154,
+        "width": 430,
+        "height": 203
+      },
+      "tags": [
+        "expression",
+        "confident-grin",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "53209cd01c6e7b17d00c979015535b1fd887efa84ed12dd9ea97e320368287b7"
+    },
+    {
+      "id": "expression.serious-tired.face-shading",
+      "path": "face/expressions/face-shading/02-serious-tired_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 85,
+        "width": 430,
+        "height": 341
+      },
+      "tags": [
+        "expression",
+        "serious-tired",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "193ff06801d1fd85e6d68051c328cec87c2701cbd408649791a07ca75c17d452"
+    },
+    {
+      "id": "expression.shocked-alert.face-shading",
+      "path": "face/expressions/face-shading/03-shocked-alert_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 58,
+        "y": 110,
+        "width": 396,
+        "height": 292
+      },
+      "tags": [
+        "expression",
+        "shocked-alert",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "ef4598523d890d4852f87480a42613d668bf88c88fb40460e1ab49a661c7142c"
+    },
+    {
+      "id": "expression.angry-gritted-teeth.face-shading",
+      "path": "face/expressions/face-shading/04-angry-gritted-teeth_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 171,
+        "width": 430,
+        "height": 170
+      },
+      "tags": [
+        "expression",
+        "angry-gritted-teeth",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "6ffb138f10b61e21332ff1e6cdbf8bcdc6caccb1981f5c3e24e32b18382b2048"
+    },
+    {
+      "id": "expression.calm-knowing-smile.face-shading",
+      "path": "face/expressions/face-shading/05-calm-knowing-smile_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 51,
+        "y": 66,
+        "width": 410,
+        "height": 380
+      },
+      "tags": [
+        "expression",
+        "calm-knowing-smile",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "3439114d1b756c221a8123abc29b8f4ba51caaa7b281d081f96e244a274e91f6"
+    },
+    {
+      "id": "expression.rage-scream.face-shading",
+      "path": "face/expressions/face-shading/06-rage-scream_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 102,
+        "width": 430,
+        "height": 307
+      },
+      "tags": [
+        "expression",
+        "rage-scream",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "9726df3439f3896f7e60d5273d1646727dc2fa582c8ddf405ac8d8d9a0f133bc"
+    },
+    {
+      "id": "expression.intense-shadow-stare.face-shading",
+      "path": "face/expressions/face-shading/07-intense-shadow-stare_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 152,
+        "width": 430,
+        "height": 207
+      },
+      "tags": [
+        "expression",
+        "intense-shadow-stare",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "2943dd6258d776d6fe43be89487a058a0546d40a00b54b7ffd597ffe0dac7598"
+    },
+    {
+      "id": "expression.power-rage.face-shading",
+      "path": "face/expressions/face-shading/08-power-rage_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 131,
+        "width": 430,
+        "height": 249
+      },
+      "tags": [
+        "expression",
+        "power-rage",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "3749bc3f1055eb00409b47ab8616b264ef076769a6ee8616637b2095b8aa78e9"
+    },
+    {
+      "id": "expression.soft-surprise.face-shading",
+      "path": "face/expressions/face-shading/09-soft-surprise_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 229,
+        "width": 430,
+        "height": 54
+      },
+      "tags": [
+        "expression",
+        "soft-surprise",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "c9638a858203d57f26be992ae97099ee29ad397c48fe91194387ed146719f505"
+    },
+    {
+      "id": "expression.soft-toothy-grin.face-shading",
+      "path": "face/expressions/face-shading/10-soft-toothy-grin_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 212,
+        "width": 430,
+        "height": 87
+      },
+      "tags": [
+        "expression",
+        "soft-toothy-grin",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "675cec01c449d10bf30875939fb7fd9e50e3f6df64bf9b3f734a89c0b6506fd8"
+    },
+    {
+      "id": "expression.soft-cheerful-open-smile.face-shading",
+      "path": "face/expressions/face-shading/11-soft-cheerful-open-smile_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 218,
+        "width": 430,
+        "height": 75
+      },
+      "tags": [
+        "expression",
+        "soft-cheerful-open-smile",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "232a55cd354b0a06b66761cfc76da3ba56ff27332091621d7edfac6e64be8542"
+    },
+    {
+      "id": "expression.extreme-eye-shock.face-shading",
+      "path": "face/expressions/face-shading/12-extreme-eye-shock_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 48,
+        "y": 59,
+        "width": 416,
+        "height": 393
+      },
+      "tags": [
+        "expression",
+        "extreme-eye-shock",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "92a8a45c30614c96caad1406ba363f51f2cd19df3266c8a4b15a1bf07199bfa8"
+    },
+    {
+      "id": "expression.stern-focused.face-shading",
+      "path": "face/expressions/face-shading/13-stern-focused_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 96,
+        "width": 430,
+        "height": 319
+      },
+      "tags": [
+        "expression",
+        "stern-focused",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "cc314f75e3d83795e724dae8df7055a0c7ae4d89c3a42907481c89df93da7e70"
+    },
+    {
+      "id": "expression.narrowed-suspicious.face-shading",
+      "path": "face/expressions/face-shading/14-narrowed-suspicious_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 61,
+        "width": 430,
+        "height": 390
+      },
+      "tags": [
+        "expression",
+        "narrowed-suspicious",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "bde1041bed330191fb19ab5bb7fa2acf8162a02cbce68cb2704d68fab6e66316"
+    },
+    {
+      "id": "expression.neutral-attentive.face-shading",
+      "path": "face/expressions/face-shading/15-neutral-attentive_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 107,
+        "y": 191,
+        "width": 297,
+        "height": 130
+      },
+      "tags": [
+        "expression",
+        "neutral-attentive",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "0d6a95a0c748a537b0899ff605406bc3a368aadaa46c730e3f794f6848bcc386"
+    },
+    {
+      "id": "expression.happy-closed-eye-smile.face-shading",
+      "path": "face/expressions/face-shading/16-happy-closed-eye-smile_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 184,
+        "width": 430,
+        "height": 143
+      },
+      "tags": [
+        "expression",
+        "happy-closed-eye-smile",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "eb8578365b17239f2e5a458926f4c720c2c8b99a8625a37ba4276ad0d4c122df"
+    },
+    {
+      "id": "expression.sad-teary.face-shading",
+      "path": "face/expressions/face-shading/17-sad-teary_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 170,
+        "width": 430,
+        "height": 171
+      },
+      "tags": [
+        "expression",
+        "sad-teary",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "d1edb3b6a336e49f3d4677977cf923ffd7961cd17ace2771fef5bb725ce1c69e"
+    },
+    {
+      "id": "expression.crying-breakdown.face-shading",
+      "path": "face/expressions/face-shading/18-crying-breakdown_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 41,
+        "width": 429,
+        "height": 430
+      },
+      "tags": [
+        "expression",
+        "crying-breakdown",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "ffae75b89e2e07f1dd50133a4faea7fab3891c88bb7eb4fa8aaba0b37690b237"
+    },
+    {
+      "id": "expression.worried-anxious.face-shading",
+      "path": "face/expressions/face-shading/19-worried-anxious_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 73,
+        "y": 41,
+        "width": 366,
+        "height": 430
+      },
+      "tags": [
+        "expression",
+        "worried-anxious",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "44a8fd930938e493e02d38480a8cc52ae74f95de6b60e4055f398c89ccab7d6d"
+    },
+    {
+      "id": "expression.scared-terrified.face-shading",
+      "path": "face/expressions/face-shading/20-scared-terrified_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 92,
+        "width": 430,
+        "height": 328
+      },
+      "tags": [
+        "expression",
+        "scared-terrified",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "b849be3bda781d2e766addadc2a62c30c7e51803602bbf53010776ce852a6624"
+    },
+    {
+      "id": "expression.confused.face-shading",
+      "path": "face/expressions/face-shading/21-confused_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 186,
+        "width": 430,
+        "height": 139
+      },
+      "tags": [
+        "expression",
+        "confused",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "548837205aa0df915b380308d07f853578b6db50b01e1572c5d0fb0983ae18d4"
+    },
+    {
+      "id": "expression.disgusted.face-shading",
+      "path": "face/expressions/face-shading/22-disgusted_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 162,
+        "width": 430,
+        "height": 187
+      },
+      "tags": [
+        "expression",
+        "disgusted",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "cb2e38d64a8a12e3336cb6c941959ecd2dc1ca1766cbf1975cf90949615e5dfe"
+    },
+    {
+      "id": "expression.embarrassed-blush.face-shading",
+      "path": "face/expressions/face-shading/23-embarrassed-blush_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 204,
+        "width": 430,
+        "height": 103
+      },
+      "tags": [
+        "expression",
+        "embarrassed-blush",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "01b7fbdfca1d9d91bbcb17c7f78021f813a7ad4ada85633b7a8a2f934141032b"
+    },
+    {
+      "id": "expression.excited-delight.face-shading",
+      "path": "face/expressions/face-shading/24-excited-delight_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 219,
+        "width": 430,
+        "height": 73
+      },
+      "tags": [
+        "expression",
+        "excited-delight",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "4bd4c84ab7123a350ea92652620a9778b6da69378579c54bb22257f445a91e09"
+    },
+    {
+      "id": "expression.sleepy-drowsy.face-shading",
+      "path": "face/expressions/face-shading/25-sleepy-drowsy_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "tags": [
+        "expression",
+        "sleepy-drowsy",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "a17ec48065f2668d441d2a94878d5e6572df6b2f37a71c575995d5cd5abcda76"
+    },
+    {
+      "id": "expression.bored-unimpressed.face-shading",
+      "path": "face/expressions/face-shading/26-bored-unimpressed_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 189,
+        "width": 430,
+        "height": 134
+      },
+      "tags": [
+        "expression",
+        "bored-unimpressed",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "e6a33bc15b86057244cba431c56cd58854161dc40b18989b94b2b8cac97a07f8"
+    },
+    {
+      "id": "expression.mischievous-smirk.face-shading",
+      "path": "face/expressions/face-shading/27-mischievous-smirk_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 201,
+        "width": 430,
+        "height": 110
+      },
+      "tags": [
+        "expression",
+        "mischievous-smirk",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "9c03539d6eb1c3d8f74d5763201ece11e0eadc647664828cbdb657f79d4ff49a"
+    },
+    {
+      "id": "expression.determined-heroic.face-shading",
+      "path": "face/expressions/face-shading/28-determined-heroic_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 160,
+        "width": 430,
+        "height": 191
+      },
+      "tags": [
+        "expression",
+        "determined-heroic",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "ce7668f8e33b8b0ee1c96c3212ab1e0c90efbb395e5aaaddaa53848636939f4e"
+    },
+    {
+      "id": "expression.laughing-hard.face-shading",
+      "path": "face/expressions/face-shading/29-laughing-hard_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 175,
+        "width": 430,
+        "height": 162
+      },
+      "tags": [
+        "expression",
+        "laughing-hard",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "b403cf62e45664adb4b5654d8be8e0edfb75dd2fe84b69f1cecdef573a146e04"
+    },
+    {
+      "id": "expression.pain-wince.face-shading",
+      "path": "face/expressions/face-shading/30-pain-wince_face-shading.png",
+      "format": "png",
+      "slot": "face.shading",
+      "view": "front",
+      "width": 512,
+      "height": 512,
+      "anchor": {
+        "x": 256,
+        "y": 256
+      },
+      "bounds": {
+        "x": 41,
+        "y": 82,
+        "width": 430,
+        "height": 348
+      },
+      "tags": [
+        "expression",
+        "pain-wince",
+        "face-shading"
+      ],
+      "handedness": "none",
+      "mirrorSafe": false,
+      "sha256": "d1e1293b92122c8113b650cea40829d102cbc3a72439227bab14eea38e819694"
+    },
+    {
+      "id": "leg.left.thigh",
+      "path": "legs/left/thigh.svg",
+      "format": "svg",
+      "slot": "leg.left.thigh",
+      "view": "front",
+      "width": 1920,
+      "height": 1080,
+      "anchor": {
+        "x": 945,
+        "y": 585
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 1904,
+        "height": 1064
+      },
+      "tags": [
+        "leg",
+        "thigh",
+        "legacy-art",
+        "independent-segment"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": ""
+    },
+    {
+      "id": "leg.left.shin",
+      "path": "legs/left/shin.svg",
+      "format": "svg",
+      "slot": "leg.left.shin",
+      "view": "front",
+      "width": 1920,
+      "height": 1080,
+      "anchor": {
+        "x": 950,
+        "y": 740
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 1904,
+        "height": 1064
+      },
+      "tags": [
+        "leg",
+        "shin",
+        "legacy-art",
+        "shoe-overlay-ready"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": ""
+    },
+    {
+      "id": "leg.right.thigh",
+      "path": "legs/right/thigh.svg",
+      "format": "svg",
+      "slot": "leg.right.thigh",
+      "view": "front",
+      "width": 1920,
+      "height": 1080,
+      "anchor": {
+        "x": 835,
+        "y": 590
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 1904,
+        "height": 1064
+      },
+      "tags": [
+        "leg",
+        "thigh",
+        "legacy-art",
+        "independent-segment"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": ""
+    },
+    {
+      "id": "leg.right.shin",
+      "path": "legs/right/shin.svg",
+      "format": "svg",
+      "slot": "leg.right.shin",
+      "view": "front",
+      "width": 1920,
+      "height": 1080,
+      "anchor": {
+        "x": 835,
+        "y": 735
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 1904,
+        "height": 1064
+      },
+      "tags": [
+        "leg",
+        "shin",
+        "legacy-art",
+        "shoe-overlay-ready"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": ""
+    },
+    {
+      "id": "joint.elbow.cap",
+      "path": "joints/elbow-cap.svg",
+      "format": "svg",
+      "slot": "joint.elbow",
+      "view": "front",
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 80,
+        "height": 80
+      },
+      "tags": [
+        "joint-cap",
+        "elbow",
+        "overlap"
+      ],
+      "handedness": "none",
+      "mirrorSafe": true,
+      "sha256": ""
+    },
+    {
+      "id": "joint.knee.cap",
+      "path": "joints/knee-cap.svg",
+      "format": "svg",
+      "slot": "joint.knee",
+      "view": "front",
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 80,
+        "height": 80
+      },
+      "tags": [
+        "joint-cap",
+        "knee",
+        "overlap"
+      ],
+      "handedness": "none",
+      "mirrorSafe": true,
+      "sha256": ""
+    },
+    {
+      "id": "joint.wrist.cap",
+      "path": "joints/wrist-cap.svg",
+      "format": "svg",
+      "slot": "joint.wrist",
+      "view": "front",
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 80,
+        "height": 80
+      },
+      "tags": [
+        "joint-cap",
+        "wrist",
+        "overlap"
+      ],
+      "handedness": "none",
+      "mirrorSafe": true,
+      "sha256": ""
+    },
+    {
+      "id": "joint.ankle.cap",
+      "path": "joints/ankle-cap.svg",
+      "format": "svg",
+      "slot": "joint.ankle",
+      "view": "front",
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 80,
+        "height": 80
+      },
+      "tags": [
+        "joint-cap",
+        "ankle",
+        "overlap"
+      ],
+      "handedness": "none",
+      "mirrorSafe": true,
+      "sha256": ""
+    }
+  ],
+  "hands": [
+    {
+      "id": "hand.relaxed.left",
+      "path": "hands/left/relaxed.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "relaxed"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "relaxed",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.fist.left",
+      "path": "hands/left/fist.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "fist"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "fist",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.point.left",
+      "path": "hands/left/point.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "point"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "point",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.palm-up.left",
+      "path": "hands/left/palm-up.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "palm-up"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "palm-up",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.palm-out.left",
+      "path": "hands/left/palm-out.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "palm-out"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "palm-out",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.thumbs-up.left",
+      "path": "hands/left/thumbs-up.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "thumbs-up"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "thumbs-up",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.chin-touch.left",
+      "path": "hands/left/chin-touch.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "chin-touch"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "chin-touch",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.facepalm.left",
+      "path": "hands/left/facepalm.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "facepalm"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "facepalm",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-one.left",
+      "path": "hands/left/count-one.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-one"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-one",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-two.left",
+      "path": "hands/left/count-two.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-two"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-two",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-three.left",
+      "path": "hands/left/count-three.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-three"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-three",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.phone-grip.left",
+      "path": "hands/left/phone-grip.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "phone-grip"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "phone-grip",
+      "compatibleProps": [
+        "phone"
+      ]
+    },
+    {
+      "id": "hand.object-grip.left",
+      "path": "hands/left/object-grip.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "object-grip"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "object-grip",
+      "compatibleProps": [
+        "object"
+      ]
+    },
+    {
+      "id": "hand.controller-grip.left",
+      "path": "hands/left/controller-grip.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "controller-grip"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "controller-grip",
+      "compatibleProps": [
+        "controller"
+      ]
+    },
+    {
+      "id": "hand.hands-on-hips.left",
+      "path": "hands/left/hands-on-hips.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "hands-on-hips"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "hands-on-hips",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.panic-claw.left",
+      "path": "hands/left/panic-claw.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "panic-claw"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "panic-claw",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.relaxed.right",
+      "path": "hands/right/relaxed.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "relaxed"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "relaxed",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.fist.right",
+      "path": "hands/right/fist.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "fist"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "fist",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.point.right",
+      "path": "hands/right/point.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "point"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "point",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.palm-up.right",
+      "path": "hands/right/palm-up.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "palm-up"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "palm-up",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.palm-out.right",
+      "path": "hands/right/palm-out.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "palm-out"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "palm-out",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.thumbs-up.right",
+      "path": "hands/right/thumbs-up.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "thumbs-up"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "thumbs-up",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.chin-touch.right",
+      "path": "hands/right/chin-touch.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "chin-touch"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "chin-touch",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.facepalm.right",
+      "path": "hands/right/facepalm.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "facepalm"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "facepalm",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-one.right",
+      "path": "hands/right/count-one.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-one"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-one",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-two.right",
+      "path": "hands/right/count-two.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-two"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-two",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-three.right",
+      "path": "hands/right/count-three.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-three"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-three",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.phone-grip.right",
+      "path": "hands/right/phone-grip.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "phone-grip"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "phone-grip",
+      "compatibleProps": [
+        "phone"
+      ]
+    },
+    {
+      "id": "hand.object-grip.right",
+      "path": "hands/right/object-grip.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "object-grip"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "object-grip",
+      "compatibleProps": [
+        "object"
+      ]
+    },
+    {
+      "id": "hand.controller-grip.right",
+      "path": "hands/right/controller-grip.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "controller-grip"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "controller-grip",
+      "compatibleProps": [
+        "controller"
+      ]
+    },
+    {
+      "id": "hand.hands-on-hips.right",
+      "path": "hands/right/hands-on-hips.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "hands-on-hips"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "hands-on-hips",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.panic-claw.right",
+      "path": "hands/right/panic-claw.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "panic-claw"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "panic-claw",
+      "compatibleProps": []
+    }
+  ],
+  "shoes": [
+    {
+      "id": "shoe.normal.left",
+      "path": "shoes/left/normal.svg",
+      "format": "svg",
+      "slot": "shoe.left",
+      "view": "front",
+      "width": 220,
+      "height": 140,
+      "anchor": {
+        "x": 68,
+        "y": 25
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 204,
+        "height": 124
+      },
+      "tags": [
+        "shoe",
+        "sneaker",
+        "normal"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "stance": "normal"
+    },
+    {
+      "id": "shoe.normal.right",
+      "path": "shoes/right/normal.svg",
+      "format": "svg",
+      "slot": "shoe.right",
+      "view": "front",
+      "width": 220,
+      "height": 140,
+      "anchor": {
+        "x": 152,
+        "y": 25
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 204,
+        "height": 124
+      },
+      "tags": [
+        "shoe",
+        "sneaker",
+        "normal"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "stance": "normal"
+    }
+  ],
+  "expressions": [
+    {
+      "id": "confident-grin",
+      "label": "Confident Grin",
+      "emotionTags": [
+        "confident",
+        "grin"
+      ],
+      "leftEye": "expression.confident-grin.left-eye",
+      "rightEye": "expression.confident-grin.right-eye",
+      "leftEyebrow": "expression.confident-grin.left-eyebrow",
+      "rightEyebrow": "expression.confident-grin.right-eyebrow",
+      "silentMouth": "expression.confident-grin.mouth",
+      "shading": "expression.confident-grin.face-shading"
+    },
+    {
+      "id": "serious-tired",
+      "label": "Serious Tired",
+      "emotionTags": [
+        "serious",
+        "tired"
+      ],
+      "leftEye": "expression.serious-tired.left-eye",
+      "rightEye": "expression.serious-tired.right-eye",
+      "leftEyebrow": "expression.serious-tired.left-eyebrow",
+      "rightEyebrow": "expression.serious-tired.right-eyebrow",
+      "silentMouth": "expression.serious-tired.mouth",
+      "shading": "expression.serious-tired.face-shading"
+    },
+    {
+      "id": "shocked-alert",
+      "label": "Shocked Alert",
+      "emotionTags": [
+        "shocked",
+        "alert"
+      ],
+      "leftEye": "expression.shocked-alert.left-eye",
+      "rightEye": "expression.shocked-alert.right-eye",
+      "leftEyebrow": "expression.shocked-alert.left-eyebrow",
+      "rightEyebrow": "expression.shocked-alert.right-eyebrow",
+      "silentMouth": "expression.shocked-alert.mouth",
+      "shading": "expression.shocked-alert.face-shading"
+    },
+    {
+      "id": "angry-gritted-teeth",
+      "label": "Angry Gritted Teeth",
+      "emotionTags": [
+        "angry",
+        "gritted",
+        "teeth"
+      ],
+      "leftEye": "expression.angry-gritted-teeth.left-eye",
+      "rightEye": "expression.angry-gritted-teeth.right-eye",
+      "leftEyebrow": "expression.angry-gritted-teeth.left-eyebrow",
+      "rightEyebrow": "expression.angry-gritted-teeth.right-eyebrow",
+      "silentMouth": "expression.angry-gritted-teeth.mouth",
+      "shading": "expression.angry-gritted-teeth.face-shading"
+    },
+    {
+      "id": "calm-knowing-smile",
+      "label": "Calm Knowing Smile",
+      "emotionTags": [
+        "calm",
+        "knowing",
+        "smile"
+      ],
+      "leftEye": "expression.calm-knowing-smile.left-eye",
+      "rightEye": "expression.calm-knowing-smile.right-eye",
+      "leftEyebrow": "expression.calm-knowing-smile.left-eyebrow",
+      "rightEyebrow": "expression.calm-knowing-smile.right-eyebrow",
+      "silentMouth": "expression.calm-knowing-smile.mouth",
+      "shading": "expression.calm-knowing-smile.face-shading"
+    },
+    {
+      "id": "rage-scream",
+      "label": "Rage Scream",
+      "emotionTags": [
+        "rage",
+        "scream"
+      ],
+      "leftEye": "expression.rage-scream.left-eye",
+      "rightEye": "expression.rage-scream.right-eye",
+      "leftEyebrow": "expression.rage-scream.left-eyebrow",
+      "rightEyebrow": "expression.rage-scream.right-eyebrow",
+      "silentMouth": "expression.rage-scream.mouth",
+      "shading": "expression.rage-scream.face-shading"
+    },
+    {
+      "id": "intense-shadow-stare",
+      "label": "Intense Shadow Stare",
+      "emotionTags": [
+        "intense",
+        "shadow",
+        "stare"
+      ],
+      "leftEye": "expression.intense-shadow-stare.left-eye",
+      "rightEye": "expression.intense-shadow-stare.right-eye",
+      "leftEyebrow": "expression.intense-shadow-stare.left-eyebrow",
+      "rightEyebrow": "expression.intense-shadow-stare.right-eyebrow",
+      "silentMouth": "expression.intense-shadow-stare.mouth",
+      "shading": "expression.intense-shadow-stare.face-shading"
+    },
+    {
+      "id": "power-rage",
+      "label": "Power Rage",
+      "emotionTags": [
+        "power",
+        "rage"
+      ],
+      "leftEye": "expression.power-rage.left-eye",
+      "rightEye": "expression.power-rage.right-eye",
+      "leftEyebrow": "expression.power-rage.left-eyebrow",
+      "rightEyebrow": "expression.power-rage.right-eyebrow",
+      "silentMouth": "expression.power-rage.mouth",
+      "shading": "expression.power-rage.face-shading"
+    },
+    {
+      "id": "soft-surprise",
+      "label": "Soft Surprise",
+      "emotionTags": [
+        "soft",
+        "surprise"
+      ],
+      "leftEye": "expression.soft-surprise.left-eye",
+      "rightEye": "expression.soft-surprise.right-eye",
+      "leftEyebrow": "expression.soft-surprise.left-eyebrow",
+      "rightEyebrow": "expression.soft-surprise.right-eyebrow",
+      "silentMouth": "expression.soft-surprise.mouth",
+      "shading": "expression.soft-surprise.face-shading"
+    },
+    {
+      "id": "soft-toothy-grin",
+      "label": "Soft Toothy Grin",
+      "emotionTags": [
+        "soft",
+        "toothy",
+        "grin"
+      ],
+      "leftEye": "expression.soft-toothy-grin.left-eye",
+      "rightEye": "expression.soft-toothy-grin.right-eye",
+      "leftEyebrow": "expression.soft-toothy-grin.left-eyebrow",
+      "rightEyebrow": "expression.soft-toothy-grin.right-eyebrow",
+      "silentMouth": "expression.soft-toothy-grin.mouth",
+      "shading": "expression.soft-toothy-grin.face-shading"
+    },
+    {
+      "id": "soft-cheerful-open-smile",
+      "label": "Soft Cheerful Open Smile",
+      "emotionTags": [
+        "soft",
+        "cheerful",
+        "open",
+        "smile"
+      ],
+      "leftEye": "expression.soft-cheerful-open-smile.left-eye",
+      "rightEye": "expression.soft-cheerful-open-smile.right-eye",
+      "leftEyebrow": "expression.soft-cheerful-open-smile.left-eyebrow",
+      "rightEyebrow": "expression.soft-cheerful-open-smile.right-eyebrow",
+      "silentMouth": "expression.soft-cheerful-open-smile.mouth",
+      "shading": "expression.soft-cheerful-open-smile.face-shading"
+    },
+    {
+      "id": "extreme-eye-shock",
+      "label": "Extreme Eye Shock",
+      "emotionTags": [
+        "extreme",
+        "eye",
+        "shock"
+      ],
+      "leftEye": "expression.extreme-eye-shock.left-eye",
+      "rightEye": "expression.extreme-eye-shock.right-eye",
+      "leftEyebrow": "expression.extreme-eye-shock.left-eyebrow",
+      "rightEyebrow": "expression.extreme-eye-shock.right-eyebrow",
+      "silentMouth": "expression.extreme-eye-shock.mouth",
+      "shading": "expression.extreme-eye-shock.face-shading"
+    },
+    {
+      "id": "stern-focused",
+      "label": "Stern Focused",
+      "emotionTags": [
+        "stern",
+        "focused"
+      ],
+      "leftEye": "expression.stern-focused.left-eye",
+      "rightEye": "expression.stern-focused.right-eye",
+      "leftEyebrow": "expression.stern-focused.left-eyebrow",
+      "rightEyebrow": "expression.stern-focused.right-eyebrow",
+      "silentMouth": "expression.stern-focused.mouth",
+      "shading": "expression.stern-focused.face-shading"
+    },
+    {
+      "id": "narrowed-suspicious",
+      "label": "Narrowed Suspicious",
+      "emotionTags": [
+        "narrowed",
+        "suspicious"
+      ],
+      "leftEye": "expression.narrowed-suspicious.left-eye",
+      "rightEye": "expression.narrowed-suspicious.right-eye",
+      "leftEyebrow": "expression.narrowed-suspicious.left-eyebrow",
+      "rightEyebrow": "expression.narrowed-suspicious.right-eyebrow",
+      "silentMouth": "expression.narrowed-suspicious.mouth",
+      "shading": "expression.narrowed-suspicious.face-shading"
+    },
+    {
+      "id": "neutral-attentive",
+      "label": "Neutral Attentive",
+      "emotionTags": [
+        "neutral",
+        "attentive"
+      ],
+      "leftEye": "expression.neutral-attentive.left-eye",
+      "rightEye": "expression.neutral-attentive.right-eye",
+      "leftEyebrow": "expression.neutral-attentive.left-eyebrow",
+      "rightEyebrow": "expression.neutral-attentive.right-eyebrow",
+      "silentMouth": "expression.neutral-attentive.mouth",
+      "shading": "expression.neutral-attentive.face-shading"
+    },
+    {
+      "id": "happy-closed-eye-smile",
+      "label": "Happy Closed Eye Smile",
+      "emotionTags": [
+        "happy",
+        "closed",
+        "eye",
+        "smile"
+      ],
+      "leftEye": "expression.happy-closed-eye-smile.left-eye",
+      "rightEye": "expression.happy-closed-eye-smile.right-eye",
+      "leftEyebrow": "expression.happy-closed-eye-smile.left-eyebrow",
+      "rightEyebrow": "expression.happy-closed-eye-smile.right-eyebrow",
+      "silentMouth": "expression.happy-closed-eye-smile.mouth",
+      "shading": "expression.happy-closed-eye-smile.face-shading"
+    },
+    {
+      "id": "sad-teary",
+      "label": "Sad Teary",
+      "emotionTags": [
+        "sad",
+        "teary"
+      ],
+      "leftEye": "expression.sad-teary.left-eye",
+      "rightEye": "expression.sad-teary.right-eye",
+      "leftEyebrow": "expression.sad-teary.left-eyebrow",
+      "rightEyebrow": "expression.sad-teary.right-eyebrow",
+      "silentMouth": "expression.sad-teary.mouth",
+      "shading": "expression.sad-teary.face-shading"
+    },
+    {
+      "id": "crying-breakdown",
+      "label": "Crying Breakdown",
+      "emotionTags": [
+        "crying",
+        "breakdown"
+      ],
+      "leftEye": "expression.crying-breakdown.left-eye",
+      "rightEye": "expression.crying-breakdown.right-eye",
+      "leftEyebrow": "expression.crying-breakdown.left-eyebrow",
+      "rightEyebrow": "expression.crying-breakdown.right-eyebrow",
+      "silentMouth": "expression.crying-breakdown.mouth",
+      "shading": "expression.crying-breakdown.face-shading"
+    },
+    {
+      "id": "worried-anxious",
+      "label": "Worried Anxious",
+      "emotionTags": [
+        "worried",
+        "anxious"
+      ],
+      "leftEye": "expression.worried-anxious.left-eye",
+      "rightEye": "expression.worried-anxious.right-eye",
+      "leftEyebrow": "expression.worried-anxious.left-eyebrow",
+      "rightEyebrow": "expression.worried-anxious.right-eyebrow",
+      "silentMouth": "expression.worried-anxious.mouth",
+      "shading": "expression.worried-anxious.face-shading"
+    },
+    {
+      "id": "scared-terrified",
+      "label": "Scared Terrified",
+      "emotionTags": [
+        "scared",
+        "terrified"
+      ],
+      "leftEye": "expression.scared-terrified.left-eye",
+      "rightEye": "expression.scared-terrified.right-eye",
+      "leftEyebrow": "expression.scared-terrified.left-eyebrow",
+      "rightEyebrow": "expression.scared-terrified.right-eyebrow",
+      "silentMouth": "expression.scared-terrified.mouth",
+      "shading": "expression.scared-terrified.face-shading"
+    },
+    {
+      "id": "confused",
+      "label": "Confused",
+      "emotionTags": [
+        "confused"
+      ],
+      "leftEye": "expression.confused.left-eye",
+      "rightEye": "expression.confused.right-eye",
+      "leftEyebrow": "expression.confused.left-eyebrow",
+      "rightEyebrow": "expression.confused.right-eyebrow",
+      "silentMouth": "expression.confused.mouth",
+      "shading": "expression.confused.face-shading"
+    },
+    {
+      "id": "disgusted",
+      "label": "Disgusted",
+      "emotionTags": [
+        "disgusted"
+      ],
+      "leftEye": "expression.disgusted.left-eye",
+      "rightEye": "expression.disgusted.right-eye",
+      "leftEyebrow": "expression.disgusted.left-eyebrow",
+      "rightEyebrow": "expression.disgusted.right-eyebrow",
+      "silentMouth": "expression.disgusted.mouth",
+      "shading": "expression.disgusted.face-shading"
+    },
+    {
+      "id": "embarrassed-blush",
+      "label": "Embarrassed Blush",
+      "emotionTags": [
+        "embarrassed",
+        "blush"
+      ],
+      "leftEye": "expression.embarrassed-blush.left-eye",
+      "rightEye": "expression.embarrassed-blush.right-eye",
+      "leftEyebrow": "expression.embarrassed-blush.left-eyebrow",
+      "rightEyebrow": "expression.embarrassed-blush.right-eyebrow",
+      "silentMouth": "expression.embarrassed-blush.mouth",
+      "shading": "expression.embarrassed-blush.face-shading"
+    },
+    {
+      "id": "excited-delight",
+      "label": "Excited Delight",
+      "emotionTags": [
+        "excited",
+        "delight"
+      ],
+      "leftEye": "expression.excited-delight.left-eye",
+      "rightEye": "expression.excited-delight.right-eye",
+      "leftEyebrow": "expression.excited-delight.left-eyebrow",
+      "rightEyebrow": "expression.excited-delight.right-eyebrow",
+      "silentMouth": "expression.excited-delight.mouth",
+      "shading": "expression.excited-delight.face-shading"
+    },
+    {
+      "id": "sleepy-drowsy",
+      "label": "Sleepy Drowsy",
+      "emotionTags": [
+        "sleepy",
+        "drowsy"
+      ],
+      "leftEye": "expression.sleepy-drowsy.left-eye",
+      "rightEye": "expression.sleepy-drowsy.right-eye",
+      "leftEyebrow": "expression.sleepy-drowsy.left-eyebrow",
+      "rightEyebrow": "expression.sleepy-drowsy.right-eyebrow",
+      "silentMouth": "expression.sleepy-drowsy.mouth",
+      "shading": "expression.sleepy-drowsy.face-shading"
+    },
+    {
+      "id": "bored-unimpressed",
+      "label": "Bored Unimpressed",
+      "emotionTags": [
+        "bored",
+        "unimpressed"
+      ],
+      "leftEye": "expression.bored-unimpressed.left-eye",
+      "rightEye": "expression.bored-unimpressed.right-eye",
+      "leftEyebrow": "expression.bored-unimpressed.left-eyebrow",
+      "rightEyebrow": "expression.bored-unimpressed.right-eyebrow",
+      "silentMouth": "expression.bored-unimpressed.mouth",
+      "shading": "expression.bored-unimpressed.face-shading"
+    },
+    {
+      "id": "mischievous-smirk",
+      "label": "Mischievous Smirk",
+      "emotionTags": [
+        "mischievous",
+        "smirk"
+      ],
+      "leftEye": "expression.mischievous-smirk.left-eye",
+      "rightEye": "expression.mischievous-smirk.right-eye",
+      "leftEyebrow": "expression.mischievous-smirk.left-eyebrow",
+      "rightEyebrow": "expression.mischievous-smirk.right-eyebrow",
+      "silentMouth": "expression.mischievous-smirk.mouth",
+      "shading": "expression.mischievous-smirk.face-shading"
+    },
+    {
+      "id": "determined-heroic",
+      "label": "Determined Heroic",
+      "emotionTags": [
+        "determined",
+        "heroic"
+      ],
+      "leftEye": "expression.determined-heroic.left-eye",
+      "rightEye": "expression.determined-heroic.right-eye",
+      "leftEyebrow": "expression.determined-heroic.left-eyebrow",
+      "rightEyebrow": "expression.determined-heroic.right-eyebrow",
+      "silentMouth": "expression.determined-heroic.mouth",
+      "shading": "expression.determined-heroic.face-shading"
+    },
+    {
+      "id": "laughing-hard",
+      "label": "Laughing Hard",
+      "emotionTags": [
+        "laughing",
+        "hard"
+      ],
+      "leftEye": "expression.laughing-hard.left-eye",
+      "rightEye": "expression.laughing-hard.right-eye",
+      "leftEyebrow": "expression.laughing-hard.left-eyebrow",
+      "rightEyebrow": "expression.laughing-hard.right-eyebrow",
+      "silentMouth": "expression.laughing-hard.mouth",
+      "shading": "expression.laughing-hard.face-shading"
+    },
+    {
+      "id": "pain-wince",
+      "label": "Pain Wince",
+      "emotionTags": [
+        "pain",
+        "wince"
+      ],
+      "leftEye": "expression.pain-wince.left-eye",
+      "rightEye": "expression.pain-wince.right-eye",
+      "leftEyebrow": "expression.pain-wince.left-eyebrow",
+      "rightEyebrow": "expression.pain-wince.right-eyebrow",
+      "silentMouth": "expression.pain-wince.mouth",
+      "shading": "expression.pain-wince.face-shading"
+    }
+  ],
+  "views": [
+    {
+      "view": "front",
+      "available": true,
+      "assetIds": [
+        "expression.confident-grin.left-eye",
+        "expression.serious-tired.left-eye",
+        "expression.shocked-alert.left-eye",
+        "expression.angry-gritted-teeth.left-eye",
+        "expression.calm-knowing-smile.left-eye",
+        "expression.rage-scream.left-eye",
+        "expression.intense-shadow-stare.left-eye",
+        "expression.power-rage.left-eye",
+        "expression.soft-surprise.left-eye",
+        "expression.soft-toothy-grin.left-eye",
+        "expression.soft-cheerful-open-smile.left-eye",
+        "expression.extreme-eye-shock.left-eye",
+        "expression.stern-focused.left-eye",
+        "expression.narrowed-suspicious.left-eye",
+        "expression.neutral-attentive.left-eye",
+        "expression.happy-closed-eye-smile.left-eye",
+        "expression.sad-teary.left-eye",
+        "expression.crying-breakdown.left-eye",
+        "expression.worried-anxious.left-eye",
+        "expression.scared-terrified.left-eye",
+        "expression.confused.left-eye",
+        "expression.disgusted.left-eye",
+        "expression.embarrassed-blush.left-eye",
+        "expression.excited-delight.left-eye",
+        "expression.sleepy-drowsy.left-eye",
+        "expression.bored-unimpressed.left-eye",
+        "expression.mischievous-smirk.left-eye",
+        "expression.determined-heroic.left-eye",
+        "expression.laughing-hard.left-eye",
+        "expression.pain-wince.left-eye",
+        "expression.confident-grin.right-eye",
+        "expression.serious-tired.right-eye",
+        "expression.shocked-alert.right-eye",
+        "expression.angry-gritted-teeth.right-eye",
+        "expression.calm-knowing-smile.right-eye",
+        "expression.rage-scream.right-eye",
+        "expression.intense-shadow-stare.right-eye",
+        "expression.power-rage.right-eye",
+        "expression.soft-surprise.right-eye",
+        "expression.soft-toothy-grin.right-eye",
+        "expression.soft-cheerful-open-smile.right-eye",
+        "expression.extreme-eye-shock.right-eye",
+        "expression.stern-focused.right-eye",
+        "expression.narrowed-suspicious.right-eye",
+        "expression.neutral-attentive.right-eye",
+        "expression.happy-closed-eye-smile.right-eye",
+        "expression.sad-teary.right-eye",
+        "expression.crying-breakdown.right-eye",
+        "expression.worried-anxious.right-eye",
+        "expression.scared-terrified.right-eye",
+        "expression.confused.right-eye",
+        "expression.disgusted.right-eye",
+        "expression.embarrassed-blush.right-eye",
+        "expression.excited-delight.right-eye",
+        "expression.sleepy-drowsy.right-eye",
+        "expression.bored-unimpressed.right-eye",
+        "expression.mischievous-smirk.right-eye",
+        "expression.determined-heroic.right-eye",
+        "expression.laughing-hard.right-eye",
+        "expression.pain-wince.right-eye",
+        "expression.confident-grin.left-eyebrow",
+        "expression.serious-tired.left-eyebrow",
+        "expression.shocked-alert.left-eyebrow",
+        "expression.angry-gritted-teeth.left-eyebrow",
+        "expression.calm-knowing-smile.left-eyebrow",
+        "expression.rage-scream.left-eyebrow",
+        "expression.intense-shadow-stare.left-eyebrow",
+        "expression.power-rage.left-eyebrow",
+        "expression.soft-surprise.left-eyebrow",
+        "expression.soft-toothy-grin.left-eyebrow",
+        "expression.soft-cheerful-open-smile.left-eyebrow",
+        "expression.extreme-eye-shock.left-eyebrow",
+        "expression.stern-focused.left-eyebrow",
+        "expression.narrowed-suspicious.left-eyebrow",
+        "expression.neutral-attentive.left-eyebrow",
+        "expression.happy-closed-eye-smile.left-eyebrow",
+        "expression.sad-teary.left-eyebrow",
+        "expression.crying-breakdown.left-eyebrow",
+        "expression.worried-anxious.left-eyebrow",
+        "expression.scared-terrified.left-eyebrow",
+        "expression.confused.left-eyebrow",
+        "expression.disgusted.left-eyebrow",
+        "expression.embarrassed-blush.left-eyebrow",
+        "expression.excited-delight.left-eyebrow",
+        "expression.sleepy-drowsy.left-eyebrow",
+        "expression.bored-unimpressed.left-eyebrow",
+        "expression.mischievous-smirk.left-eyebrow",
+        "expression.determined-heroic.left-eyebrow",
+        "expression.laughing-hard.left-eyebrow",
+        "expression.pain-wince.left-eyebrow",
+        "expression.confident-grin.right-eyebrow",
+        "expression.serious-tired.right-eyebrow",
+        "expression.shocked-alert.right-eyebrow",
+        "expression.angry-gritted-teeth.right-eyebrow",
+        "expression.calm-knowing-smile.right-eyebrow",
+        "expression.rage-scream.right-eyebrow",
+        "expression.intense-shadow-stare.right-eyebrow",
+        "expression.power-rage.right-eyebrow",
+        "expression.soft-surprise.right-eyebrow",
+        "expression.soft-toothy-grin.right-eyebrow",
+        "expression.soft-cheerful-open-smile.right-eyebrow",
+        "expression.extreme-eye-shock.right-eyebrow",
+        "expression.stern-focused.right-eyebrow",
+        "expression.narrowed-suspicious.right-eyebrow",
+        "expression.neutral-attentive.right-eyebrow",
+        "expression.happy-closed-eye-smile.right-eyebrow",
+        "expression.sad-teary.right-eyebrow",
+        "expression.crying-breakdown.right-eyebrow",
+        "expression.worried-anxious.right-eyebrow",
+        "expression.scared-terrified.right-eyebrow",
+        "expression.confused.right-eyebrow",
+        "expression.disgusted.right-eyebrow",
+        "expression.embarrassed-blush.right-eyebrow",
+        "expression.excited-delight.right-eyebrow",
+        "expression.sleepy-drowsy.right-eyebrow",
+        "expression.bored-unimpressed.right-eyebrow",
+        "expression.mischievous-smirk.right-eyebrow",
+        "expression.determined-heroic.right-eyebrow",
+        "expression.laughing-hard.right-eyebrow",
+        "expression.pain-wince.right-eyebrow",
+        "expression.confident-grin.mouth",
+        "expression.serious-tired.mouth",
+        "expression.shocked-alert.mouth",
+        "expression.angry-gritted-teeth.mouth",
+        "expression.calm-knowing-smile.mouth",
+        "expression.rage-scream.mouth",
+        "expression.intense-shadow-stare.mouth",
+        "expression.power-rage.mouth",
+        "expression.soft-surprise.mouth",
+        "expression.soft-toothy-grin.mouth",
+        "expression.soft-cheerful-open-smile.mouth",
+        "expression.extreme-eye-shock.mouth",
+        "expression.stern-focused.mouth",
+        "expression.narrowed-suspicious.mouth",
+        "expression.neutral-attentive.mouth",
+        "expression.happy-closed-eye-smile.mouth",
+        "expression.sad-teary.mouth",
+        "expression.crying-breakdown.mouth",
+        "expression.worried-anxious.mouth",
+        "expression.scared-terrified.mouth",
+        "expression.confused.mouth",
+        "expression.disgusted.mouth",
+        "expression.embarrassed-blush.mouth",
+        "expression.excited-delight.mouth",
+        "expression.sleepy-drowsy.mouth",
+        "expression.bored-unimpressed.mouth",
+        "expression.mischievous-smirk.mouth",
+        "expression.determined-heroic.mouth",
+        "expression.laughing-hard.mouth",
+        "expression.pain-wince.mouth",
+        "expression.confident-grin.face-shading",
+        "expression.serious-tired.face-shading",
+        "expression.shocked-alert.face-shading",
+        "expression.angry-gritted-teeth.face-shading",
+        "expression.calm-knowing-smile.face-shading",
+        "expression.rage-scream.face-shading",
+        "expression.intense-shadow-stare.face-shading",
+        "expression.power-rage.face-shading",
+        "expression.soft-surprise.face-shading",
+        "expression.soft-toothy-grin.face-shading",
+        "expression.soft-cheerful-open-smile.face-shading",
+        "expression.extreme-eye-shock.face-shading",
+        "expression.stern-focused.face-shading",
+        "expression.narrowed-suspicious.face-shading",
+        "expression.neutral-attentive.face-shading",
+        "expression.happy-closed-eye-smile.face-shading",
+        "expression.sad-teary.face-shading",
+        "expression.crying-breakdown.face-shading",
+        "expression.worried-anxious.face-shading",
+        "expression.scared-terrified.face-shading",
+        "expression.confused.face-shading",
+        "expression.disgusted.face-shading",
+        "expression.embarrassed-blush.face-shading",
+        "expression.excited-delight.face-shading",
+        "expression.sleepy-drowsy.face-shading",
+        "expression.bored-unimpressed.face-shading",
+        "expression.mischievous-smirk.face-shading",
+        "expression.determined-heroic.face-shading",
+        "expression.laughing-hard.face-shading",
+        "expression.pain-wince.face-shading",
+        "leg.left.thigh",
+        "leg.left.shin",
+        "leg.right.thigh",
+        "leg.right.shin",
+        "joint.elbow.cap",
+        "joint.knee.cap",
+        "joint.wrist.cap",
+        "joint.ankle.cap",
+        "hand.relaxed.left",
+        "hand.fist.left",
+        "hand.point.left",
+        "hand.palm-up.left",
+        "hand.palm-out.left",
+        "hand.thumbs-up.left",
+        "hand.chin-touch.left",
+        "hand.facepalm.left",
+        "hand.count-one.left",
+        "hand.count-two.left",
+        "hand.count-three.left",
+        "hand.phone-grip.left",
+        "hand.object-grip.left",
+        "hand.controller-grip.left",
+        "hand.hands-on-hips.left",
+        "hand.panic-claw.left",
+        "hand.relaxed.right",
+        "hand.fist.right",
+        "hand.point.right",
+        "hand.palm-up.right",
+        "hand.palm-out.right",
+        "hand.thumbs-up.right",
+        "hand.chin-touch.right",
+        "hand.facepalm.right",
+        "hand.count-one.right",
+        "hand.count-two.right",
+        "hand.count-three.right",
+        "hand.phone-grip.right",
+        "hand.object-grip.right",
+        "hand.controller-grip.right",
+        "hand.hands-on-hips.right",
+        "hand.panic-claw.right",
+        "shoe.normal.left",
+        "shoe.normal.right"
+      ]
+    },
+    {
+      "view": "threeQuarterLeft",
+      "available": false,
+      "assetIds": []
+    },
+    {
+      "view": "threeQuarterRight",
+      "available": false,
+      "assetIds": []
+    },
+    {
+      "view": "sideLeft",
+      "available": false,
+      "assetIds": []
+    },
+    {
+      "view": "sideRight",
+      "available": false,
+      "assetIds": []
+    },
+    {
+      "view": "back",
+      "available": false,
+      "assetIds": []
+    }
+  ]
+}

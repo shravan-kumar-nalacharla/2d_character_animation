@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "test": "vitest run",
     "test:export": "node scripts/export-smoke.mjs",
+    "assets:sync-v2": "node tools/sync-character-assets-v2.mjs",
+    "assets:validate": "node tools/sync-character-assets-v2.mjs --validate-only",
     "preview": "vite preview"
   },
   "dependencies": {

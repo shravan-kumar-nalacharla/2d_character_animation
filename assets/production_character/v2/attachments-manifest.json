@@ -1,0 +1,1193 @@
+{
+  "schemaVersion": 2,
+  "bodyAssets": [
+    {
+      "id": "leg.left.thigh",
+      "path": "legs/left/thigh.svg",
+      "format": "svg",
+      "slot": "leg.left.thigh",
+      "view": "front",
+      "width": 1920,
+      "height": 1080,
+      "anchor": {
+        "x": 945,
+        "y": 585
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 1904,
+        "height": 1064
+      },
+      "tags": [
+        "leg",
+        "thigh",
+        "legacy-art",
+        "independent-segment"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": ""
+    },
+    {
+      "id": "leg.left.shin",
+      "path": "legs/left/shin.svg",
+      "format": "svg",
+      "slot": "leg.left.shin",
+      "view": "front",
+      "width": 1920,
+      "height": 1080,
+      "anchor": {
+        "x": 950,
+        "y": 740
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 1904,
+        "height": 1064
+      },
+      "tags": [
+        "leg",
+        "shin",
+        "legacy-art",
+        "shoe-overlay-ready"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": ""
+    },
+    {
+      "id": "leg.right.thigh",
+      "path": "legs/right/thigh.svg",
+      "format": "svg",
+      "slot": "leg.right.thigh",
+      "view": "front",
+      "width": 1920,
+      "height": 1080,
+      "anchor": {
+        "x": 835,
+        "y": 590
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 1904,
+        "height": 1064
+      },
+      "tags": [
+        "leg",
+        "thigh",
+        "legacy-art",
+        "independent-segment"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": ""
+    },
+    {
+      "id": "leg.right.shin",
+      "path": "legs/right/shin.svg",
+      "format": "svg",
+      "slot": "leg.right.shin",
+      "view": "front",
+      "width": 1920,
+      "height": 1080,
+      "anchor": {
+        "x": 835,
+        "y": 735
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 1904,
+        "height": 1064
+      },
+      "tags": [
+        "leg",
+        "shin",
+        "legacy-art",
+        "shoe-overlay-ready"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": ""
+    },
+    {
+      "id": "joint.elbow.cap",
+      "path": "joints/elbow-cap.svg",
+      "format": "svg",
+      "slot": "joint.elbow",
+      "view": "front",
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 80,
+        "height": 80
+      },
+      "tags": [
+        "joint-cap",
+        "elbow",
+        "overlap"
+      ],
+      "handedness": "none",
+      "mirrorSafe": true,
+      "sha256": ""
+    },
+    {
+      "id": "joint.knee.cap",
+      "path": "joints/knee-cap.svg",
+      "format": "svg",
+      "slot": "joint.knee",
+      "view": "front",
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 80,
+        "height": 80
+      },
+      "tags": [
+        "joint-cap",
+        "knee",
+        "overlap"
+      ],
+      "handedness": "none",
+      "mirrorSafe": true,
+      "sha256": ""
+    },
+    {
+      "id": "joint.wrist.cap",
+      "path": "joints/wrist-cap.svg",
+      "format": "svg",
+      "slot": "joint.wrist",
+      "view": "front",
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 80,
+        "height": 80
+      },
+      "tags": [
+        "joint-cap",
+        "wrist",
+        "overlap"
+      ],
+      "handedness": "none",
+      "mirrorSafe": true,
+      "sha256": ""
+    },
+    {
+      "id": "joint.ankle.cap",
+      "path": "joints/ankle-cap.svg",
+      "format": "svg",
+      "slot": "joint.ankle",
+      "view": "front",
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 80,
+        "height": 80
+      },
+      "tags": [
+        "joint-cap",
+        "ankle",
+        "overlap"
+      ],
+      "handedness": "none",
+      "mirrorSafe": true,
+      "sha256": ""
+    }
+  ],
+  "hands": [
+    {
+      "id": "hand.relaxed.left",
+      "path": "hands/left/relaxed.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "relaxed"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "relaxed",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.fist.left",
+      "path": "hands/left/fist.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "fist"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "fist",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.point.left",
+      "path": "hands/left/point.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "point"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "point",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.palm-up.left",
+      "path": "hands/left/palm-up.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "palm-up"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "palm-up",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.palm-out.left",
+      "path": "hands/left/palm-out.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "palm-out"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "palm-out",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.thumbs-up.left",
+      "path": "hands/left/thumbs-up.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "thumbs-up"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "thumbs-up",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.chin-touch.left",
+      "path": "hands/left/chin-touch.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "chin-touch"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "chin-touch",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.facepalm.left",
+      "path": "hands/left/facepalm.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "facepalm"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "facepalm",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-one.left",
+      "path": "hands/left/count-one.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-one"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-one",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-two.left",
+      "path": "hands/left/count-two.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-two"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-two",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-three.left",
+      "path": "hands/left/count-three.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-three"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-three",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.phone-grip.left",
+      "path": "hands/left/phone-grip.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "phone-grip"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "phone-grip",
+      "compatibleProps": [
+        "phone"
+      ]
+    },
+    {
+      "id": "hand.object-grip.left",
+      "path": "hands/left/object-grip.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "object-grip"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "object-grip",
+      "compatibleProps": [
+        "object"
+      ]
+    },
+    {
+      "id": "hand.controller-grip.left",
+      "path": "hands/left/controller-grip.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "controller-grip"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "controller-grip",
+      "compatibleProps": [
+        "controller"
+      ]
+    },
+    {
+      "id": "hand.hands-on-hips.left",
+      "path": "hands/left/hands-on-hips.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "hands-on-hips"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "hands-on-hips",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.panic-claw.left",
+      "path": "hands/left/panic-claw.svg",
+      "format": "svg",
+      "slot": "hand.left",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 22,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "panic-claw"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "panic-claw",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.relaxed.right",
+      "path": "hands/right/relaxed.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "relaxed"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "relaxed",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.fist.right",
+      "path": "hands/right/fist.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "fist"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "fist",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.point.right",
+      "path": "hands/right/point.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "point"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "point",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.palm-up.right",
+      "path": "hands/right/palm-up.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "palm-up"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "palm-up",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.palm-out.right",
+      "path": "hands/right/palm-out.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "palm-out"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "palm-out",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.thumbs-up.right",
+      "path": "hands/right/thumbs-up.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "thumbs-up"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "thumbs-up",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.chin-touch.right",
+      "path": "hands/right/chin-touch.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "chin-touch"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "chin-touch",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.facepalm.right",
+      "path": "hands/right/facepalm.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "facepalm"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "facepalm",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-one.right",
+      "path": "hands/right/count-one.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-one"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-one",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-two.right",
+      "path": "hands/right/count-two.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-two"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-two",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.count-three.right",
+      "path": "hands/right/count-three.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "count-three"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "count-three",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.phone-grip.right",
+      "path": "hands/right/phone-grip.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "phone-grip"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "phone-grip",
+      "compatibleProps": [
+        "phone"
+      ]
+    },
+    {
+      "id": "hand.object-grip.right",
+      "path": "hands/right/object-grip.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "object-grip"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "object-grip",
+      "compatibleProps": [
+        "object"
+      ]
+    },
+    {
+      "id": "hand.controller-grip.right",
+      "path": "hands/right/controller-grip.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "controller-grip"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "controller-grip",
+      "compatibleProps": [
+        "controller"
+      ]
+    },
+    {
+      "id": "hand.hands-on-hips.right",
+      "path": "hands/right/hands-on-hips.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "hands-on-hips"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "hands-on-hips",
+      "compatibleProps": []
+    },
+    {
+      "id": "hand.panic-claw.right",
+      "path": "hands/right/panic-claw.svg",
+      "format": "svg",
+      "slot": "hand.right",
+      "view": "front",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "x": 138,
+        "y": 88
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 144,
+        "height": 144
+      },
+      "tags": [
+        "hand",
+        "panic-claw"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "pose": "panic-claw",
+      "compatibleProps": []
+    }
+  ],
+  "shoes": [
+    {
+      "id": "shoe.normal.left",
+      "path": "shoes/left/normal.svg",
+      "format": "svg",
+      "slot": "shoe.left",
+      "view": "front",
+      "width": 220,
+      "height": 140,
+      "anchor": {
+        "x": 68,
+        "y": 25
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 204,
+        "height": 124
+      },
+      "tags": [
+        "shoe",
+        "sneaker",
+        "normal"
+      ],
+      "handedness": "left",
+      "mirrorSafe": false,
+      "sha256": "",
+      "stance": "normal"
+    },
+    {
+      "id": "shoe.normal.right",
+      "path": "shoes/right/normal.svg",
+      "format": "svg",
+      "slot": "shoe.right",
+      "view": "front",
+      "width": 220,
+      "height": 140,
+      "anchor": {
+        "x": 152,
+        "y": 25
+      },
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 204,
+        "height": 124
+      },
+      "tags": [
+        "shoe",
+        "sneaker",
+        "normal"
+      ],
+      "handedness": "right",
+      "mirrorSafe": false,
+      "sha256": "",
+      "stance": "normal"
+    }
+  ]
+}
