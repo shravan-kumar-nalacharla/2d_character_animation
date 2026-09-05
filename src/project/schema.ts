@@ -59,7 +59,7 @@ export interface FacePartTransform {
 }
 
 export interface FaceAssetOverride { name: string; mimeType: "image/svg+xml" | "image/png" | "image/webp"; dataUrl: string; updatedAt: string }
-export interface FaceAssetState { activeMouthPack: string; activeEyePack: "raster-v1" | "classic" | "expressive" | "anime-comedy" | "custom"; mouthOverrides: Partial<Record<MouthShape, FaceAssetOverride>>; eyeOverrides: Partial<Record<EyeExpression, { left?: FaceAssetOverride; right?: FaceAssetOverride }>>; browOverrides: Partial<Record<BrowPreset, { left?: FaceAssetOverride; right?: FaceAssetOverride }>> }
+export interface FaceAssetState { activeMouthPack: string; activeEyePack: "raster-v1" | "modular-v2" | "classic" | "expressive" | "anime-comedy" | "custom"; mouthOverrides: Partial<Record<MouthShape, FaceAssetOverride>>; eyeOverrides: Partial<Record<EyeExpression, { left?: FaceAssetOverride; right?: FaceAssetOverride }>>; browOverrides: Partial<Record<BrowPreset, { left?: FaceAssetOverride; right?: FaceAssetOverride }>> }
 
 export interface FaceState {
   gazeX: number;

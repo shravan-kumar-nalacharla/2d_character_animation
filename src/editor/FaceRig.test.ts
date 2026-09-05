@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { defaultFace } from "../project/project";
+import { createDefaultProject, defaultFace } from "../project/project";
 import { canonicalExpression, cryLoopSeconds, cryShakeOffset, eyeCenters, FaceRig, outsideAlphaPixelCount, resolveFacePreview, tearFlowOffset } from "./FaceRig";
 
 describe("face preview", () => {
@@ -39,5 +39,14 @@ describe("face preview", () => {
     expect(markup).toContain('data-face-matte="FACE_INTERIOR_MATTE"');
     expect(markup.match(/data-tear-boundary=/g)).toHaveLength(2);
     expect(markup).not.toContain("waterfall_left.png");
+  });
+  it("uses modular expression parts at rest but preserves visemes during speech", () => {
+    const project = createDefaultProject(), assets = { ...project.character.faceAssets, activeEyePack: "modular-v2" as const };
+    const rest = renderToStaticMarkup(createElement(FaceRig, { face: { ...project.character.face, eyeExpression: "angry", mouth: "REST", previewAutomation: false }, calibration: project.character.calibration, assets, time: 0, playing: false }));
+    const speech = renderToStaticMarkup(createElement(FaceRig, { face: { ...project.character.face, eyeExpression: "angry", mouth: "AA", previewAutomation: false }, calibration: project.character.calibration, assets, time: 0, playing: false }));
+    expect(rest).toContain("angry-gritted-teeth_right-eye.png");
+    expect(rest).toContain("angry-gritted-teeth_mouth.png");
+    expect(speech).toContain("/face/mouths/v3/AA.svg");
+    expect(speech).not.toContain("angry-gritted-teeth_mouth.png");
   });
 });
