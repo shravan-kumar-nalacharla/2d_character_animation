@@ -49,4 +49,13 @@ describe("face preview", () => {
     expect(speech).toContain("/face/mouths/v3/AA.svg");
     expect(speech).not.toContain("angry-gritted-teeth_mouth.png");
   });
+  it("applies an exact teen preset and removes duplicate cry shading", () => {
+    const project = createDefaultProject(), assets = { ...project.character.faceAssets, activeEyePack: "modular-v2" as const, modularExpressionV2: "pain-wince" };
+    const exact = renderToStaticMarkup(createElement(FaceRig, { face: { ...project.character.face, previewAutomation: false }, calibration: project.character.calibration, assets, time: 0, playing: false }));
+    const crying = renderToStaticMarkup(createElement(FaceRig, { face: { ...project.character.face, eyeExpression: "sobCrying", previewAutomation: false }, calibration: project.character.calibration, assets: { ...assets, modularExpressionV2: "crying-breakdown" }, time: 0, playing: false }));
+    expect(exact).toContain("pain-wince_right-eye.png");
+    expect(exact).toContain("pain-wince_mouth.png");
+    expect(crying).not.toContain("crying-breakdown_face-shading.png");
+    expect(crying).toContain('data-face-effect="anime-tears"');
+  });
 });

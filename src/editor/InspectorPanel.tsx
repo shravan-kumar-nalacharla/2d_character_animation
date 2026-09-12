@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { descendantsOf } from "../rig/Skeleton";
 import { eyeExpressions, productionVisemes } from "../character/FaceAssets";
+import { modularExpressionEyePreset, modularExpressionSlugs } from "../character/ModularExpressionAssets";
 import type { Bone, FaceAssetState, EyeExpression, FaceCalibration, FacePartName, FaceState, MouthShape } from "../project/schema";
 import { FaceAssetManager } from "./FaceAssetManager";
 
@@ -51,7 +52,7 @@ export function InspectorPanel({ bone, bones, onChange, face, onFaceChange, cali
         <button className={panel === "face" ? "active" : ""} onClick={() => setPanel("face")}>Face</button>
         <button className={panel === "assets" ? "active" : ""} onClick={() => setPanel("assets")}>Assets</button>
       </div>
-      {panel === "assets" ? <FaceAssetManager assets={faceAssets} face={face} onAssets={onFaceAssets} onFace={onFaceChange} /> : panel === "face" ? <FaceControls face={face} onChange={onFaceChange} calibration={calibration} onCalibrationChange={onCalibrationChange} neck={bones.find((item) => item.id === "neck")} onNeckPivot={onNeckPivot} onOpenEyeLab={onOpenEyeLab} /> : <>
+      {panel === "assets" ? <FaceAssetManager assets={faceAssets} face={face} onAssets={onFaceAssets} onFace={onFaceChange} /> : panel === "face" ? <FaceControls face={face} assets={faceAssets} onAssets={onFaceAssets} onChange={onFaceChange} calibration={calibration} onCalibrationChange={onCalibrationChange} neck={bones.find((item) => item.id === "neck")} onNeckPivot={onNeckPivot} onOpenEyeLab={onOpenEyeLab} /> : <>
       <div className="inspector-title">
         <span className="selection-glyph" />
         <div>
@@ -113,11 +114,15 @@ export function InspectorPanel({ bone, bones, onChange, face, onFaceChange, cali
   );
 }
 
-function FaceControls({ face, onChange, calibration, onCalibrationChange, neck, onNeckPivot, onOpenEyeLab }: { face: FaceState; onChange(patch: Partial<FaceState>): void; calibration: FaceCalibration; onCalibrationChange(patch: Partial<FaceCalibration>): void; neck?: Bone; onNeckPivot(patch: Pick<Bone, "pivotX" | "pivotY">): void; onOpenEyeLab(): void }) {
+function FaceControls({ face, assets, onAssets, onChange, calibration, onCalibrationChange, neck, onNeckPivot, onOpenEyeLab }: { face: FaceState; assets: FaceAssetState; onAssets(next: FaceAssetState): void; onChange(patch: Partial<FaceState>): void; calibration: FaceCalibration; onCalibrationChange(patch: Partial<FaceCalibration>): void; neck?: Bone; onNeckPivot(patch: Pick<Bone, "pivotX" | "pivotY">): void; onOpenEyeLab(): void }) {
   const partNames: Array<[FacePartName, string]> = [["eyeL", "Left eye"], ["eyeR", "Right eye"], ["browL", "Left eyebrow"], ["browR", "Right eyebrow"], ["highlightL", "Left white highlight"], ["highlightR", "Right white highlight"]];
   const changePart = (name: FacePartName, patch: Partial<FaceState["parts"][FacePartName]>) => onChange({ parts: { ...face.parts, [name]: { ...face.parts[name], ...patch } } });
   const mouthTransform = face.mouthParts?.[face.mouth] ?? { x: 0, y: 0, scaleX: 1, scaleY: 1 };
   const changeMouth = (patch: Partial<FaceState["mouthParts"][MouthShape]>) => onChange({ mouthParts: { ...face.mouthParts, [face.mouth]: { ...mouthTransform, ...patch } } });
+  const animeMode = assets.activeEyePack === "modular-v2";
+  const setMode = (mode: "normal" | "anime") => onAssets({ ...assets, activeEyePack: mode === "anime" ? "modular-v2" : "raster-v1", modularExpressionV2: undefined });
+  const applyExpression = (eyeExpression: EyeExpression) => { onAssets({ ...assets, activeEyePack: "raster-v1", modularExpressionV2: undefined }); onChange({ eyeExpression, eyeSystem: { left: { ...face.eyeSystem.left, expression: "inherit" }, right: { ...face.eyeSystem.right, expression: "inherit" } } }); };
+  const applyAnimeExpression = (slug: typeof modularExpressionSlugs[number]) => { onAssets({ ...assets, activeEyePack: "modular-v2", modularExpressionV2: slug }); onChange({ eyeExpression: modularExpressionEyePreset[slug], eyeSystem: { left: { ...face.eyeSystem.left, expression: "inherit" }, right: { ...face.eyeSystem.right, expression: "inherit" } } }); };
   return <div className="face-controls">
     <div className="inspector-title"><span className="face-glyph">◉</span><div><strong>Face Controller</strong><small>Eyes · gaze · mouth</small></div></div>
     <section className="inspector-section"><button className="primary-action" style={{ width: "100%" }} onClick={onOpenEyeLab}>OPEN EYE DESIGN LAB</button></section>
@@ -130,7 +135,10 @@ function FaceControls({ face, onChange, calibration, onCalibrationChange, neck, 
     </section>
     <section className="inspector-section">
       <header>EYE EXPRESSION</header>
-      <div className="preset-grid">{eyeExpressions.map((expression) => <button key={expression} className={face.eyeExpression === expression ? "active" : ""} onClick={() => onChange({ eyeExpression: expression })}>{expression}</button>)}</div>
+      <div className="eye-mode-switch"><button className={!animeMode ? "active" : ""} onClick={() => setMode("normal")}>NORMAL</button><button className={animeMode ? "active" : ""} onClick={() => setMode("anime")}>ANIME</button></div>
+      {!animeMode
+        ? <div className="preset-grid">{eyeExpressions.map((expression) => <button key={expression} className={face.eyeExpression === expression ? "active" : ""} onClick={() => applyExpression(expression)}>{expression}</button>)}</div>
+        : <div className="preset-grid anime-expression-list">{modularExpressionSlugs.map((slug) => <button key={slug} className={assets.modularExpressionV2 === slug ? "active" : ""} onClick={() => applyAnimeExpression(slug)}>{slug.replaceAll("-", " ")}</button>)}</div>}
     </section>
     <section className="inspector-section"><header>ACCESSORIES</header><label className="toggles"><input type="checkbox" checked={face.accessories.sunglasses.visible} onChange={(event) => onChange({ accessories: { ...face.accessories, sunglasses: { ...face.accessories.sunglasses, visible: event.target.checked } } })}/> Sunglasses</label></section>
     <section className="inspector-section">

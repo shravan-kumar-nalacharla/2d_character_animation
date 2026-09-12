@@ -18,6 +18,21 @@ export function modularExpressionUrl(slug: ModularExpressionSlug, part: ModularF
   return `${root}/${part}/${expressionNumber.get(slug)}-${slug}_${part}.png`;
 }
 
+export function isModularExpressionSlug(value: unknown): value is ModularExpressionSlug {
+  return typeof value === "string" && modularExpressionSlugs.includes(value as ModularExpressionSlug);
+}
+
+export const modularExpressionEyePreset: Record<ModularExpressionSlug, EyeExpression> = {
+  "confident-grin": "proud", "serious-tired": "tired", "shocked-alert": "shocked", "angry-gritted-teeth": "angry",
+  "calm-knowing-smile": "soft", "rage-scream": "rage", "intense-shadow-stare": "shadowRage", "power-rage": "veryAngry",
+  "soft-surprise": "shock", "soft-toothy-grin": "friendly", "soft-cheerful-open-smile": "happy", "extreme-eye-shock": "extremeShock",
+  "stern-focused": "serious", "narrowed-suspicious": "suspicious", "neutral-attentive": "neutral", "happy-closed-eye-smile": "happyClosed",
+  "sad-teary": "teary", "crying-breakdown": "sobCrying", "worried-anxious": "worried", "scared-terrified": "fear",
+  confused: "confused", disgusted: "disgusted", "embarrassed-blush": "embarrassed", "excited-delight": "excited",
+  "sleepy-drowsy": "sleepy", "bored-unimpressed": "bored", "mischievous-smirk": "smug", "determined-heroic": "determined",
+  "laughing-hard": "laughClosed", "pain-wince": "annoyed",
+};
+
 const expressionMap: Partial<Record<EyeExpression, ModularExpressionSlug>> = {
   neutral: "neutral-attentive", friendly: "soft-toothy-grin", soft: "calm-knowing-smile", happy: "soft-cheerful-open-smile",
   happyClosed: "happy-closed-eye-smile", laughClosed: "laughing-hard", closedSoft: "happy-closed-eye-smile", closed: "happy-closed-eye-smile",

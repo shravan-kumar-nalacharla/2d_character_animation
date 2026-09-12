@@ -28,4 +28,8 @@ describe("project format", () => {
     expect(Object.keys(mouths)).toHaveLength(15);
     expect(mouths.AA).not.toBe(mouths.REST);
   });
+
+  it("uses normal eye expressions by default", () => {
+    expect(createDefaultProject().character.faceAssets.activeEyePack).toBe("raster-v1");
+  });
 });
