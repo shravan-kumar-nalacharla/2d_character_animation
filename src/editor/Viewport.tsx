@@ -97,7 +97,14 @@ export function Viewport({ initialViewBox, project, selectedId, showBones, showC
       const matrix = world.get(id);
       const bone = animatedBones.find((item) => item.id === id);
       if (matrix) wrapper.setAttribute("transform", toSvgMatrix(matrix));
-      const replaced = curved && (id === 'neck' || /^(upperArm|forearm|thigh|shin|foot|hand)/.test(id) || ((bodyView !== 'front' || project.character.mode === 'stick') && id === 'torso') || (headView !== 'front' && id === 'head'));
+      const frontNeck = curved && id === 'neck' && bodyView === 'front' && project.character.mode !== 'stick';
+      if (frontNeck) {
+        // The neck belongs above the shirt fill, below the head and collar.
+        // The back-pass bridge alone is occluded by the original shirt artwork.
+        wrapper.innerHTML = '<path data-rig-art="ai24-neck" d="M 872 230 L 918 230 L 923 253 Q 910 278 895 299 Q 879 275 868 253 Z" fill="#ffdbab" stroke="#181818" stroke-width="3" stroke-linejoin="round" />';
+        wrapper.setAttribute('transform', toSvgMatrix(world.get('torso')!));
+      }
+      const replaced = curved && ((id === 'neck' && !frontNeck) || /^(upperArm|forearm|thigh|shin|foot|hand)/.test(id) || ((bodyView !== 'front' || project.character.mode === 'stick') && id === 'torso') || (headView !== 'front' && id === 'head'));
       const artId = wrapper.querySelector<SVGGElement>('[data-rig-art]')?.dataset.rigArt;
       if (curved && ['ai24-layer-18-copy','ai24-shadings'].includes(artId??'')) { wrapper.style.display='none'; return; }
       wrapper.style.display = bone?.visible === false || replaced ? "none" : "";
