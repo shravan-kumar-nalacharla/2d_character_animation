@@ -1,11 +1,14 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { applyToPoint, toSvgMatrix, type Point } from "../core/math/matrix";
+import { applyToPoint, inverse, toSvgMatrix, type Point } from "../core/math/matrix";
 import { evaluateBones, evaluateFace } from "../animation/evaluate";
 import type { Bone, ProjectDocument } from "../project/schema";
 import { calculateWorldMatrices, findBoneForArtwork } from "../rig/Skeleton";
 import { FaceRig } from "./FaceRig";
+import { BodyRig, bodyState, poseBody } from './BodyRig';
+import { profileBones, viewInfo, type BodyView } from '../rig/FullBody';
 
 interface Props {
+  initialViewBox?: {x:number;y:number;width:number;height:number};
   project: ProjectDocument;
   selectedId: string;
   showBones: boolean;
@@ -24,17 +27,21 @@ interface Props {
 interface ViewBox { x: number; y: number; width: number; height: number }
 const identityAssetUrl = (url: string) => url;
 
-export function Viewport({ project, selectedId, showBones, showControls, onSelect, onPreviewBone, onCommitDrag, currentTime, playing, editPivots, onFrameProfile, onArtworkReady, resolveAssetUrl = identityAssetUrl }: Props) {
+export function Viewport({ initialViewBox, project, selectedId, showBones, showControls, onSelect, onPreviewBone, onCommitDrag, currentTime, playing, editPivots, onFrameProfile, onArtworkReady, resolveAssetUrl = identityAssetUrl }: Props) {
   const renderStarted = performance.now(), profileRef = useRef({ animationMs: 0, rigMs: 0 });
   const svgRef = useRef<SVGSVGElement>(null);
   const artworkRef = useRef<SVGGElement>(null);
   const [source, setSource] = useState("");
   const [error, setError] = useState("");
   const [zoomLabel, setZoomLabel] = useState(100);
-  const [viewBox, setViewBox] = useState<ViewBox>({ x: 0, y: 0, width: 1920, height: 1080 });
+  const [viewBox, setViewBox] = useState<ViewBox>(initialViewBox ?? { x: 0, y: 0, width: 1920, height: 1080 });
   const panRef = useRef<{ x: number; y: number; viewBox: ViewBox } | null>(null);
   const dragRef = useRef<{ boneId: string; kind: "move" | "pivot" | "rotate"; start: Point; center?: Point; startAngle?: number; before: Bone; after: Bone } | null>(null);
-  const animatedBones = useMemo(() => { const started = performance.now(), value = evaluateBones(project.rig.bones, project.animation.tracks, currentTime); profileRef.current.animationMs = performance.now() - started; return value; }, [project.animation.tracks, project.rig.bones, currentTime]);
+  const curved = project.character.curvedLimbs !== false && project.character.artworkUrl.includes('illustrator2024') && ['root','hips','torso','head','handL','handR','footL','footR'].every(id => project.rig.bones.some(b => b.id === id));
+  const acting = useMemo(() => bodyState(project.animation.tracks, currentTime), [project.animation.tracks, currentTime]);
+  const bodyView = (acting.view ?? project.character.view ?? 'front') as BodyView;
+  const headView = (acting.headView ?? bodyView) as BodyView;
+  const animatedBones = useMemo(() => { const started = performance.now(), value = poseBody(evaluateBones(curved ? profileBones(project.rig.bones, project.character.mode ?? 'hoodie') : project.rig.bones, project.animation.tracks, currentTime), curved ? { ...acting, view: bodyView } : {}); profileRef.current.animationMs = performance.now() - started; return value; }, [project.animation.tracks, project.rig.bones, currentTime, acting, curved, bodyView, project.character.mode]);
   const animatedFace = useMemo(() => { const started = performance.now(), value = evaluateFace(project.character.face, project.animation.tracks, currentTime); profileRef.current.animationMs += performance.now() - started; return value; }, [project.animation.tracks, project.character.face, currentTime]);
   const hasGeneratedAnimation = project.animation.tracks.some((track) => track.generated && track.keyframes.length);
   const world = useMemo(() => { const started = performance.now(), value = calculateWorldMatrices(animatedBones); profileRef.current.rigMs = performance.now() - started; return value; }, [animatedBones]);
@@ -90,10 +97,13 @@ export function Viewport({ project, selectedId, showBones, showControls, onSelec
       const matrix = world.get(id);
       const bone = animatedBones.find((item) => item.id === id);
       if (matrix) wrapper.setAttribute("transform", toSvgMatrix(matrix));
-      wrapper.style.display = bone?.visible === false ? "none" : "";
+      const replaced = curved && (id === 'neck' || /^(upperArm|forearm|thigh|shin|foot|hand)/.test(id) || ((bodyView !== 'front' || project.character.mode === 'stick') && id === 'torso') || (headView !== 'front' && id === 'head'));
+      const artId = wrapper.querySelector<SVGGElement>('[data-rig-art]')?.dataset.rigArt;
+      if (curved && ['ai24-layer-18-copy','ai24-shadings'].includes(artId??'')) { wrapper.style.display='none'; return; }
+      wrapper.style.display = bone?.visible === false || replaced ? "none" : "";
       wrapper.classList.toggle("art-selected", id === selectedId);
     });
-  }, [animatedBones, selectedId, source, world]);
+  }, [animatedBones, selectedId, source, world, curved, bodyView, headView, project.character.mode]);
   useLayoutEffect(() => { onFrameProfile?.({ ...profileRef.current, svgRenderMs: performance.now() - renderStarted }); });
 
   const stagePoint = (clientX: number, clientY: number): Point => {
@@ -124,7 +134,11 @@ export function Viewport({ project, selectedId, showBones, showControls, onSelec
       else if (kind === "rotate" && center) {
         const angle = Math.atan2(point.y - center.y, point.x - center.x) * 180 / Math.PI;
         after = { ...before, rotation: Math.max(before.minRotation, Math.min(before.maxRotation, before.rotation + angle - startAngle)) };
-      } else after = { ...before, x: before.x + point.x - start.x, y: before.y + point.y - start.y };
+      } else {
+        const parent=before.parentId?world.get(before.parentId):undefined;
+        const localPoint=parent?applyToPoint(inverse(parent),point):point, localStart=parent?applyToPoint(inverse(parent),start):start;
+        after = { ...before, x: before.x + localPoint.x-localStart.x, y: before.y + localPoint.y-localStart.y };
+      }
       dragRef.current.after = after;
       onPreviewBone(boneId, after);
       return;
@@ -187,10 +201,13 @@ export function Viewport({ project, selectedId, showBones, showControls, onSelec
           onPointerCancel={endPointer}
         >
           <rect x="0" y="0" width="1920" height="1080" className="stage-background" style={{ fill: project.stage.backgroundMode === "transparent" ? "none" : project.stage.background }} />
+          {curved && <BodyRig project={project} bones={animatedBones} world={world} state={acting} time={currentTime} pass="back" resolveAssetUrl={resolveAssetUrl} debug={showControls} onTargetDrag={startControllerDrag} />}
           <g ref={artworkRef} className="character-artwork" />
-          <g transform={world.get("head") ? toSvgMatrix(world.get("head")!) : undefined}>
+          {curved && <BodyRig project={project} bones={animatedBones} world={world} state={acting} time={currentTime} pass="front" resolveAssetUrl={resolveAssetUrl} debug={showControls} onTargetDrag={startControllerDrag} />}
+          <g visibility={curved && viewInfo(headView).rear ? "hidden" : "visible"} transform={world.get("head") ? toSvgMatrix(world.get("head")!) : undefined}>
             <FaceRig
-              face={hasGeneratedAnimation ? { ...animatedFace, previewAutomation: false } : animatedFace}
+              view={curved ? headView : "front"}
+              face={hasGeneratedAnimation ? { ...animatedFace, blink:Math.max(animatedFace.blink,Number(acting.turnBlink??0)), previewAutomation: false } : animatedFace}
               calibration={project.character.calibration}
               assets={project.character.faceAssets}
               headMotion={faceHeadMotion}
@@ -229,7 +246,7 @@ export function Viewport({ project, selectedId, showBones, showControls, onSelec
           )}
           {showControls && (
             <g className="controls-overlay">
-              {project.rig.controllers.filter((control) => control.visible).map((control) => {
+              {project.rig.controllers.filter((control) => control.visible && !(curved && /^(hand|foot|elbowPole|kneePole)/.test(control.boneId))).map((control) => {
                 const point = bonePoints.get(control.boneId)!;
                 return (
                   <g key={control.id} onPointerDown={(event) => startControllerDrag(event, control.boneId, "move")}>

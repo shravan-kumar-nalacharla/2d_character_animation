@@ -5,8 +5,8 @@ export interface VisemeInput { start: number; end: number; viseme: MouthShape; s
 export interface OptimizedViseme extends VisemeInput { viseme: ProductionViseme; onset: number; apex: number; offset: number; importance: number }
 export interface VisemeOptimizationDiagnostics { detectedLanguage: string; speechRate: "slow" | "normal" | "fast" | "veryFast"; wordsPerSecond: number; rawEvents: number; rawEventsPerSecond: number; optimizedEvents: number; optimizedEventsPerSecond: number; mergedDuplicates: number; droppedLowVisualEvents: number; hysteresisMerges: number; coarticulationMerges: number; density: number; preset: string }
 
-const importance: Record<ProductionViseme, number> = { REST: 1, MBP: 1, FV: .95, L: .55, TDN: .42, KG: .35, CHJSH: .58, SZ: .5, R: .55, AA: 1, AEE: .82, EEI: .88, UH: .7, OH: .95, OOW: .85 };
-const essential = new Set<ProductionViseme>(["REST", "MBP", "FV", "AA", "AEE", "EEI", "OH", "OOW"]);
+const importance: Record<ProductionViseme, number> = { REST: 1, MBP: 1, FV: .95, L: .9, TDN: .42, KG: .35, CHJSH: .58, SZ: .5, R: .55, AA: 1, AEE: .82, EEI: .88, UH: .7, OH: .95, OOW: .85 };
+const essential = new Set<ProductionViseme>(["REST", "MBP", "FV", "L", "AA", "AEE", "EEI", "OH", "OOW"]);
 
 export class VisemeSequenceOptimizer {
   optimize(raw: VisemeInput[], transcript: TimedTranscript, profile: CharacterPerformanceProfile) {
@@ -18,7 +18,7 @@ export class VisemeSequenceOptimizer {
     const minDuration = profile.lipSync.minimumVisemeDuration * (rate === "veryFast" ? 1.45 : rate === "fast" ? 1.25 : 1) * (100 - density * .35) / 75;
     let mergedDuplicates = 0, hysteresisMerges = 0, droppedLowVisualEvents = 0;
     const merged: Array<VisemeInput & { viseme: ProductionViseme }> = [];
-    for (const cue of raw) {
+    for (const cue of raw.filter(cue => Number.isFinite(cue.start) && Number.isFinite(cue.end) && cue.end > cue.start).slice().sort((a,b) => a.start-b.start)) {
       const next = { ...cue, viseme: productionViseme(cue.viseme) }, previous = merged.at(-1);
       if (previous && previous.viseme === next.viseme && next.start - previous.end < .12) { previous.end = Math.max(previous.end, next.end); previous.strength = Math.max(previous.strength, next.strength); mergedDuplicates++; }
       else merged.push(next);
@@ -39,8 +39,20 @@ export class VisemeSequenceOptimizer {
       const removable = merged.map((cue, index) => ({ index, score: importance[cue.viseme] * (cue.end - cue.start) * cue.strength })).filter(({ index }) => !essential.has(merged[index].viseme)).sort((a, b) => a.score - b.score).slice(0, merged.length - targetCount).map(({ index }) => index).sort((a, b) => b - a);
       for (const index of removable) { const cue = merged[index], neighbor = merged[index - 1] ?? merged[index + 1]; if (neighbor) neighbor.end = Math.max(neighbor.end, cue.end); merged.splice(index, 1); droppedLowVisualEvents++; }
     }
+    // At very high density, preserve articulator contacts and the strongest vowel,
+    // then spend the remaining visual budget on the longest openings.
+    if (merged.length > targetCount) {
+      const contacts = new Set<ProductionViseme>(['REST','MBP','FV','L']);
+      const vowels = merged.map((cue,index) => ({ index, score: importance[cue.viseme]*(cue.end-cue.start)*cue.strength })).filter(({index}) => !contacts.has(merged[index].viseme)).sort((a,b)=>b.score-a.score);
+      const contactCount = merged.length-vowels.length, keepCount = Math.max(1,targetCount-contactCount);
+      for (const index of vowels.slice(keepCount).map(v=>v.index).sort((a,b)=>b-a)) {
+        const cue = merged[index], neighbor = merged[index-1] ?? merged[index+1];
+        if (neighbor) { neighbor.start=Math.min(neighbor.start,cue.start); neighbor.end=Math.max(neighbor.end,cue.end); }
+        merged.splice(index,1); droppedLowVisualEvents++;
+      }
+    }
     const prep = .045 + profile.lipSync.coarticulation * .065;
-    const events: OptimizedViseme[] = merged.map((cue, index) => ({ ...cue, onset: Math.max(index ? merged[index - 1].start : 0, cue.start - prep), apex: cue.start + Math.min(.11, Math.max(.045, (cue.end - cue.start) * .42)), offset: Math.min(merged[index + 1]?.start ?? cue.end + prep, cue.end + prep), importance: importance[cue.viseme] }));
+    const events: OptimizedViseme[] = merged.map((cue, index) => ({ ...cue, onset: Math.max(index ? merged[index - 1].start : 0, cue.start - prep), apex: cue.start + Math.min(.075, (cue.end - cue.start) * .42), offset: Math.max(cue.start + Math.min(.075, (cue.end - cue.start) * .42), Math.min(duration, merged[index + 1]?.start ?? cue.end + prep, cue.end + prep)), importance: importance[cue.viseme] }));
     const diagnostics: VisemeOptimizationDiagnostics = { detectedLanguage: language, speechRate: rate, wordsPerSecond, rawEvents: raw.length, rawEventsPerSecond: raw.length / duration, optimizedEvents: events.length, optimizedEventsPerSecond: events.length / duration, mergedDuplicates, droppedLowVisualEvents, hysteresisMerges, coarticulationMerges: Math.max(0, raw.length - events.length - mergedDuplicates - droppedLowVisualEvents), density, preset: profile.lipSync.preset };
     return { events, diagnostics };
   }

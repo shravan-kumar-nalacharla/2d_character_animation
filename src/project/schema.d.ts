@@ -27,24 +27,151 @@ export interface Controller {
     visible: boolean;
     locked: boolean;
 }
-export type MouthShape = "closed" | "aa" | "ee" | "oh" | "uh" | "smile" | "teeth" | "wide" | "f" | "m" | "l" | "frown";
-export type EyeExpression = "neutral" | "sad" | "cunning" | "serious" | "curiousLeft" | "curiousMiddle" | "curiousRight" | "angry" | "shocked" | "closed" | "lookLeft" | "lookRight";
+export type ProductionViseme = "REST" | "MBP" | "FV" | "L" | "TDN" | "KG" | "CHJSH" | "SZ" | "R" | "AA" | "AEE" | "EEI" | "UH" | "OH" | "OOW";
+export type MouthShape = ProductionViseme | "closed" | "aa" | "ee" | "oh" | "uh" | "smile" | "teeth" | "wide" | "f" | "m" | "l" | "frown";
+export type EyeExpression = "neutral" | "friendly" | "soft" | "happy" | "happyClosed" | "laughClosed" | "closedSoft" | "blink" | "winkLeft" | "winkRight" | "sad" | "verySad" | "teary" | "crying" | "sobCrying" | "concerned" | "worried" | "fear" | "panic" | "shock" | "shocked" | "extremeShock" | "curious" | "confused" | "thinking" | "suspicious" | "cunning" | "unimpressed" | "bored" | "tired" | "sleepy" | "serious" | "focused" | "determined" | "coldGlare" | "angry" | "angrySqueezed" | "veryAngry" | "rage" | "shadowRage" | "disgusted" | "annoyed" | "embarrassed" | "awkward" | "nervous" | "excited" | "veryExcited" | "sparkleExcited" | "sparkleCute" | "pleading" | "proud" | "smug" | "deadpan" | "animeDetermined" | "animeShock" | "animeCute" | "closed" | "curiousLeft" | "curiousMiddle" | "curiousRight" | "lookLeft" | "lookRight";
+export type EyeStyle = "simple" | "white" | "anime" | "sparkle" | "closed";
+export type HighlightStyle = "none" | "single" | "double" | "sparkle";
+export type BrowPreset = "auto" | "neutral" | "soft" | "raised" | "veryRaised" | "innerRaised" | "outerRaised" | "sad" | "concerned" | "worried" | "curious" | "suspicious" | "cunning" | "angry" | "veryAngry" | "serious" | "determined" | "excited" | "animeAngry";
+export interface EyeSideState {
+    expression: EyeExpression | "inherit";
+    scaleX: number;
+    scaleY: number;
+    openness: number;
+    squint: number;
+    rotation: number;
+    pupilScale: number;
+    pupilX: number;
+    pupilY: number;
+    highlightStyle: HighlightStyle | "auto";
+}
+export interface BrowSideState {
+    preset: BrowPreset;
+    x: number;
+    y: number;
+    rotation: number;
+    scaleX: number;
+    scaleY: number;
+    innerHeight: number;
+    outerHeight: number;
+    curve: number;
+    intensity: number;
+}
+export interface SunglassesState {
+    visible: boolean;
+    style: "blackClassic";
+    scale: number;
+    offsetX: number;
+    offsetY: number;
+    rotation: number;
+    opacity: number;
+}
+export type FaceFxMode = "auto" | "none" | "angryShadow";
+export type ExtraFaceFxMode = "auto" | "none" | "angerCross01" | "angerCross02" | "angerVein01";
+export type TearMode = "auto" | "none" | "stream" | "waterfall";
+export type CryState = "auto" | "off" | "watery" | "aboutToCry" | "firstTear" | "cryStream" | "cryingHard" | "waterfallExtreme";
+export interface CryControls {
+    state: CryState;
+    enableShake: boolean;
+    enableTears: boolean;
+    shakeAmount: number;
+    shakeFrequency: number;
+    shakeVerticalRatio: number;
+    shakeRotation: number;
+    flowSpeed: number;
+    turbulenceAmount: number;
+    turbulenceSize: number;
+    opacity: number;
+    amount: number;
+    showFaceMatte: boolean;
+}
 export type FacePartName = "eyeL" | "eyeR" | "browL" | "browR" | "highlightL" | "highlightR";
 export interface FacePartTransform {
     x: number;
     y: number;
     scaleX: number;
     scaleY: number;
+    rotation?: number;
+}
+export interface FaceAssetOverride {
+    name: string;
+    mimeType: "image/svg+xml" | "image/png" | "image/webp";
+    dataUrl: string;
+    updatedAt: string;
+}
+export interface FaceAssetState {
+    activeMouthPack: string;
+    activeEyePack: "raster-v1" | "modular-v2" | "classic" | "expressive" | "anime-comedy" | "custom";
+    modularExpressionV2?: string;
+    mouthOverrides: Partial<Record<MouthShape, FaceAssetOverride>>;
+    eyeOverrides: Partial<Record<EyeExpression, {
+        left?: FaceAssetOverride;
+        right?: FaceAssetOverride;
+    }>>;
+    browOverrides: Partial<Record<BrowPreset, {
+        left?: FaceAssetOverride;
+        right?: FaceAssetOverride;
+    }>>;
 }
 export interface FaceState {
+    mouthSmile?: number;
+    mouthTension?: number;
     gazeX: number;
     gazeY: number;
     blink: number;
+    eyeOpenness: number;
     mouth: MouthShape;
+    mouthOffsetX: number;
+    mouthOffsetY: number;
+    mouthRotation: number;
+    jawOpen: number;
+    mouthWidth: number;
+    lipRound: number;
+    lipPress: number;
+    mouthIntensity: number;
     eyeExpression: EyeExpression;
+    eyeSystem: {
+        left: EyeSideState;
+        right: EyeSideState;
+    };
+    browSystem: {
+        left: BrowSideState;
+        right: BrowSideState;
+    };
+    accessories: {
+        sunglasses: SunglassesState;
+    };
+    faceFx: FaceFxMode;
+    extraFaceFx: ExtraFaceFxMode;
+    tears: TearMode;
+    cryControls: CryControls;
+    hairStyle: "canonical";
     parts: Record<FacePartName, FacePartTransform>;
     mouthParts: Record<MouthShape, FacePartTransform>;
     previewAutomation: boolean;
+}
+export interface FaceCalibration {
+    eyeVisualScale: number;
+    mouthVisualScale: number;
+    gazeRangeX: number;
+    gazeRangeY: number;
+    eyeOpennessStrength: number;
+    expressionStrength: number;
+    headRotationStrength: number;
+    headTranslationStrength: number;
+    maxNormalRotation: number;
+    maxReactionRotation: number;
+    gazeReturnSpeed: number;
+    headFollowStrength: number;
+    parallaxStrength: number;
+    showNeckAnchor: boolean;
+    showHeadPivot: boolean;
+    showEyeCenters: boolean;
+    showGazeBounds: boolean;
+    showCurrentGaze: boolean;
+    showMouthAnchor: boolean;
+    showEyeScaleBounds: boolean;
+    showLanguageMap: boolean;
 }
 export type Interpolation = "hold" | "linear" | "ease-in" | "ease-out" | "ease-in-out" | "bezier";
 export type KeyframeValue = number | string | boolean;
@@ -65,13 +192,14 @@ export interface AnimationKeyframe {
 export interface AnimationTrack {
     id: string;
     name: string;
-    layer: "base" | "manual" | "lipSync" | "aiExpression" | "aiEyebrows" | "aiGaze" | "blink" | "aiHead" | "speechMotion" | "idle";
+    layer: "base" | "manual" | "gesture" | "lipSync" | "aiExpression" | "aiEyebrows" | "aiGaze" | "blink" | "aiHead" | "speechMotion" | "idle";
     target: string;
     valueType: "number" | "string" | "boolean";
     muted: boolean;
     locked: boolean;
     generated: boolean;
     keyframes: AnimationKeyframe[];
+    metadata?: Record<string, unknown>;
 }
 export interface AudioSource {
     name: string;
@@ -104,6 +232,7 @@ export interface AudioAnalysis {
         strength: number;
     }>;
 }
+export type LanguageCode = "en" | "hi" | "te";
 export interface TranscriptWord {
     id: string;
     text: string;
@@ -111,6 +240,8 @@ export interface TranscriptWord {
     end: number;
     confidence?: number;
     source: "transcription" | "alignment" | "estimated";
+    language?: LanguageCode;
+    script?: "native" | "romanized" | "latin" | "unknown";
 }
 export interface TranscriptSegment {
     id: string;
@@ -118,6 +249,7 @@ export interface TranscriptSegment {
     start: number;
     end: number;
     words: TranscriptWord[];
+    language?: LanguageCode;
 }
 export interface TimedTranscript {
     version: 1;
@@ -133,9 +265,10 @@ export interface TimedTranscript {
 }
 export type Emotion = "neutral" | "happy" | "amused" | "excited" | "sad" | "angry" | "frustrated" | "surprised" | "shocked" | "worried" | "confused" | "thinking" | "suspicious" | "embarrassed" | "proud" | "disgusted" | "tired";
 export type Intent = "statement" | "question" | "explanation" | "agreement" | "disagreement" | "reaction" | "joke" | "sarcasm" | "disbelief" | "warning" | "complaint" | "storytelling" | "instruction" | "thinking" | "realization" | "greeting" | "conclusion";
-export type GazeTarget = "camera" | "thinking-away" | "left" | "right" | "up" | "down";
-export type HeadInstruction = "hold" | "tiny_nod" | "normal_nod" | "question_tilt" | "small_shake" | "disbelief_shake" | "reaction_back" | "reaction_forward" | "thinking_tilt" | "emphasis_forward" | "settle";
+export type GazeTarget = "camera" | "return-camera" | "thinking-away" | "thinking-left" | "thinking-right" | "reaction-left" | "reaction-right" | "slightly-left" | "slightly-right" | "up-left" | "up-right" | "down-left" | "down-right" | "left" | "right" | "up" | "down";
+export type HeadInstruction = "hold" | "tiny_nod" | "micro_nod" | "normal_nod" | "strong_nod" | "question_tilt" | "question_tilt_left" | "question_tilt_right" | "confused_tilt" | "small_turn_left" | "small_turn_right" | "thinking_turn" | "small_shake" | "disagreement_shake" | "disbelief_shake" | "reaction_back" | "surprise_recoil" | "reaction_forward" | "thinking_tilt" | "emphasis_forward" | "emphasis_down" | "settle" | "settle_to_neutral";
 export interface PerformanceSegment {
+    direction?: import('../animation/BodyPerformance').BodyDirection;
     id: string;
     start: number;
     end: number;
@@ -202,6 +335,9 @@ export interface PerformancePlan {
     };
 }
 export interface CharacterPerformanceProfile {
+    fullBodyStrength?: number;
+    gestureStrength?: number;
+    gestureFrequency?: number;
     preset: "Calm" | "Natural" | "YouTube" | "Energetic" | "Comedy" | "Custom";
     defaultEnergy: number;
     expressionStrength: number;
@@ -213,15 +349,46 @@ export interface CharacterPerformanceProfile {
     emotionStrength: number;
     animationSmoothness: number;
     comedicExaggeration: number;
+    performanceDensity: number;
+    head: {
+        motionStrength: number;
+        neckPivotRequired: boolean;
+        maxNormalRotation: number;
+        maxReactionRotation: number;
+        minimumPoseDuration: number;
+        eventCooldown: number;
+    };
+    eyes: {
+        visualScale: number;
+        horizontalGazeStrength: number;
+        verticalGazeStrength: number;
+        minimumGazeDuration: number;
+        transitionDuration: number;
+        returnDuration: number;
+    };
+    mouth: {
+        visualScale: number;
+    };
+    lipSync: {
+        density: number;
+        preset: "Precise" | "Natural" | "Cartoon" | "Mumble";
+        minimumVisemeDuration: number;
+        coarticulation: number;
+    };
 }
 export interface ProjectDocument {
     schemaVersion: 1;
     name: string;
     seed: number;
     character: {
+        mode?: 'hoodie' | 'stick';
+        view?: import('../rig/FullBody').BodyView;
+        curvedLimbs?: boolean;
         artworkUrl: string;
         assetRevision: number;
         face: FaceState;
+        calibration: FaceCalibration;
+        faceAssets: FaceAssetState;
     };
     stage: {
         width: number;
@@ -229,6 +396,7 @@ export interface ProjectDocument {
         fps: number;
         duration: number;
         background: string;
+        backgroundMode?: "solid" | "transparent";
     };
     audio: AudioSource | null;
     audioAnalysis: AudioAnalysis | null;

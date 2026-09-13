@@ -65,3 +65,7 @@ All additions must match the canonical face size, line weight, color palette, or
 | footL | Logical control; foot art remains inside `ai24-left-leg` |
 | neck | `ai24-neck` |
 | head | `ai24-head-*` plus the native face overlay |
+
+## Production body upgrade
+
+See `assets/production_character/performance/README.md` for source provenance. Existing Illustrator originals remain untouched. Six head orientations and the stick shirt were extracted from local AI PDF content; true left/right profiles, the hand library, curved skins and profile/rear body silhouettes were authored as vectors. Hoodie front artwork retains its current binding. Some hand entries intentionally share a silhouette. Profile/rear garment detailing is simpler than the original front artwork.

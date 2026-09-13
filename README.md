@@ -70,3 +70,11 @@ Use the AI Performance panel for performance presets, channel strengths, selecti
 - `docs/AI_AUDIO_ANIMATION_AUDIT.md`
 
 # 2d_character_animation
+
+### Full-body performance
+
+Expand **Body performance** for Hoodie/Stick, eight views, automation strength, gesture strength/frequency and IK/debug controls. Both skins share curved IK limbs, semantic gesture clips and basic foot-planted locomotion. **Insert gesture clip** adds an editable, undoable manual clip at the playhead. The existing Import Audio → Auto Animate → edit → export workflow remains available.
+
+Open `/body/rehearsal` on the dev server to preview gestures without touching autosave. Asset provenance and current drawing limitations are documented in `assets/production_character/performance/README.md`.
+
+Use `/rig/body-qa` for paired rig regression poses. See `BODY_RIG_FIX_AUDIT.md` for coordinate conventions, validated repairs and remaining scope.

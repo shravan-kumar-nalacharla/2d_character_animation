@@ -32,7 +32,7 @@ async function renderFrame(settings: ExportSettings, projectBackground: string) 
   if (!source) throw new Error("Character viewport is not available.");
   const svg = source.cloneNode(true) as SVGSVGElement;
   svg.setAttribute("viewBox", "0 0 1920 1080"); svg.setAttribute("width", "1920"); svg.setAttribute("height", "1080");
-  svg.querySelectorAll(".bone-overlay,.control-overlay,.face-debug,.anchor-debug").forEach((node) => node.remove());
+  svg.querySelectorAll(".bone-overlay,.control-overlay,.bones-overlay,.controls-overlay,.body-debug,.face-debug,.anchor-debug,.safe-frame").forEach((node) => node.remove());
   const background = svg.querySelector<SVGRectElement>(".stage-background"); if (background) background.setAttribute("fill", "none");
   await inlineImages(svg);
   const markup = new XMLSerializer().serializeToString(svg), image = new Image();

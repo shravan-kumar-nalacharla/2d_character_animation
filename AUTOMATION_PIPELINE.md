@@ -61,3 +61,11 @@ The deterministic fallback handles questions, exclamations, long pauses, negatio
 
 Speech recognition, word alignment, phoneme conversion, and viseme mapping are separate adapters. English, Hindi, and Hinglish can therefore select different providers while producing the same normalized `VisemeCue` model.
 
+
+## Whole-body composition
+
+`PerformancePlanner` retains audio/transcript analysis, caching and existing tracks. `BodyPerformance` chooses semantic clips from validated optional director fields or deterministic text/emotion rules. It applies cooldown, repetition avoidance, eased anticipation/action/hold/overshoot/settle, wrist lag and hand arcs, then writes editable tracks. `orderedTracks` resolves manual/locked tracks above directed gesture, expression, speech, idle and base layers. No AI runs per frame.
+
+Pronunciation units now account for common English spelling exceptions, Hindi/Telugu consonant/vowel marks and romanized syllables. Viseme optimization preserves closures and salient contacts, limits fast-speech density and connects continuous mouth targets without interleaved REST. Smile/tension modify the phonetic geometry. A `PhonemeAlignmentProvider` can be injected; the bundled provider is still heuristic, not acoustic forced alignment. Accent-specific and code-switched pronunciation still needs corrected timings or an alignment provider.
+
+Use the collapsed Body performance controls to select skin/view/strength/frequency, insert clips or inspect IK. Insertions preserve existing tracks and participate in undo. `/body/rehearsal` is an isolated gesture preview; `/body/editor-qa` exercises the actual editor without writing project autosave. With the dev server running, `node scripts/body-render-smoke.mjs` exports a four-second stick walk and hoodie folded-arm performance through the existing Remotion job API.

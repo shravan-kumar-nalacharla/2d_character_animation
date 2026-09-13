@@ -31,7 +31,9 @@ export function calculateWorldMatrices(bones: Bone[]): Map<string, Matrix> {
 }
 
 export function findBoneForArtwork(bones: Bone[], artworkId: string): Bone | undefined {
-  return bones.find((bone) => bone.artworkPrefixes.some((prefix) => artworkId.startsWith(prefix)));
+  let result: Bone | undefined, longest = -1;
+  for (const bone of bones) for (const prefix of bone.artworkPrefixes) if (artworkId.startsWith(prefix) && prefix.length >= longest) { result = bone; longest = prefix.length; }
+  return result;
 }
 
 export function descendantsOf(bones: Bone[], parentId: string): Bone[] {

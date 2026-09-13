@@ -1,10 +1,12 @@
+import { SpeechMouth } from '../character/SpeechMouth';
+import type { BodyView } from '../rig/FullBody';
 import { eyeExpressions, mouthPackBase, productionViseme, productionVisemes } from "../character/FaceAssets";
 import { browPresets, expressionForSide, eyeDesigns } from "../character/EyePresets";
 import { faceFxUrl, rasterBrowUrl, rasterEyes, rasterEyeUrl } from "../character/RasterFaceAssets";
 import { isModularExpressionSlug, modularExpressionFor, modularExpressionUrl } from "../character/ModularExpressionAssets";
 import type { BrowPreset, CryControls, CryState, EyeExpression, EyeSideState, FaceAssetState, FaceCalibration, FaceState, ProductionViseme } from "../project/schema";
 
-interface Props { face: FaceState; calibration: FaceCalibration; assets?: FaceAssetState; time: number; playing: boolean; headMotion?: { rotation: number; x: number; y: number }; resolveAssetUrl?(url: string): string }
+interface Props { view?: BodyView; face: FaceState; calibration: FaceCalibration; assets?: FaceAssetState; time: number; playing: boolean; headMotion?: { rotation: number; x: number; y: number }; resolveAssetUrl?(url: string): string }
 interface ClassicPreset { folder: string; eye: [number, number]; eyeY?: number; openness?: number }
 const classicPresets: Record<string, ClassicPreset> = {
   neutral: { folder: "normal-eyes-2", eye: [18, 34] }, soft: { folder: "normal-eyes-2", eye: [18, 32], openness: .92 }, sad: { folder: "sad-eyes", eye: [18, 34], openness: .92 }, cunning: { folder: "cunning-eyes", eye: [30, 13], openness: .82 }, serious: { folder: "serious-eyes", eye: [30, 18], openness: .86 }, curious: { folder: "curious-eyes-middle", eye: [16, 31] }, angry: { folder: "angry-eyes", eye: [25, 27], openness: .9 }, shock: { folder: "shock-eyes", eye: [14, 14], openness: 1.18 }, suspicious: { folder: "cunning-eyes", eye: [30, 13], openness: .76 }, tired: { folder: "serious-eyes", eye: [30, 18], openness: .68 }, concerned: { folder: "sad-eyes", eye: [18, 34], openness: .86 }, closed: { folder: "closed-eyes", eye: [30, 5], eyeY: 178, openness: .12 },
@@ -18,11 +20,11 @@ const defaultCryControls: CryControls = { state: "auto", enableShake: true, enab
 
 export function resolveFacePreview(face: FaceState, time: number, playing: boolean) {
   const demo = face.previewAutomation && playing;
-  return { mouth: demo ? productionVisemes[Math.floor(time * 7) % productionVisemes.length] : productionViseme(face.mouth), blink: Math.max(face.blink, demo && time % 3.7 < .13 ? 1 : 0), gazeX: clamp(face.gazeX + (demo ? Math.sin(time * 1.3) * .45 : 0), -1, 1), gazeY: clamp(face.gazeY + (demo ? Math.sin(time * .7) * .35 : 0), -1, 1) };
+  return { mouth: productionViseme(face.mouth), blink: Math.max(face.blink, demo && time % 3.7 < .13 ? 1 : 0), gazeX: clamp(face.gazeX + (demo ? Math.sin(time * 1.3) * .45 : 0), -1, 1), gazeY: clamp(face.gazeY + (demo ? Math.sin(time * .7) * .35 : 0), -1, 1) };
 }
 export function canonicalExpression(value: EyeExpression): EyeExpression { if (value.startsWith("curious")) return "curious"; if (value === "lookLeft" || value === "lookRight") return "neutral"; return value; }
 
-export function FaceRig({ face, calibration, assets, time, playing, headMotion = { rotation: 0, x: 0, y: 0 }, resolveAssetUrl = identity }: Props) {
+export function FaceRig({ view = 'front', face, calibration, assets, time, playing, headMotion = { rotation: 0, x: 0, y: 0 }, resolveAssetUrl = identity }: Props) {
   const cryId=useId().replace(/:/g,"");
   const assetState = assets ?? { activeMouthPack: "v3", activeEyePack: "raster-v1", mouthOverrides: {}, eyeOverrides: {}, browOverrides: {} };
   const selectedModularExpression = isModularExpressionSlug(assetState.modularExpressionV2) ? assetState.modularExpressionV2 : undefined;
@@ -41,7 +43,9 @@ export function FaceRig({ face, calibration, assets, time, playing, headMotion =
   const shake = cryShakeOffset(time, cryControls, cryState === "aboutToCry" || cryState === "watery");
   const eyeShakeTransform = `translate(${shake.x} ${shake.y}) rotate(${shake.rotation} 894 176)`;
   const extraFx = face.extraFaceFx === "auto" ? (shadowRage ? "angerCross01" : "none") : face.extraFaceFx;
+  const hiddenSide = view === 'left' || view === 'threeQuarterLeft' ? 'right' : view === 'right' || view === 'threeQuarterRight' ? 'left' : '';
   const renderSide = (side: "left" | "right") => {
+    if (side === hiddenSide) return null;
     if (shadowRage) return null;
     const state = eyeSystem[side], expression = preview.blink > .72 ? "blink" : activeExpression(side);
     const centerX = eyeCenters[side], part = face.parts[side === "left" ? "eyeL" : "eyeR"], override = assetState.eyeOverrides?.[expression]?.[side]?.dataUrl;
@@ -53,6 +57,7 @@ export function FaceRig({ face, calibration, assets, time, playing, headMotion =
     return <ProceduralEye key={side} side={side} expression={expression} state={state} centerX={centerX + part.x + featureX} centerY={176 + part.y + featureY} scaleX={part.scaleX * calibration.eyeVisualScale} scaleY={part.scaleY * calibration.eyeVisualScale * (face.eyeOpenness ?? 1)} gazeX={gazeX} gazeY={gazeY} />;
   };
   const renderBrow = (side: "left" | "right") => {
+    if (side === hiddenSide) return null;
     if (shadowRage) return null;
     const expression = activeExpression(side), design = eyeDesigns[expression] ?? eyeDesigns.neutral;
     const state = browSystem[side], preset = state.preset === "auto" ? design.brow : state.preset, part = face.parts[side === "left" ? "browL" : "browR"], centerX = eyeCenters[side];
@@ -76,7 +81,7 @@ export function FaceRig({ face, calibration, assets, time, playing, headMotion =
     {showModularShading && <image data-face-effect="expression-shading-v2" href={resolveAssetUrl(modularExpressionUrl(modularSlug, "face-shading"))} x="824" y="118" width="140" height="140" opacity=".72" clipPath={`url(#expression-face-${cryId})`}/>}
     {shadowRage && <ShadowRage resolveAssetUrl={resolveAssetUrl}/>} {extraFx !== "none" && <AngerMark kind={extraFx} resolveAssetUrl={resolveAssetUrl}/>}<g data-cry-eyes-null="CRY_EYES_NULL" transform={eyeShakeTransform}>{renderBrow("left")}{renderBrow("right")}{renderSide("left")}{renderSide("right")}</g>
     {cryControls.enableTears && <FaceContainedTears idPrefix={cryId} state={cryState} time={time} controls={cryControls}/>} 
-    <g transform={`rotate(${(face.mouthRotation ?? 0) + (mouthTransform.rotation ?? 0)} ${mouthX} ${mouthY})`}><image data-face-part="mouth" href={resolveAssetUrl(mouthHref)} x={mouthX - renderedMouthWidth / 2} y={mouthY - renderedMouthHeight / 2} width={renderedMouthWidth} height={renderedMouthHeight} /></g>
+    <g transform={`rotate(${(face.mouthRotation ?? 0) + (mouthTransform.rotation ?? 0)} ${mouthX} ${mouthY})`}>{(face.mouthIntensity ?? 0) > 0 && !assetState.mouthOverrides[preview.mouth] ? <g transform={`translate(${mouthX} ${mouthY}) scale(${width/52} ${height/26})`}><SpeechMouth face={face} viseme={preview.mouth} /></g> : <image data-face-part="mouth" href={resolveAssetUrl(mouthHref)} x={mouthX - renderedMouthWidth / 2} y={mouthY - renderedMouthHeight / 2} width={renderedMouthWidth} height={renderedMouthHeight} />}</g>
     {glasses?.visible && <image data-face-accessory="sunglasses" href={resolveAssetUrl("/production_character/illustrator2024/face/accessories/black-sunglasses.svg")} x={824 + glasses.offsetX} y={139 + glasses.offsetY} width={140 * glasses.scale} height={64 * glasses.scale} opacity={glasses.opacity} transform={`rotate(${glasses.rotation} ${894 + glasses.offsetX} ${171 + glasses.offsetY})`} />}
     <g className="face-debug">{calibration.showEyeCenters && <><circle cx={eyeCenters.left + gazeX} cy={176 + gazeY} r="2"/><circle cx={eyeCenters.right + gazeX} cy={176 + gazeY} r="2"/></>}</g>
   </g>;

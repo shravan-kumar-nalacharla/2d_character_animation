@@ -35,7 +35,7 @@ button:disabled { opacity: .38; cursor: default; }
 
 .app-shell {
   display: grid;
-  grid-template-rows: 48px minmax(300px, 1fr) 232px 22px;
+  grid-template-rows: 48px auto minmax(200px, 1fr) 232px 22px;
   width: 100%;
   height: 100%;
   background: #0f1115;
@@ -332,3 +332,10 @@ button:disabled { opacity: .38; cursor: default; }
   .source-fact { display: none; }
   .duik-actions button:nth-child(2) { display: none; }
 }
+
+.body-controls { padding: 6px 16px; background: #20232c; color: #ddd; }
+.body-controls > div { display:flex; gap:14px; align-items:center; flex-wrap:wrap; padding:8px 0; }
+.body-controls label { display:flex; gap:6px; align-items:center; font-size:12px; }
+.body-controls input { width:85px; }
+
+.rig-body-qa .viewport-canvas { background: repeating-conic-gradient(#d5dce4 0% 25%,#e9eef3 0% 50%) 0 / 24px 24px; }
