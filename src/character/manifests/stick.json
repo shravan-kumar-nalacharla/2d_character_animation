@@ -1,0 +1,116 @@
+{
+  "id": "stick",
+  "schemaVersion": 2,
+  "armColor": "#111111",
+  "legColor": "#111111",
+  "armWidth": 6,
+  "legWidth": 6,
+  "skin": "#ffdbab",
+  "outline": "#181818",
+  "source": "adobe animate and illustrator saves (imp)\\illustrator\\illustrator format\\algowzxd stick man final Pakka.ai",
+  "handSystem": "round-cap",
+  "footSystem": "round-cap",
+  "wristAnchor": [
+    32,
+    2
+  ],
+  "handScale": 0.82,
+  "motionScale": 0.75,
+  "neckBase": [
+    895,
+    308
+  ],
+  "headPivot": [
+    895,
+    245
+  ],
+  "neckLimits": {
+    "x": 3,
+    "y": 3,
+    "rotation": 8
+  },
+  "jointLimits": {
+    "minimumBend": 5,
+    "maximumBend": 150
+  },
+  "defaultPose": "idle",
+  "allowedViews": [
+    "front",
+    "threeQuarterLeft",
+    "left",
+    "threeQuarterBackLeft",
+    "back",
+    "threeQuarterBackRight",
+    "right",
+    "threeQuarterRight"
+  ],
+  "collisionShapes": {
+    "torso": [
+      813,
+      300,
+      975,
+      580
+    ],
+    "face": [
+      805,
+      55,
+      984,
+      250
+    ]
+  },
+  "attachmentSlots": [
+    "shoulderL",
+    "shoulderR",
+    "neck"
+  ],
+  "pivots": {
+    "upperArmR": [
+      831,
+      312
+    ],
+    "forearmR": [
+      812,
+      390
+    ],
+    "handR": [
+      810,
+      470
+    ],
+    "upperArmL": [
+      960,
+      312
+    ],
+    "forearmL": [
+      979,
+      390
+    ],
+    "handL": [
+      981,
+      470
+    ],
+    "thighR": [
+      867,
+      580
+    ],
+    "shinR": [
+      862,
+      675
+    ],
+    "footR": [
+      858,
+      770
+    ],
+    "thighL": [
+      925,
+      580
+    ],
+    "shinL": [
+      930,
+      675
+    ],
+    "footL": [
+      934,
+      770
+    ]
+  }
+}

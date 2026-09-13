@@ -1,8 +1,16 @@
 import type { AnimationKeyframe, AnimationTrack, Bone, FaceState } from "../project/schema";
 
 const cursors = new WeakMap<AnimationTrack, { index: number; time: number }>();
+const priority = { base: 0, idle: 1, speechMotion: 2, lipSync: 3, aiExpression: 3, aiEyebrows: 3, aiGaze: 3, blink: 3, aiHead: 3, gesture: 4, manual: 5 };
+const ordered = new WeakMap<AnimationTrack[], AnimationTrack[]>();
+export function orderedTracks(tracks: AnimationTrack[]) {
+  let result = ordered.get(tracks);
+  if (!result) { result = tracks.slice().sort((a,b) => (a.locked || a.keyframes.some(k => k.source === 'manual') ? 5 : priority[a.layer]) - (b.locked || b.keyframes.some(k => k.source === 'manual') ? 5 : priority[b.layer])); ordered.set(tracks, result); }
+  return result;
+}
 
 export function evaluateTrack(track: AnimationTrack, time: number) {
+  if (track.activeRange && (time < track.activeRange[0] || time > track.activeRange[1])) return undefined;
   if (track.muted || !track.keyframes.length) return undefined;
   const keys = track.keyframes;
   if (time <= keys[0].time) return keys[0].value;
@@ -28,7 +36,7 @@ export function evaluateTrack(track: AnimationTrack, time: number) {
 
 export function evaluateFace(base: FaceState, tracks: AnimationTrack[], time: number): FaceState {
   const face: FaceState = { ...base, cryControls: { ...base.cryControls }, parts: { ...base.parts, browL: { ...base.parts.browL }, browR: { ...base.parts.browR } }, eyeSystem: { left: { ...base.eyeSystem.left }, right: { ...base.eyeSystem.right } }, browSystem: { left: { ...base.browSystem.left }, right: { ...base.browSystem.right } }, accessories: { sunglasses: { ...base.accessories.sunglasses } } };
-  for (const track of tracks) {
+  for (const track of orderedTracks(tracks)) {
     const value = evaluateTrack(track, time);
     if (value === undefined) continue;
     if (track.target === "face.mouth" && typeof value === "string") face.mouth = value as FaceState["mouth"];
@@ -46,6 +54,8 @@ export function evaluateFace(base: FaceState, tracks: AnimationTrack[], time: nu
     else if (track.target === "face.mouthOffsetX" && typeof value === "number") face.mouthOffsetX = value;
     else if (track.target === "face.mouthOffsetY" && typeof value === "number") face.mouthOffsetY = value;
     else if (track.target === "face.mouthRotation" && typeof value === "number") face.mouthRotation = value;
+    else if (track.target === "face.mouthSmile" && typeof value === "number") face.mouthSmile = value;
+    else if (track.target === "face.mouthTension" && typeof value === "number") face.mouthTension = value;
     else if (track.target === "face.jawOpen" && typeof value === "number") face.jawOpen = value;
     else if (track.target === "face.mouthWidth" && typeof value === "number") face.mouthWidth = value;
     else if (track.target === "face.lipRound" && typeof value === "number") face.lipRound = value;
@@ -70,7 +80,7 @@ export function evaluateFace(base: FaceState, tracks: AnimationTrack[], time: nu
 export function evaluateBones(base: Bone[], tracks: AnimationTrack[], time: number): Bone[] {
   return base.map((bone) => {
     const result = { ...bone };
-    for (const track of tracks) {
+    for (const track of orderedTracks(tracks)) {
       const prefix = `bone.${bone.id}.`;
       if (!track.target.startsWith(prefix)) continue;
       const value = evaluateTrack(track, time);
@@ -86,7 +96,11 @@ function ease(value: number, key: AnimationKeyframe) {
   if (key.interpolation === "linear") return t;
   if (key.interpolation === "ease-in") return t * t;
   if (key.interpolation === "ease-out") return 1 - (1 - t) * (1 - t);
-  if (key.interpolation === "bezier" && key.easing) return cubic(t, key.easing.y1, key.easing.y2);
+  if (key.interpolation === "bezier" && key.easing) {
+    let low = 0, high = 1;
+    for (let i=0; i<14; i++) { const mid = (low+high)/2; if (cubic(mid,key.easing.x1,key.easing.x2)<t) low=mid; else high=mid; }
+    return cubic((low+high)/2, key.easing.y1, key.easing.y2);
+  }
   return t * t * (3 - 2 * t);
 }
 

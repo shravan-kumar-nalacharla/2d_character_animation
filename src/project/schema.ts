@@ -62,6 +62,8 @@ export interface FaceAssetOverride { name: string; mimeType: "image/svg+xml" | "
 export interface FaceAssetState { activeMouthPack: string; activeEyePack: "raster-v1" | "modular-v2" | "classic" | "expressive" | "anime-comedy" | "custom"; modularExpressionV2?: string; mouthOverrides: Partial<Record<MouthShape, FaceAssetOverride>>; eyeOverrides: Partial<Record<EyeExpression, { left?: FaceAssetOverride; right?: FaceAssetOverride }>>; browOverrides: Partial<Record<BrowPreset, { left?: FaceAssetOverride; right?: FaceAssetOverride }>> }
 
 export interface FaceState {
+  mouthSmile?: number;
+  mouthTension?: number;
   gazeX: number;
   gazeY: number;
   blink: number;
@@ -127,9 +129,10 @@ export interface AnimationKeyframe {
 }
 
 export interface AnimationTrack {
+  activeRange?: [number, number];
   id: string;
   name: string;
-  layer: "base" | "manual" | "lipSync" | "aiExpression" | "aiEyebrows" | "aiGaze" | "blink" | "aiHead" | "speechMotion" | "idle";
+  layer: "base" | "manual" | "gesture" | "lipSync" | "aiExpression" | "aiEyebrows" | "aiGaze" | "blink" | "aiHead" | "speechMotion" | "idle";
   target: string;
   valueType: "number" | "string" | "boolean";
   muted: boolean;
@@ -171,6 +174,7 @@ export type GazeTarget = "camera" | "return-camera" | "thinking-away" | "thinkin
 export type HeadInstruction = "hold" | "tiny_nod" | "micro_nod" | "normal_nod" | "strong_nod" | "question_tilt" | "question_tilt_left" | "question_tilt_right" | "confused_tilt" | "small_turn_left" | "small_turn_right" | "thinking_turn" | "small_shake" | "disagreement_shake" | "disbelief_shake" | "reaction_back" | "surprise_recoil" | "reaction_forward" | "thinking_tilt" | "emphasis_forward" | "emphasis_down" | "settle" | "settle_to_neutral";
 
 export interface PerformanceSegment {
+  direction?: import('../animation/BodyPerformance').BodyDirection;
   id: string;
   start: number;
   end: number;
@@ -195,6 +199,11 @@ export interface PerformancePlan {
 }
 
 export interface CharacterPerformanceProfile {
+  sceneDescription?: string;
+  characterVariant?: 'hoodie' | 'stick';
+  fullBodyStrength?: number;
+  gestureStrength?: number;
+  gestureFrequency?: number;
   preset: "Calm" | "Natural" | "YouTube" | "Energetic" | "Comedy" | "Custom";
   defaultEnergy: number;
   expressionStrength: number;
@@ -218,6 +227,9 @@ export interface ProjectDocument {
   name: string;
   seed: number;
   character: {
+    mode?: 'hoodie' | 'stick';
+    view?: import('../rig/FullBody').BodyView;
+    curvedLimbs?: boolean;
     artworkUrl: string;
     assetRevision: number;
     face: FaceState;

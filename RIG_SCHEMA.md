@@ -85,3 +85,11 @@ World matrices are computed in hierarchy order. Artwork uses the world matrix of
 
 Every rig document has `schemaVersion`. Loaders reject unsupported future versions and migrations upgrade known older versions without changing the archived artwork.
 
+
+## Full-body performance extension (September 2026)
+
+Canonical projects add hips → spineLower → torso (legacy alias) → spineUpper → chest → neck → head, clavicles, wrists and ankles without changing existing artwork pivots. Hands/feet have IK targets and elbows/knees have pole controls. `upgradeBodyRig` adds missing identity controls only to the canonical rig; foreign imported rigs retain their original renderer.
+
+`body.*` tracks control hand offsets/poses, wrist rotation, shoulders, lean, weight shift, crouch, travel, foot targets and separate head/body view. Both character manifests use the same analytic two-bone IK and C1-continuous cubic limb skin. Explicit manual limb rotations use FK. Locked/manual tracks win; inserted clips use `activeRange` so they do not mask automation outside the clip.
+
+Eight discrete orientation assets use view-dependent layering and face visibility. Head view leads body view through adjacent directions. These are drawing substitutions, not continuous 3D rotation or mesh morphing.

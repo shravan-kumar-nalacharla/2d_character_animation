@@ -1,0 +1,120 @@
+{
+  "id": "hoodie",
+  "schemaVersion": 2,
+  "armColor": "#e60000",
+  "legColor": "#080078",
+  "armWidth": 48,
+  "legWidth": 56,
+  "skin": "#ffdbab",
+  "outline": "#181818",
+  "source": "adobe animate and illustrator saves (imp)/illustrator/algowzxd new 2024/algowzxd hoodie/algowzxd hoodie own.ai",
+  "handSystem": "attachments",
+  "footSystem": "shoes",
+  "wristAnchor": [
+    32,
+    2
+  ],
+  "handScale": 0.82,
+  "motionScale": 1,
+  "neckBase": [
+    895,
+    308
+  ],
+  "headPivot": [
+    895,
+    245
+  ],
+  "neckLimits": {
+    "x": 3,
+    "y": 3,
+    "rotation": 8
+  },
+  "jointLimits": {
+    "minimumBend": 5,
+    "maximumBend": 150
+  },
+  "defaultPose": "idle",
+  "allowedViews": [
+    "front",
+    "threeQuarterLeft",
+    "left",
+    "threeQuarterBackLeft",
+    "back",
+    "threeQuarterBackRight",
+    "right",
+    "threeQuarterRight"
+  ],
+  "collisionShapes": {
+    "torso": [
+      813,
+      300,
+      975,
+      580
+    ],
+    "face": [
+      805,
+      55,
+      984,
+      250
+    ]
+  },
+  "attachmentSlots": [
+    "shoulderL",
+    "shoulderR",
+    "neck",
+    "handL",
+    "handR",
+    "footL",
+    "footR"
+  ],
+  "pivots": {
+    "upperArmR": [
+      820,
+      325
+    ],
+    "forearmR": [
+      790,
+      420
+    ],
+    "handR": [
+      790,
+      535
+    ],
+    "upperArmL": [
+      975,
+      320
+    ],
+    "forearmL": [
+      1000,
+      415
+    ],
+    "handL": [
+      1000,
+      520
+    ],
+    "thighR": [
+      845,
+      585
+    ],
+    "shinR": [
+      835,
+      735
+    ],
+    "footR": [
+      815,
+      905
+    ],
+    "thighL": [
+      945,
+      585
+    ],
+    "shinL": [
+      950,
+      740
+    ],
+    "footL": [
+      950,
+      905
+    ]
+  }
+}

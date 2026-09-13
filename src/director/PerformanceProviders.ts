@@ -1,3 +1,5 @@
+import { gestures, type BodyDirection } from '../animation/BodyPerformance';
+import { bodyViews, handPoses } from '../rig/FullBody';
 import type { AudioAnalysis, AudioSource, CharacterPerformanceProfile, Emotion, EyeExpression, GazeTarget, HeadInstruction, Intent, PerformancePlan, PerformanceSegment, TimedTranscript } from "../project/schema";
 import { TranscriptNormalizer } from "../audio/TranscriptNormalizer";
 import { LanguageDetectionEngine } from "../audio/LanguageDetectionEngine";
@@ -162,6 +164,7 @@ function validateSegment(raw: unknown, index: number, duration: number, transcri
   return {
     id: typeof item.id === "string" ? item.id : `performance-${index + 1}`,
     start, end, text: String(item.text ?? ""),
+    direction: validateDirection(item.direction),
     emotion: { primary, secondary: enumOptional(emotion.secondary, emotions), intensity: clampNumber(emotion.intensity, 0.5) },
     intent: enumValue(item.intent, intents, "statement"),
     expression: { preset: enumValue(expression.preset, expressions, emotionExpression(primary)), intensity: clampNumber(expression.intensity, 0.5), transitionIn: clampSeconds(expression.transitionIn, 0.2), transitionOut: clampSeconds(expression.transitionOut, 0.28) },
@@ -224,3 +227,11 @@ function enumValue<T extends string>(value: unknown, allowed: readonly T[], fall
 function enumOptional<T extends string>(value: unknown, allowed: readonly T[]): T | undefined { return typeof value === "string" && allowed.includes(value as T) ? value as T : undefined; }
 async function apiError(response: Response, fallback: string) { try { return (await response.json() as { error?: string }).error ?? fallback; } catch { return fallback; } }
 async function fileBase64(file: File) { const data = await file.arrayBuffer(); let binary = ""; const bytes = new Uint8Array(data); for (let start = 0; start < bytes.length; start += 0x8000) binary += String.fromCharCode(...bytes.subarray(start, start + 0x8000)); return btoa(binary); }
+
+function validateDirection(raw: unknown): BodyDirection | undefined {
+  if (!raw || typeof raw !== 'object') return undefined;
+  const item = raw as Record<string,unknown>, gesture = enumOptional(item.gesture, gestures);
+  if (!gesture) return undefined;
+  const bounded = (key: string, limit: number) => typeof item[key] === 'number' && Number.isFinite(item[key]) ? Math.max(-limit, Math.min(limit, item[key] as number)) : undefined;
+  return { gesture, gestureSide: enumOptional(item.gestureSide, ['L','R','both'] as const), handPose: enumOptional(item.handPose, handPoses), characterView: enumOptional(item.characterView, bodyViews), intensity: clampNumber(item.intensity,.6), bodyLean: bounded('bodyLean',8), weightShift: bounded('weightShift',35), shoulderPose: bounded('shoulderPose',15), headDirection: bounded('headDirection',10) };
+}

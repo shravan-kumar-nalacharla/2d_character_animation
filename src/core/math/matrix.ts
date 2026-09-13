@@ -81,3 +81,9 @@ export function applyToPoint(matrix: Matrix, point: Point): Point {
 
 export const toSvgMatrix = ({ a, b, c, d, e, f }: Matrix): string =>
   `matrix(${a} ${b} ${c} ${d} ${e} ${f})`;
+
+export function inverse(matrix: Matrix): Matrix {
+  const {a,b,c,d,e,f}=matrix, determinant=a*d-b*c;
+  if (Math.abs(determinant)<1e-10) throw new Error('Singular rig transform');
+  return {a:d/determinant,b:-b/determinant,c:-c/determinant,d:a/determinant,e:(c*f-d*e)/determinant,f:(b*e-a*f)/determinant};
+}

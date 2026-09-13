@@ -1,10 +1,11 @@
 #!/usr/bin/env node
+import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import { copyFile, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { basename, dirname, extname, join, relative } from "node:path";
 import { inflateSync } from "node:zlib";
 
-const projectRoot = new URL("../", import.meta.url).pathname;
+const projectRoot = fileURLToPath(new URL("../", import.meta.url));
 const packRoot = join(projectRoot, "assets/production_character/v2");
 const sourceIndex = process.argv.indexOf("--expression-source");
 const expressionSource = sourceIndex >= 0 ? process.argv[sourceIndex + 1] : undefined;

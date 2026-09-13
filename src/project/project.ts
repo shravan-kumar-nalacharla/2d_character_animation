@@ -46,6 +46,7 @@ export const defaultFaceCalibration = (): FaceCalibration => ({
 });
 
 export const defaultPerformanceProfile = (): CharacterPerformanceProfile => ({
+  fullBodyStrength: 1, gestureStrength: .85, gestureFrequency: .45,
   preset: "YouTube",
   defaultEnergy: 0.67,
   expressionStrength: 0.72,
@@ -119,11 +120,27 @@ export function createDefaultProject(): ProjectDocument {
     bone("footL", "Foot L", "shinL", 950, 905, 75, ["left_foot_"], -45, 45),
   ];
 
+  const insert = (id: string, parent: string, x: number, y: number, children: string[]) => {
+    bones.push(bone(id, id, parent, x, y, 0));
+    for (const child of bones) if (children.includes(child.id)) child.parentId = id;
+  };
+  insert('spineLower', 'hips', 895, 535, ['torso']);
+  insert('spineUpper', 'torso', 895, 370, []);
+  insert('chest', 'spineUpper', 895, 310, ['neck']);
+  for (const side of ['L', 'R']) {
+    const arm = bones.find(b => b.id === `upperArm${side}`)!, hand = bones.find(b => b.id === `hand${side}`)!, foot = bones.find(b => b.id === `foot${side}`)!;
+    insert(`clavicle${side}`, 'chest', arm.pivotX, arm.pivotY, [arm.id]);
+    insert(`wrist${side}`, `forearm${side}`, hand.pivotX, hand.pivotY, [hand.id]);
+    insert(`ankle${side}`, `shin${side}`, foot.pivotX, foot.pivotY, [foot.id]);
+    hand.name = `Hand ${side}`;
+    bones.push(bone(`elbowPole${side}`, `Elbow pole ${side}`, 'root', arm.pivotX + (side === 'L' ? 25 : -25), arm.pivotY+270, 0));
+    bones.push(bone(`kneePole${side}`, `Knee pole ${side}`, 'root', foot.pivotX + (side === 'L' ? 95 : -95), 705, 0));
+  }
   return {
     schemaVersion: 1,
     name: "Algowzxd Phase 1",
     seed: 381,
-    character: { artworkUrl: "/production_character/illustrator2024/character.svg", assetRevision: 7, face: defaultFace(), calibration: defaultFaceCalibration(), faceAssets: { activeMouthPack: "v3", activeEyePack: "raster-v1", mouthOverrides: {}, eyeOverrides: {}, browOverrides: {} } },
+    character: { mode: 'hoodie', view: 'front', curvedLimbs: true, artworkUrl: "/production_character/illustrator2024/character.svg", assetRevision: 7, face: defaultFace(), calibration: defaultFaceCalibration(), faceAssets: { activeMouthPack: "v3", activeEyePack: "raster-v1", mouthOverrides: {}, eyeOverrides: {}, browOverrides: {} } },
     stage: { width: 1920, height: 1080, fps: 60, duration: 10, background: "#E8EDF2", backgroundMode: "solid" },
     audio: null,
     audioAnalysis: null,
@@ -133,13 +150,14 @@ export function createDefaultProject(): ProjectDocument {
     rig: {
       bones,
       controllers: [
+        ...bones.filter(b => /Pole/.test(b.id)).map(b => ({ id: `${b.id}Control`, name: b.name, boneId: b.id, kind: 'ik' as const, color: '#17bda7', size: 10, visible: true, locked: false })),
         { id: "rootControl", name: "Root Control", boneId: "root", kind: "transform", color: "#f7c843", size: 22, visible: true, locked: false },
         { id: "bodyControl", name: "Body Control", boneId: "torso", kind: "transform", color: "#42d3a7", size: 19, visible: true, locked: false },
         { id: "headControl", name: "Head Control", boneId: "head", kind: "transform", color: "#e76bff", size: 18, visible: true, locked: false },
-        { id: "handRControl", name: "Hand R Control", boneId: "handR", kind: "transform", color: "#58a6ff", size: 16, visible: true, locked: false },
-        { id: "handLControl", name: "Hand L Control", boneId: "handL", kind: "transform", color: "#58a6ff", size: 16, visible: true, locked: false },
-        { id: "footRControl", name: "Foot R Control", boneId: "footR", kind: "transform", color: "#ff8b58", size: 16, visible: true, locked: false },
-        { id: "footLControl", name: "Foot L Control", boneId: "footL", kind: "transform", color: "#ff8b58", size: 16, visible: true, locked: false },
+        { id: "handRControl", name: "Hand R Control", boneId: "handR", kind: "ik", color: "#58a6ff", size: 16, visible: true, locked: false },
+        { id: "handLControl", name: "Hand L Control", boneId: "handL", kind: "ik", color: "#58a6ff", size: 16, visible: true, locked: false },
+        { id: "footRControl", name: "Foot R Control", boneId: "footR", kind: "ik", color: "#ff8b58", size: 16, visible: true, locked: false },
+        { id: "footLControl", name: "Foot L Control", boneId: "footL", kind: "ik", color: "#ff8b58", size: 16, visible: true, locked: false },
       ],
     },
     animation: {
@@ -156,4 +174,16 @@ export function replaceBone(project: ProjectDocument, id: string, nextBone: Bone
     ...project,
     rig: { ...project.rig, bones: project.rig.bones.map((item) => (item.id === id ? nextBone : item)) },
   };
+}
+
+/** Add identity controls to old canonical rigs without discarding pivots or edits. */
+export function upgradeBodyRig(project: ProjectDocument): ProjectDocument {
+  if (!project.character.artworkUrl.includes('illustrator2024')) return project;
+  const defaults = createDefaultProject(), ids = new Set(project.rig.bones.map(b => b.id));
+  const added = defaults.rig.bones.filter(b => !ids.has(b.id));
+  const bones = project.rig.bones.map(b => {
+    const next = defaults.rig.bones.find(d => d.id === b.id);
+    return next?.parentId && added.some(a => a.id === next.parentId) ? { ...b, parentId: next.parentId } : b;
+  });
+  return { ...project, character: { mode: 'hoodie', view: 'front', curvedLimbs: true, ...project.character }, rig: { bones: [...bones, ...added], controllers: [...project.rig.controllers, ...defaults.rig.controllers.filter(c => !project.rig.controllers.some(old => old.id === c.id))] } };
 }

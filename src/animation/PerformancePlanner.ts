@@ -1,7 +1,9 @@
+import { mouthEmotion } from '../character/SpeechMouth';
 import type { AnimationKeyframe, AnimationTrack, AudioAnalysis, AudioSource, CharacterPerformanceProfile, LanguageCode, MouthShape, PerformancePlan, TimedTranscript } from "../project/schema";
-import { VisemeMapper } from "../character/VisemeMapper";
+import { VisemeMapper, pronunciationUnits } from "../character/VisemeMapper";
 import { VisemeSequenceOptimizer, type OptimizedViseme, type VisemeOptimizationDiagnostics } from "./VisemeSequenceOptimizer";
 import { sanitizeMotionTracks } from "./MotionQuality";
+import { bodyPerformanceTracks } from './BodyPerformance';
 
 export interface VisemeCue { start: number; end: number; viseme: MouthShape; strength: number; sourceText: string }
 export interface PhonemeAlignmentProvider { align(audio: AudioSource, transcript: TimedTranscript, analysis: AudioAnalysis): Promise<VisemeCue[]> }
@@ -16,14 +18,14 @@ export class TranscriptHeuristicAlignmentProvider implements PhonemeAlignmentPro
 export interface PlannerOptions { lipSync: boolean; expressions: boolean; eyes: boolean; eyebrows: boolean; head: boolean; blink: boolean; body: boolean }
 export const allPlannerOptions: PlannerOptions = { lipSync: true, expressions: true, eyes: true, eyebrows: true, head: true, blink: true, body: true };
 
-export async function planAnimation(audio: AudioSource, transcript: TimedTranscript, analysis: AudioAnalysis, performance: PerformancePlan, profile: CharacterPerformanceProfile, seed: number, options: PlannerOptions = allPlannerOptions): Promise<AnimationTrack[]> {
+export async function planAnimation(audio: AudioSource, transcript: TimedTranscript, analysis: AudioAnalysis, performance: PerformancePlan, profile: CharacterPerformanceProfile, seed: number, options: PlannerOptions = allPlannerOptions, alignmentProvider: PhonemeAlignmentProvider = new TranscriptHeuristicAlignmentProvider()): Promise<AnimationTrack[]> {
   const tracks: AnimationTrack[] = [];
-  if (options.lipSync) { const raw = await new TranscriptHeuristicAlignmentProvider().align(audio, transcript, analysis), optimized = new VisemeSequenceOptimizer().optimize(raw, transcript, profile); tracks.push(mouthTrack(optimized.events, profile, optimized.diagnostics, raw), ...continuousMouthTracks(optimized.events)); }
-  if (options.expressions) tracks.push(...expressionTracks(performance), eyeOpennessTrack(performance), ...mouthPerformanceTracks(performance));
+  if (options.lipSync) { const raw = await alignmentProvider.align(audio, transcript, analysis), optimized = new VisemeSequenceOptimizer().optimize(raw, transcript, profile); tracks.push(mouthTrack(optimized.events, profile, optimized.diagnostics, raw), ...continuousMouthTracks(optimized.events)); }
+  if (options.expressions) tracks.push(...expressionTracks(performance), eyeOpennessTrack(performance), ...mouthPerformanceTracks(performance), ...emotionalMouthTracks(performance));
   if (options.eyes) tracks.push(...gazeTracks(performance, profile));
   if (options.eyebrows) tracks.push(...eyebrowTracks(performance, profile));
   if (options.head) tracks.push(...headTracks(performance, profile));
-  if (options.body) tracks.push(bodyTrack(performance, profile), pauseBreathingTrack(analysis));
+  if (options.body) tracks.push(bodyTrack(performance, profile), pauseBreathingTrack(analysis), ...bodyPerformanceTracks(performance, profile));
   if (options.blink) tracks.push(blinkTrack(audio.duration, performance, seed));
   return sanitizeMotionTracks(tracks.filter((track) => track.keyframes.length > 0));
 }
@@ -41,7 +43,16 @@ function continuousMouthTracks(cues: OptimizedViseme[]): AnimationTrack[] {
   const properties = ["jawOpen", "mouthWidth", "lipRound", "lipPress", "mouthIntensity"] as const;
   const values: Record<typeof properties[number], AnimationKeyframe[]> = Object.fromEntries(properties.map((property) => [property, [key(`${property}-rest`, 0, 0, "bezier", "auto-lipsync", undefined, mouthEase)]])) as Record<typeof properties[number], AnimationKeyframe[]>;
   const target = (cue: OptimizedViseme) => ({ jawOpen: ({ REST: 0, MBP: .02, FV: .16, L: .48, TDN: .38, KG: .55, CHJSH: .48, SZ: .3, R: .42, AA: .95, AEE: .62, EEI: .34, UH: .5, OH: .8, OOW: .38 } as Record<string, number>)[cue.viseme], mouthWidth: ({ AEE: .68, EEI: 1, SZ: .55, AA: .2, MBP: .1 } as Record<string, number>)[cue.viseme] ?? .3, lipRound: ({ OH: 1, OOW: 1, UH: .72, R: .52, CHJSH: .38 } as Record<string, number>)[cue.viseme] ?? 0, lipPress: cue.viseme === "MBP" ? 1 : cue.viseme === "FV" ? .62 : 0, mouthIntensity: cue.strength });
-  cues.forEach((cue, index) => { const current = target(cue), previous = cues[index - 1] ? target(cues[index - 1]) : undefined, next = cues[index + 1] ? target(cues[index + 1]) : undefined; for (const property of properties) values[property].push(key(`${property}-${index}-onset`, cue.onset, (previous?.[property] ?? 0) * .35, "bezier", "auto-lipsync", undefined, mouthEase), key(`${property}-${index}-apex`, cue.apex, current[property], "bezier", "auto-lipsync", undefined, mouthEase), key(`${property}-${index}-offset`, cue.offset, (next?.[property] ?? 0) * .4, "bezier", "auto-lipsync", undefined, settleEase)); });
+  cues.forEach((cue, index) => {
+    const current = target(cue), previous = cues[index - 1], next = cues[index + 1];
+    for (const property of properties) {
+      // One target per sound: connected phonemes interpolate directly without
+      // overlapping onset/offset keys pulling the mouth backwards between peaks.
+      if (!previous || cue.start - previous.end > .09) values[property].push(key(`${property}-${index}-onset`, cue.onset, 0, "bezier", "auto-lipsync", undefined, mouthEase));
+      values[property].push(key(`${property}-${index}-apex`, cue.apex, current[property], "bezier", "auto-lipsync", undefined, mouthEase));
+      if (!next || next.start - cue.end > .09) values[property].push(key(`${property}-${index}-offset`, cue.offset, 0, "bezier", "auto-lipsync", undefined, settleEase));
+    }
+  });
   return properties.map((property) => track(`auto-${property}`, `Mouth · ${property}`, "lipSync", `face.${property}`, "number", dedupe(values[property])));
 }
 
@@ -204,7 +215,7 @@ function blinkTrack(duration: number, plan: PerformancePlan, seed: number): Anim
 }
 
 export function wordVisemes(text: string, start: number, end: number, analysis: AudioAnalysis, language: LanguageCode = "en"): VisemeCue[] {
-  const units = text.toLowerCase().match(/ch|sh|th|ph|bh|dh|kh|gh|aa|ee|oo|ai|au|[a-z]|[\u0900-\u097f]|[\u0c00-\u0c7f]/g) ?? [];
+  const units = pronunciationUnits(text, language);
   if (!units.length) return [];
   const span = (end - start) / units.length;
   return units.map((unit, index) => {
@@ -250,3 +261,11 @@ function browPresetFor(expression: string) {
 }
 const gazeEase = { x1: 0.2, y1: 0.8, x2: 0.25, y2: 1 }, headEase = { x1: .2, y1: .76, x2: .3, y2: 1 }, settleEase = { x1: 0.35, y1: 0, x2: 0.25, y2: 1 }, mouthEase = { x1: 0.22, y1: 0.72, x2: 0.28, y2: 1 };
 function mulberry32(seed: number) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let value = Math.imul(seed ^ seed >>> 15, 1 | seed); value = value + Math.imul(value ^ value >>> 7, 61 | value) ^ value; return ((value ^ value >>> 14) >>> 0) / 4294967296; }; }
+
+function emotionalMouthTracks(plan: PerformancePlan): AnimationTrack[] {
+  return (['mouthSmile', 'mouthTension'] as const).map(property => {
+    const keys = [key(`${property}-base`, 0, 0, 'ease-in-out', source(plan))];
+    for (const segment of plan.segments) { const emotion = mouthEmotion(segment.emotion.primary); keys.push(key(`${segment.id}-${property}`, segment.start + Math.min(.3,(segment.end-segment.start)*.3), (property === 'mouthSmile' ? emotion.smile : emotion.tension) * segment.emotion.intensity, 'ease-in-out', source(plan)), key(`${segment.id}-${property}-end`, segment.end, 0, 'ease-in-out', source(plan))); }
+    return track(`auto-${property}`, property, 'aiExpression', `face.${property}`, 'number', dedupe(keys));
+  });
+}
