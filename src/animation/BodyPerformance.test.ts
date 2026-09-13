@@ -23,6 +23,17 @@ const plan = (segments: PerformanceSegment[]): PerformancePlan => ({ version: 1,
 const profile = defaultPerformanceProfile();
 
 describe('whole-body performance', () => {
+  it.each(['hoodie','stick'] as const)('keeps %s chin elbows below the shoulder without stretching', mode => {
+    const project=createDefaultProject(); project.character.mode=mode;
+    for(const gesture of ['thinking','hand-on-chin','facepalm']) {
+      const state={gesture,poseWeight:1,contactWeight:1};
+      const bones=poseBody(profileBones(project.rig.bones,mode),state),world=calculateWorldMatrices(bones);
+      const {start,solved,upper,lower}=solveBodyLimb(project,bones,world,state,'R',false);
+      expect(solved.joint.x-start.x).toBeLessThanOrEqual(upper*.25+.001);
+      expect(solved.joint.y).toBeGreaterThan(start.y);
+      expect(validateLimb(solved,start,upper,lower)).toEqual([]);
+    }
+  });
   it('preserves parent-space attachment distances under rotated scaled roots', () => {
     const solved=solveLimb({x:0,y:0},{x:80,y:100},100,100,{x:-100,y:100});
     for(let rotation=-120;rotation<=120;rotation+=10) {
@@ -36,7 +47,7 @@ describe('whole-body performance', () => {
     const saved=createDefaultProject().rig.bones, derived=profileBones(saved,'stick');
     expect(bodyManifests.stick.handSystem).toBe('round-cap'); expect(bodyManifests.stick.footSystem).toBe('round-cap');
     expect(bodyManifests.stick.armWidth).toBe(6);
-    expect(derived.find(b=>b.id==='footL')!.pivotY).toBe(877);
+    expect(derived.find(b=>b.id==='footL')!.pivotY).toBe(770);
     expect(saved.find(b=>b.id==='footL')!.pivotY).toBe(905);
   });
   it('clamps neck motion and keeps a skull-base head pivot', () => {

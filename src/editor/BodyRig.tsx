@@ -36,12 +36,16 @@ export function solveBodyLimb(project:ProjectDocument,bones:Bone[],world:Map<str
     const animatedEnd = bones.find(b => b.id === endId)!;
     const motion=skin.motionScale;
     let target = leg ? applyToPoint(parentInverse, applyToPoint(world.get('root')!, {x:895+(base.pivotX-895)*perspective+animatedEnd.x+Number(state[`foot${side}X`]??0)*(view.includes('Left') || view==='left'?-1:1),y:base.pivotY+animatedEnd.y+Number(state[`foot${side}Y`]??0)})) : {x:fkEnd.x+Number(state[`hand${side}X`]??0)*motion,y:fkEnd.y+Number(state[`hand${side}Y`]??0)*motion};
-    const upper=Math.hypot(sourceJoint.pivotX-sourceStart.pivotX,sourceJoint.pivotY-sourceStart.pivotY), lower=Math.hypot(base.pivotX-sourceJoint.pivotX,base.pivotY-sourceJoint.pivotY);
+    const contactArm=!leg && side==='R' && !state.manualArmR && ['thinking','hand-on-chin','facepalm'].includes(String(state.gesture));
+    // The upper arm points toward camera in chin poses: shorten its projection,
+    // not the physical forearm, and ease depth with the authored contact channel.
+    const projection=contactArm ? 1-.45*Math.max(0,Math.min(1,Number(state.contactWeight??0))) : 1;
+    const upper=projection*Math.hypot(sourceJoint.pivotX-sourceStart.pivotX,sourceJoint.pivotY-sourceStart.pivotY), lower=Math.hypot(base.pivotX-sourceJoint.pivotX,base.pivotY-sourceJoint.pivotY);
     const poleBone=bones.find(b=>b.id===`${leg?'knee':'elbow'}Pole${side}`);
     const pole={x:start.x+(leg&&info.side?info.direction:side==='L'?1:-1)*(leg?140:170)+(poleBone?.x??0),y:start.y+(leg?140:160)+(poleBone?.y??0)};
     const manual=state[`manual${leg?'Leg':'Arm'}${side}`] || animatedEnd.locked;
     if (!leg && side==='R' && ['thinking','hand-on-chin','facepalm'].includes(String(state.gesture))) {
-      const anchor=applyToPoint(parentInverse,applyToPoint(world.get('head')!,{x:skin.id==='stick'?887:878,y:state.gesture==='facepalm'?205:skin.id==='stick'?253:280}));
+      const anchor=applyToPoint(parentInverse,applyToPoint(world.get('head')!,{x:skin.id==='stick'?850:878,y:state.gesture==='facepalm'?205:skin.id==='stick'?253:280}));
       const weight=Math.max(0,Math.min(1,Number(state.contactWeight??Math.min(1,Math.abs(Number(state.handRY??0))/231))));
       target={x:fkEnd.x+(anchor.x-fkEnd.x)*weight,y:fkEnd.y+(anchor.y-fkEnd.y)*weight};
     }
@@ -54,6 +58,16 @@ export function solveBodyLimb(project:ProjectDocument,bones:Bone[],world:Map<str
     }
     if(manual) target=fkEnd;
     let solved=state[`fk${leg?'Leg':'Arm'}${side}`] ? {start,joint,end:fkEnd} : solveLimb(start,target,upper,lower,pole,{softness:leg?0:5,minBend:leg?0:5,maxBend:155,bendDirection:leg||String(state.gesture).includes('walk')||state.gesture==='run'?undefined:side==='R'&&['thinking','hand-on-chin','facepalm','hands-on-hips'].includes(String(state.gesture))?1:state.gesture==='hands-on-hips'?-1:side==='L'?1:-1});
+    if(!leg && !manual && state.gesture!=='folded-arms' && (contactArm || solved.joint.y>start.y)) {
+      // Contact targets cannot pull the elbow across the chest. Limit shoulder
+      // adduction, then solve the forearm from that elbow without stretching.
+      const inward=side==='R'?1:-1;
+      if ((solved.joint.x-start.x)*inward > -upper*.15) {
+        const elbow={x:start.x+-inward*upper*.15,y:start.y+upper*Math.sqrt(1-.15*.15)};
+        const angle=Math.atan2(target.y-elbow.y,target.x-elbow.x);
+        solved={start,joint:elbow,end:{x:elbow.x+Math.cos(angle)*lower,y:elbow.y+Math.sin(angle)*lower},clamped:true};
+      }
+    }
     if(!leg && !manual) {
       const rest=solveLimb(start,fkEnd,upper,lower,pole);
       solved=blendLimb(rest,solved,Number(state.poseWeight??(Math.abs(Number(state.handLX??0))+Math.abs(Number(state.handLY??0))+Math.abs(Number(state.handRX??0))+Math.abs(Number(state.handRY??0))>0?1:0)));
@@ -84,7 +98,7 @@ export function BodyRig({ project, bones, world, state, time, pass, resolveAsset
     const rotation = Math.atan2(solved.end.y - solved.joint.y, solved.end.x - solved.joint.x) * 180 / Math.PI - 90 + Number(state[`wrist${side}`] ?? 0) + animatedEnd.rotation + (bones.find(b => b.id === `wrist${side}`)?.rotation ?? 0);
     const hand = (state[`hand${side}Pose`] ?? 'relaxed') as HandPose;
     return <g key={startId} data-rig-node={startId} data-pose-issues={validateLimb(solved,start,upper,lower).join(",")} transform={toSvgMatrix(parent)}>
-      <path d={curve.path} fill="none" stroke={skin.outline} strokeWidth={width + (skin.id === 'hoodie' ? 5 : 0)} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={curve.path} fill="none" stroke={skin.outline} strokeWidth={width + (skin.id === 'hoodie' ? 5 : 0)} strokeLinecap={skin.id === 'hoodie' && !leg ? 'butt' : 'round'} strokeLinejoin="round" />
       <path d={curve.path} fill="none" stroke={color} strokeWidth={width} strokeLinecap="round" strokeLinejoin="round" />
       {skin.id === 'hoodie' && (leg ? <g transform={`translate(${solved.end.x} ${solved.end.y})`}><path d="M -25 -8 Q -32 7 -32 16 Q -10 25 33 15 L 32 4 Q 12 -10 -25 -8" fill={skin.id === 'hoodie' ? '#181820' : '#111'} stroke="#111" strokeWidth="3" /></g> : <g transform={`translate(${solved.end.x} ${solved.end.y}) rotate(${rotation}) scale(${side === 'L' ? -1 : 1} 1)`}>
         {skin.id === 'hoodie' && <path d="M -24 -14 Q 0 -18 24 -14 L 22 7 Q 0 11 -22 7 Z" fill="#ba0000" stroke="#181818" strokeWidth="3" />}

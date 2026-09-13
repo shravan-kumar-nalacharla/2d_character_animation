@@ -27,3 +27,9 @@ The wave protrusion was traced by rendering individual extracted SVG layers: `sh
 Unit tests exercise transforms, profile migration, attachment distances through the screenshot-failure clips, soft/mirrored IK, IK/FK length preservation, basic collision reporting, deterministic planning, manual priority, multilingual visemes and the existing face suite. Screenshots under `docs/body-qa/after-*` are actual QA-page captures; `before-*` are the user's supplied failure screenshots, not reconstructed captures.
 
 The collision validator is geometric and pose-aware, not a physics/contact solver for arbitrary manually authored scenes. Detailed prop geometry, camera choreography and acoustic forced alignment are not implemented. Side/rear skins remain simplified vector silhouettes; orientation changes use discrete drawings. The broader cinematic automation roadmap is therefore not fully complete.
+
+## Shoulder and compact-limb follow-up
+
+Opened the hoodie sleeve outline at its shoulder cap while retaining side contours. Stick arms now total about 160px and legs 190px against the 300px shirt, with gesture offsets scaled to 75%. Automatic lowered elbows stay outside the shoulder; chin contact clips ease upper-arm foreshortening rather than folding the elbow across the chest. Manual limb tracks retain priority.
+
+Validation: 84 tests, production build, and asset validation pass. Live QA inspected thinking, explaining and waving in both variants; screenshots are in docs/body-qa/after-compact-thinking.png and after-open-shoulders.png. Existing export/video regression baselines were not rerun or updated for this follow-up. Chin/face contact remains an approximate 2D pose, not a 3D arm model.
