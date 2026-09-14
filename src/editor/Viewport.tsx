@@ -213,6 +213,7 @@ export function Viewport({ initialViewBox, project, selectedId, showBones, showC
           {curved && <BodyRig project={project} bones={animatedBones} world={world} state={acting} time={currentTime} pass="front" resolveAssetUrl={resolveAssetUrl} debug={showControls} onTargetDrag={startControllerDrag} />}
           <g visibility={curved && viewInfo(headView).rear ? "hidden" : "visible"} transform={world.get("head") ? toSvgMatrix(world.get("head")!) : undefined}>
             <FaceRig
+              expressionDriven={project.animation.tracks.some(track=>!track.muted && track.target.startsWith("face.eye") && track.keyframes.length>0)}
               view={curved ? headView : "front"}
               face={hasGeneratedAnimation ? { ...animatedFace, blink:Math.max(animatedFace.blink,Number(acting.turnBlink??0)), previewAutomation: false } : animatedFace}
               calibration={project.character.calibration}

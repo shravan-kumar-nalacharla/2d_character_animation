@@ -231,7 +231,7 @@ function normalizeTrack(track: Partial<AnimationTrack>): AnimationTrack {
   return { id: track.id ?? crypto.randomUUID(), name: track.name ?? "Animation", layer, target: track.target ?? "", valueType: track.valueType ?? "number", muted: track.muted ?? false, locked: track.locked ?? false, generated: track.generated ?? (layer !== "base" && layer !== "manual"), keyframes: track.keyframes ?? [], metadata: track.metadata, activeRange: track.activeRange };
 }
 function performanceCacheKey(audioHash: string, provider: Provider, transcript: TimedTranscript, profile: ProjectDocument["performanceProfile"]) {
-  const input = `${audioHash}|${provider}|body-v4-audio-paced-front|${JSON.stringify(transcript)}|${JSON.stringify(profile)}`;
+  const input = `${audioHash}|${provider}|body-v5-expressions-pockets|${JSON.stringify(transcript)}|${JSON.stringify(profile)}`;
   let hash = 2166136261;
   for (let index = 0; index < input.length; index++) hash = Math.imul(hash ^ input.charCodeAt(index), 16777619);
   return `algowzxd.performance.${(hash >>> 0).toString(16)}`;

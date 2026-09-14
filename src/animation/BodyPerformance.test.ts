@@ -23,6 +23,15 @@ const plan = (segments: PerformanceSegment[]): PerformancePlan => ({ version: 1,
 const profile = defaultPerformanceProfile();
 
 describe('whole-body performance', () => {
+  it('rests hoodie hands inside pockets and preserves a manual hand edit', () => {
+    const project=createDefaultProject(),bones=profileBones(project.rig.bones,'hoodie'),world=calculateWorldMatrices(bones);
+    for(const side of ['L','R'] as const) {
+      const result=solveBodyLimb(project,bones,world,{},side,false);
+      expect(result.pocketed).toBe(true);
+      expect(validateLimb(result.solved,result.start,result.upper,result.lower)).toEqual([]);
+    }
+    expect(solveBodyLimb(project,bones,world,{manualArmR:1},'R',false).pocketed).toBe(false);
+  });
   it('renders angular elbows and holds generated body poses on twos at 12fps', () => {
     expect(limbCurve({x:0,y:0},{x:20,y:40},{x:60,y:40},true).path).toBe('M 0.000 0.000 L 20.000 40.000 L 60.000 40.000');
     const tracks=bodyPerformanceTracks(plan([{...segment(),direction:{gesture:'explain-right'}}]),profile);

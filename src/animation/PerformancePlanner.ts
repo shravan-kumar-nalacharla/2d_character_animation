@@ -75,6 +75,7 @@ function expressionTracks(plan: PerformancePlan): AnimationTrack[] {
   const last = plan.segments.at(-1); if (last && previous !== "neutral") keys.push(key("expression-final-rest", last.end + 0.25, "neutral", "hold", source(plan)));
   const shared = dedupe(keys);
   return [
+    track("auto-expression-base", "AI Expression · Face", "aiExpression", "face.eyeExpression", "string", shared.map(item=>({...item,id:`${item.id}-face`}))),
     track("auto-expression-left", "AI Expression · Left Eye", "aiExpression", "face.eyeSystem.left.expression", "string", shared.map((item) => ({ ...item, id: `${item.id}-left` }))),
     track("auto-expression-right", "AI Expression · Right Eye", "aiExpression", "face.eyeSystem.right.expression", "string", shared.map((item) => ({ ...item, id: `${item.id}-right` }))),
   ];

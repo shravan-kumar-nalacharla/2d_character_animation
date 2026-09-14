@@ -2,10 +2,10 @@ import type { BodyView } from '../rig/FullBody';
 import { eyeExpressions, mouthPackBase, productionViseme, productionVisemes } from "../character/FaceAssets";
 import { browPresets, expressionForSide, eyeDesigns } from "../character/EyePresets";
 import { faceFxUrl, rasterBrowUrl, rasterEyes, rasterEyeUrl } from "../character/RasterFaceAssets";
-import { isModularExpressionSlug, modularExpressionFor, modularExpressionUrl } from "../character/ModularExpressionAssets";
+import { isModularExpressionSlug, modularExpressionEyePreset, modularExpressionFor, modularExpressionUrl } from "../character/ModularExpressionAssets";
 import type { BrowPreset, CryControls, CryState, EyeExpression, EyeSideState, FaceAssetState, FaceCalibration, FaceState, ProductionViseme } from "../project/schema";
 
-interface Props { view?: BodyView; face: FaceState; calibration: FaceCalibration; assets?: FaceAssetState; time: number; playing: boolean; headMotion?: { rotation: number; x: number; y: number }; resolveAssetUrl?(url: string): string }
+interface Props { expressionDriven?: boolean; view?: BodyView; face: FaceState; calibration: FaceCalibration; assets?: FaceAssetState; time: number; playing: boolean; headMotion?: { rotation: number; x: number; y: number }; resolveAssetUrl?(url: string): string }
 interface ClassicPreset { folder: string; eye: [number, number]; eyeY?: number; openness?: number }
 const classicPresets: Record<string, ClassicPreset> = {
   neutral: { folder: "normal-eyes-2", eye: [18, 34] }, soft: { folder: "normal-eyes-2", eye: [18, 32], openness: .92 }, sad: { folder: "sad-eyes", eye: [18, 34], openness: .92 }, cunning: { folder: "cunning-eyes", eye: [30, 13], openness: .82 }, serious: { folder: "serious-eyes", eye: [30, 18], openness: .86 }, curious: { folder: "curious-eyes-middle", eye: [16, 31] }, angry: { folder: "angry-eyes", eye: [25, 27], openness: .9 }, shock: { folder: "shock-eyes", eye: [14, 14], openness: 1.18 }, suspicious: { folder: "cunning-eyes", eye: [30, 13], openness: .76 }, tired: { folder: "serious-eyes", eye: [30, 18], openness: .68 }, concerned: { folder: "sad-eyes", eye: [18, 34], openness: .86 }, closed: { folder: "closed-eyes", eye: [30, 5], eyeY: 178, openness: .12 },
@@ -23,11 +23,11 @@ export function resolveFacePreview(face: FaceState, time: number, playing: boole
 }
 export function canonicalExpression(value: EyeExpression): EyeExpression { if (value.startsWith("curious")) return "curious"; if (value === "lookLeft" || value === "lookRight") return "neutral"; return value; }
 
-export function FaceRig({ view = 'front', face, calibration, assets, time, playing, headMotion = { rotation: 0, x: 0, y: 0 }, resolveAssetUrl = identity }: Props) {
+export function FaceRig({ expressionDriven = false, view = 'front', face, calibration, assets, time, playing, headMotion = { rotation: 0, x: 0, y: 0 }, resolveAssetUrl = identity }: Props) {
   const cryId=useId().replace(/:/g,"");
   const assetState = assets ?? { activeMouthPack: "v3", activeEyePack: "raster-v1", mouthOverrides: {}, eyeOverrides: {}, browOverrides: {} };
   const selectedModularExpression = isModularExpressionSlug(assetState.modularExpressionV2) ? assetState.modularExpressionV2 : undefined;
-  const modularSlugFor = (expression: EyeExpression) => expression === "blink" ? modularExpressionFor(expression) : selectedModularExpression ?? modularExpressionFor(expression);
+  const modularSlugFor = (expression: EyeExpression) => expression === "blink" ? modularExpressionFor(expression) : (selectedModularExpression && (!expressionDriven || modularExpressionEyePreset[selectedModularExpression] === expression) ? selectedModularExpression : modularExpressionFor(expression));
   const preview = resolveFacePreview(face, time, playing), baseExpression = canonicalExpression(face.eyeExpression);
   const gazeX = preview.gazeX * calibration.gazeRangeX, gazeY = preview.gazeY * calibration.gazeRangeY;
   const parallax = calibration.parallaxStrength ?? .45, featureX = (-headMotion.rotation * .15 + headMotion.x * .04) * parallax, featureY = (Math.abs(headMotion.rotation) * .025 + headMotion.y * .04) * parallax;

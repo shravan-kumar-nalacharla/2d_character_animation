@@ -68,9 +68,11 @@ export function solveBodyLimb(project:ProjectDocument,bones:Bone[],world:Map<str
         solved={start,joint:elbow,end:{x:elbow.x+Math.cos(angle)*lower,y:elbow.y+Math.sin(angle)*lower},clamped:true};
       }
     }
+    const pocketTarget=applyToPoint(parentInverse,applyToPoint(world.get('torso')!,{x:side==='R'?850:940,y:510}));
+    const pocketRest=skin.id==='hoodie' && view==='front' && !leg && !manual;
     if(!leg && !manual) {
-      const rest=solveLimb(start,fkEnd,upper,lower,pole);
-      solved=blendLimb(rest,solved,Number(state.poseWeight??(Math.abs(Number(state.handLX??0))+Math.abs(Number(state.handLY??0))+Math.abs(Number(state.handRX??0))+Math.abs(Number(state.handRY??0))>0?1:0)));
+      const rest=solveLimb(start,pocketRest?pocketTarget:fkEnd,upper,lower,pole);
+      solved=blendLimb(rest,solved,pocketRest && !contactArm && !Number(state[`hand${side}X`]??0) && !Number(state[`hand${side}Y`]??0) ? 0 : Number(state.poseWeight??(Math.abs(Number(state.handLX??0))+Math.abs(Number(state.handLY??0))+Math.abs(Number(state.handRX??0))+Math.abs(Number(state.handRY??0))>0?1:0)));
     }
     const ikBlend=Number(state[`ik${leg?'Leg':'Arm'}${side}`]??1);
     if(ikBlend<1 && !manual) solved=blendLimb({start,joint,end:fkEnd},solved,ikBlend);
@@ -83,7 +85,7 @@ export function solveBodyLimb(project:ProjectDocument,bones:Bone[],world:Map<str
       solved={start,joint:elbow,end:{x:elbow.x+Math.cos(lowerAngle)*lower,y:elbow.y+Math.sin(lowerAngle)*lower},clamped:false};
     }
 
-  return {parent,start,target,pole,solved,upper,lower,animatedEnd};
+  return {parent,start,target,pole,solved,upper,lower,animatedEnd,pocketed:pocketRest && Math.hypot(solved.end.x-pocketTarget.x,solved.end.y-pocketTarget.y)<24};
 }
 
 export function BodyRig({ project, bones, world, state, time, pass, resolveAssetUrl, debug = false, onTargetDrag }: { project: ProjectDocument; bones: Bone[]; world: Map<string, Matrix>; state: Record<string, number | string>; time: number; pass: 'back' | 'front'; resolveAssetUrl(url: string): string; debug?: boolean; onTargetDrag?(event: React.PointerEvent, boneId: string): void }) {
@@ -92,7 +94,7 @@ export function BodyRig({ project, bones, world, state, time, pass, resolveAsset
   const limb = (side: 'L' | 'R', leg: boolean) => {
     const startId = `${leg ? 'thigh' : 'upperArm'}${side}`, jointId = `${leg ? 'shin' : 'forearm'}${side}`, endId = `${leg ? 'foot' : 'hand'}${side}`;
     if (!bones.some(b => b.id === startId) || bones.find(b => b.id === startId)?.visible === false) return null;
-    const {parent,start,target,pole,solved,upper,lower,animatedEnd}=solveBodyLimb(project,bones,world,state,side,leg);
+    const {parent,start,target,pole,solved,upper,lower,animatedEnd,pocketed}=solveBodyLimb(project,bones,world,state,side,leg);
     const curve=limbCurve(start,solved.joint,solved.end,true);
     const width = leg ? skin.legWidth : skin.armWidth, color = leg ? skin.legColor : skin.armColor;
     const rotation = Math.atan2(solved.end.y - solved.joint.y, solved.end.x - solved.joint.x) * 180 / Math.PI - 90 + Number(state[`wrist${side}`] ?? 0) + animatedEnd.rotation + (bones.find(b => b.id === `wrist${side}`)?.rotation ?? 0);
@@ -101,8 +103,10 @@ export function BodyRig({ project, bones, world, state, time, pass, resolveAsset
       <path d={curve.path} fill="none" stroke={skin.outline} strokeWidth={width + (skin.id === 'hoodie' ? 5 : 0)} strokeLinecap={skin.id === 'hoodie' && !leg ? 'butt' : 'round'} strokeLinejoin="round" />
       <path d={curve.path} fill="none" stroke={color} strokeWidth={width} strokeLinecap="round" strokeLinejoin="round" />
       {skin.id === 'hoodie' && (leg ? <g transform={`translate(${solved.end.x} ${solved.end.y})`}><path d="M -25 -8 Q -32 7 -32 16 Q -10 25 33 15 L 32 4 Q 12 -10 -25 -8" fill={skin.id === 'hoodie' ? '#181820' : '#111'} stroke="#111" strokeWidth="3" /></g> : <g transform={`translate(${solved.end.x} ${solved.end.y}) rotate(${rotation}) scale(${side === 'L' ? -1 : 1} 1)`}>
-        {skin.id === 'hoodie' && <path d="M -24 -14 Q 0 -18 24 -14 L 22 7 Q 0 11 -22 7 Z" fill="#ba0000" stroke="#181818" strokeWidth="3" />}
-        <image href={resolveAssetUrl(`/production_character/performance/hands/${hand}.svg`)} x={-32*skin.handScale} y={-2*skin.handScale} width={64*skin.handScale} height={78*skin.handScale} />
+        {!pocketed && <image href={resolveAssetUrl(`/production_character/performance/hands/${hand}.svg`)} x={-32*skin.handScale} y={-2*skin.handScale-6} width={64*skin.handScale} height={78*skin.handScale} />}
+        <path d="M -24 -14 Q 0 -18 24 -14 L 22 7 Q 0 11 -22 7 Z" fill="#ba0000" stroke="#181818" strokeWidth="3" />
+        {pocketed && <path data-pocket-cover={side} d="M -27 1 Q 0 10 27 1 L 27 27 L -27 27 Z" fill="#e60000" stroke="none"/>}
+        {pocketed && <path d="M -27 1 Q 0 10 27 1" fill="none" stroke="#181818" strokeWidth="3"/>}
       </g>)}
       {debug && <g className="body-debug" fill="none" stroke="#17bda7" strokeWidth="2"><circle fill="transparent" style={{cursor:'grab'}} onPointerDown={event => onTargetDrag?.(event,endId)} cx={target.x} cy={target.y} r="14" /><circle fill="transparent" style={{cursor:'grab'}} onPointerDown={event => onTargetDrag?.(event,`${leg ? 'knee' : 'elbow'}Pole${side}`)} cx={solved.joint.x} cy={solved.joint.y} r="9" /><circle cx={pole.x} cy={pole.y} r="6" stroke="#ee9900"/><path pointerEvents="none" d={`M ${start.x} ${start.y} L ${solved.joint.x} ${solved.joint.y} L ${solved.end.x} ${solved.end.y}`} /></g>}
     </g>;

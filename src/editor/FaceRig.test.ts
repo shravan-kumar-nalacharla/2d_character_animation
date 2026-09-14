@@ -5,6 +5,12 @@ import { createDefaultProject, defaultFace } from "../project/project";
 import { canonicalExpression, cryLoopSeconds, cryShakeOffset, eyeCenters, FaceRig, outsideAlphaPixelCount, resolveFacePreview, tearFlowOffset } from "./FaceRig";
 
 describe("face preview", () => {
+  it('lets animated emotions replace a selected static expression asset', () => {
+    const project=createDefaultProject();
+    const svg=renderToStaticMarkup(createElement(FaceRig,{expressionDriven:true,face:{...defaultFace(),eyeExpression:'angry'},assets:{...project.character.faceAssets!,activeEyePack:'modular-v2',modularExpressionV2:'neutral-attentive'},calibration:project.character.calibration,time:1,playing:true}));
+    expect(svg).toContain('angry-gritted-teeth_right-eye.png');
+    expect(svg).toContain('angry-gritted-teeth_mouth.png');
+  });
   it('uses the original mouth attachment during speech instead of a generated drawing', () => {
     const project=createDefaultProject();
     const svg=renderToStaticMarkup(createElement(FaceRig,{face:{...defaultFace(),mouth:'AA',mouthIntensity:1},calibration:project.character.calibration,time:1,playing:true}));
