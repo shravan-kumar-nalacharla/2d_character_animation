@@ -1,4 +1,4 @@
-import type { AnimationTrack, CharacterPerformanceProfile, PerformancePlan, PerformanceSegment } from '../project/schema';
+import type { AnimationTrack, CharacterPerformanceProfile, PerformancePlan, PerformanceSegment, TimedTranscript } from '../project/schema';
 import { bodyViews, walkingFoot, type BodyView, type HandPose } from '../rig/FullBody';
 
 export const gestures = ['idle', 'explain-left', 'explain-right', 'explain-both', 'point-left', 'point-right', 'point-up', 'point-down', 'raise-hand', 'shrug', 'disagree', 'confident', 'angry-emphasis', 'excited', 'confused', 'thinking', 'folded-arms', 'hands-on-hips', 'hand-on-chin', 'wave', 'counting', 'small-beat', 'large-beat', 'lean-forward', 'lean-back', 'weight-shift', 'step', 'walk', 'slow-walk', 'confident-walk', 'sad-walk', 'crouch', 'sit', 'idle-listening', 'idle-tired', 'talking-calm', 'talking-energetic', 'thumbs-up', 'facepalm', 'shock-recoil', 'sad-posture', 'crying-posture', 'laughing', 'celebration', 'run', 'sit-down', 'stand-up', 'enter-left', 'enter-right', 'exit-left', 'exit-right', 'turn-side', 'return-front'] as const;
@@ -63,10 +63,11 @@ export function directBody(segment: PerformanceSegment, index: number): BodyDire
   else if (/\byou\b/.test(text)) gesture = index % 2 ? 'point-left' : 'point-right';
   else if (segment.intent === 'explanation') gesture = index % 2 ? 'explain-left' : 'explain-right';
   else if (segment.accents.some(a => a.importance > .65)) gesture = 'small-beat';
+  else if (text.trim().split(/\s+/).length>=6) gesture = index%2?'explain-left':'explain-right';
   return { gesture, handPose, intensity: segment.emotion.intensity, shoulderPose: emotion === 'sad' || emotion === 'tired' ? 9 : undefined };
 }
 
-export function bodyPerformanceTracks(plan: PerformancePlan, profile: CharacterPerformanceProfile): AnimationTrack[] {
+export function bodyPerformanceTracks(plan: PerformancePlan, profile: CharacterPerformanceProfile, transcript?: TimedTranscript): AnimationTrack[] {
   const tracks = new Map<string, AnimationTrack>();
   const strength = (profile.fullBodyStrength ?? 1) * (profile.gestureStrength ?? .85), frequency = profile.gestureFrequency ?? .45;
   let available = 0, previous: Gesture = 'idle', currentView: BodyView = 'front';
@@ -75,7 +76,21 @@ export function bodyPerformanceTracks(plan: PerformancePlan, profile: CharacterP
     if (!track) { track = { id: `auto-body-${target}`, name: `Body · ${target.replace('body.', '')}`, layer: 'gesture', target, valueType: typeof value === 'number' ? 'number' : 'string', generated: true, muted: false, locked: false, keyframes: [] }; tracks.set(target, track); }
     track.keyframes.push({ id: `${target}-${track.keyframes.length}`, time, value, source: 'rule-performance', interpolation: typeof value === 'number' ? 'ease-in-out' : 'hold' });
   };
-  plan.segments.forEach((segment, index) => {
+  const segments=plan.segments.flatMap(segment=>{
+    if(!transcript || segment.direction || segment.end-segment.start<6) return [segment];
+    const words=transcript.segments.flatMap(s=>s.words).filter(w=>w.start>=segment.start && w.start<segment.end);
+    if(!words.length) return [segment];
+    const phrases:PerformanceSegment[]=[];
+    for(const word of words) {
+      const phrase=phrases.at(-1);
+      if(!phrase || word.start-phrase.start>=4.5) phrases.push({...segment,id:`${segment.id}-body-${phrases.length}`,start:word.start,end:word.end,text:word.text});
+      else { phrase.end=word.end; phrase.text+=' '+word.text; }
+    }
+    return phrases;
+  });
+  segments.forEach((originalSegment, index) => {
+    // A cooldown ending mid-sentence must not discard the entire next sentence.
+    const segment={...originalSegment,start:Math.max(originalSegment.start,available)};
     if (strength <= 0 || frequency <= 0 || segment.start < available || segment.end - segment.start < .65) return;
     const direction = {...directBody(segment, index)};
     if(direction.gesture==='turn-side') direction.characterView='threeQuarterLeft';
@@ -93,7 +108,7 @@ export function bodyPerformanceTracks(plan: PerformancePlan, profile: CharacterP
     if(index===0 && !segment.direction && /\b(sitting|seated)\b/i.test(profile.sceneDescription??'')) gesture='sit-down';
     add('body.shotSuggestion',segment.start,gesture.includes('walk')||gesture==='run'||/^(enter|exit)-/.test(gesture)?'full-body':gesture==='thinking'?'medium-close':'medium');
     if (gesture === 'idle') return;
-    if (gesture === previous && !segment.direction) gesture = gesture.startsWith('explain') ? (gesture === 'explain-left' ? 'explain-right' : 'explain-left') : 'weight-shift';
+    if (gesture === previous && !segment.direction) gesture = gesture.startsWith('explain') ? (gesture === 'explain-left' ? 'explain-right' : 'explain-left') : 'small-beat';
     const pose = gesturePoses[gesture], start = segment.start, duration = Math.min(segment.end - start, gesture === 'thinking' || gesture === 'folded-arms' ? 3.2 : 2.2);
     if (gesture.includes('walk') || gesture === 'step' || gesture === 'run' || /^(enter|exit)-/.test(gesture)) {
       const speed = gesture === 'slow-walk' || gesture === 'sad-walk' ? .65 : gesture === 'run' ? 1.7 : 1, stride = gesture === 'confident-walk' || gesture==='run' ? 110 : 85;
@@ -133,7 +148,7 @@ export function bodyPerformanceTracks(plan: PerformancePlan, profile: CharacterP
     }
     if (direction.headDirection) for (const [phase,scale] of [[0,0],[.3,1],[.75,1],[1,0]]) add('bone.head.rotation', start+duration*phase, direction.headDirection*scale);
     if (!tracks.has('body.gesture')) add('body.gesture', 0, 'idle'); add('body.gesture', start, gesture); add('body.gesture', start + duration, 'idle');
-    available = start + duration + .6 + (1 - frequency) * 2.4; previous = gesture;
+    available = start + duration + .35 + (1 - frequency) * 1.2; previous = gesture;
   });
   return [...tracks.values()].map(track => ({ ...track, keyframes: [...new Map(track.keyframes.map(key => [key.time, key])).values()].sort((a,b) => a.time-b.time) }));
 }

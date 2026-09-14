@@ -1,7 +1,7 @@
 import { mouthEmotion } from '../character/SpeechMouth';
 import type { AnimationKeyframe, AnimationTrack, AudioAnalysis, AudioSource, CharacterPerformanceProfile, LanguageCode, MouthShape, PerformancePlan, TimedTranscript } from "../project/schema";
 import { VisemeMapper, pronunciationUnits } from "../character/VisemeMapper";
-import { VisemeSequenceOptimizer, type OptimizedViseme, type VisemeOptimizationDiagnostics } from "./VisemeSequenceOptimizer";
+import { limitedSpeechCues, VisemeSequenceOptimizer, type OptimizedViseme, type VisemeOptimizationDiagnostics } from "./VisemeSequenceOptimizer";
 import { sanitizeMotionTracks } from "./MotionQuality";
 import { bodyPerformanceTracks } from './BodyPerformance';
 
@@ -20,12 +20,12 @@ export const allPlannerOptions: PlannerOptions = { lipSync: true, expressions: t
 
 export async function planAnimation(audio: AudioSource, transcript: TimedTranscript, analysis: AudioAnalysis, performance: PerformancePlan, profile: CharacterPerformanceProfile, seed: number, options: PlannerOptions = allPlannerOptions, alignmentProvider: PhonemeAlignmentProvider = new TranscriptHeuristicAlignmentProvider()): Promise<AnimationTrack[]> {
   const tracks: AnimationTrack[] = [];
-  if (options.lipSync) { const raw = await alignmentProvider.align(audio, transcript, analysis), optimized = new VisemeSequenceOptimizer().optimize(raw, transcript, profile); tracks.push(mouthTrack(optimized.events, profile, optimized.diagnostics, raw), ...continuousMouthTracks(optimized.events)); }
+  if (options.lipSync) { const raw = await alignmentProvider.align(audio, transcript, analysis), optimized = new VisemeSequenceOptimizer().optimize(limitedSpeechCues(raw), transcript, profile); tracks.push(mouthTrack(optimized.events, profile, optimized.diagnostics, raw), ...continuousMouthTracks(optimized.events)); }
   if (options.expressions) tracks.push(...expressionTracks(performance), eyeOpennessTrack(performance), ...mouthPerformanceTracks(performance), ...emotionalMouthTracks(performance));
   if (options.eyes) tracks.push(...gazeTracks(performance, profile));
   if (options.eyebrows) tracks.push(...eyebrowTracks(performance, profile));
   if (options.head) tracks.push(...headTracks(performance, profile));
-  if (options.body) tracks.push(bodyTrack(performance, profile), pauseBreathingTrack(analysis), ...bodyPerformanceTracks(performance, profile));
+  if (options.body) tracks.push(bodyTrack(performance, profile), pauseBreathingTrack(analysis), ...bodyPerformanceTracks(performance, profile, transcript));
   if (options.blink) tracks.push(blinkTrack(audio.duration, performance, seed));
   return sanitizeMotionTracks(tracks.filter((track) => track.keyframes.length > 0));
 }

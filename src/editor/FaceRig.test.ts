@@ -5,6 +5,12 @@ import { createDefaultProject, defaultFace } from "../project/project";
 import { canonicalExpression, cryLoopSeconds, cryShakeOffset, eyeCenters, FaceRig, outsideAlphaPixelCount, resolveFacePreview, tearFlowOffset } from "./FaceRig";
 
 describe("face preview", () => {
+  it('uses the original mouth attachment during speech instead of a generated drawing', () => {
+    const project=createDefaultProject();
+    const svg=renderToStaticMarkup(createElement(FaceRig,{face:{...defaultFace(),mouth:'AA',mouthIntensity:1},calibration:project.character.calibration,time:1,playing:true}));
+    expect(svg).toContain('/mouths/v3/AA.svg');
+    expect(svg).toContain('data-face-part="mouth"');
+  });
   it("is deterministic and respects manual mode", () => {
     const face = defaultFace();
     expect(resolveFacePreview(face, 0.2, true)).toEqual(resolveFacePreview(face, 0.2, true));

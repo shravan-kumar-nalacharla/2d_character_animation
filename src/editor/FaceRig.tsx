@@ -1,4 +1,3 @@
-import { SpeechMouth } from '../character/SpeechMouth';
 import type { BodyView } from '../rig/FullBody';
 import { eyeExpressions, mouthPackBase, productionViseme, productionVisemes } from "../character/FaceAssets";
 import { browPresets, expressionForSide, eyeDesigns } from "../character/EyePresets";
@@ -72,7 +71,7 @@ export function FaceRig({ view = 'front', face, calibration, assets, time, playi
   const continuousWidth = 1 + (face.mouthWidth ?? 0) * .16 - (face.lipRound ?? 0) * .14, continuousHeight = 1 + (face.jawOpen ?? 0) * .34 + (face.lipRound ?? 0) * .12 - (face.lipPress ?? 0) * .14, intensity = .94 + (face.mouthIntensity ?? 0) * .08;
   const width = 52 * calibration.mouthVisualScale * (mouthScale[preview.mouth] ?? 1) * mouthTransform.scaleX * continuousWidth * intensity, height = 26 * calibration.mouthVisualScale * (mouthScale[preview.mouth] ?? 1) * mouthTransform.scaleY * continuousHeight * intensity;
   const mouthX = 893 + mouthTransform.x + (face.mouthOffsetX ?? 0) + featureX * .55, mouthY = 222 + mouthTransform.y + (face.mouthOffsetY ?? 0) + featureY * .45 + Math.max(0, height - 26 * calibration.mouthVisualScale) * .2;
-  const modularSlug = modularSlugFor(baseExpression), useSilentExpressionMouth = assetState.activeEyePack === "modular-v2" && preview.mouth === "REST";
+  const modularSlug = modularSlugFor(baseExpression), useSilentExpressionMouth = (assetState.activeEyePack === "modular-v2" || baseExpression !== "neutral") && preview.mouth === "REST";
   const showModularShading = assetState.activeEyePack === "modular-v2" && modularSlug !== "sad-teary" && modularSlug !== "crying-breakdown";
   const mouthHref = useSilentExpressionMouth ? modularExpressionUrl(modularSlug, "mouth") : shadowRage && preview.mouth === "REST" ? "/production_character/illustrator2024/mouths/frown.svg" : assetState.mouthOverrides[preview.mouth]?.dataUrl ?? `${mouthPackBase}/${preview.mouth}.svg`, glasses = face.accessories?.sunglasses;
   const renderedMouthWidth = useSilentExpressionMouth ? 70 * mouthTransform.scaleX : width, renderedMouthHeight = useSilentExpressionMouth ? 70 * mouthTransform.scaleY : height;
@@ -81,7 +80,7 @@ export function FaceRig({ view = 'front', face, calibration, assets, time, playi
     {showModularShading && <image data-face-effect="expression-shading-v2" href={resolveAssetUrl(modularExpressionUrl(modularSlug, "face-shading"))} x="824" y="118" width="140" height="140" opacity=".72" clipPath={`url(#expression-face-${cryId})`}/>}
     {shadowRage && <ShadowRage resolveAssetUrl={resolveAssetUrl}/>} {extraFx !== "none" && <AngerMark kind={extraFx} resolveAssetUrl={resolveAssetUrl}/>}<g data-cry-eyes-null="CRY_EYES_NULL" transform={eyeShakeTransform}>{renderBrow("left")}{renderBrow("right")}{renderSide("left")}{renderSide("right")}</g>
     {cryControls.enableTears && <FaceContainedTears idPrefix={cryId} state={cryState} time={time} controls={cryControls}/>} 
-    <g transform={`rotate(${(face.mouthRotation ?? 0) + (mouthTransform.rotation ?? 0)} ${mouthX} ${mouthY})`}>{(face.mouthIntensity ?? 0) > 0 && !assetState.mouthOverrides[preview.mouth] ? <g transform={`translate(${mouthX} ${mouthY}) scale(${width/52} ${height/26})`}><SpeechMouth face={face} viseme={preview.mouth} /></g> : <image data-face-part="mouth" href={resolveAssetUrl(mouthHref)} x={mouthX - renderedMouthWidth / 2} y={mouthY - renderedMouthHeight / 2} width={renderedMouthWidth} height={renderedMouthHeight} />}</g>
+    <g transform={`rotate(${(face.mouthRotation ?? 0) + (mouthTransform.rotation ?? 0)} ${mouthX} ${mouthY})`}>{<image data-face-part="mouth" href={resolveAssetUrl(mouthHref)} x={mouthX - renderedMouthWidth / 2} y={mouthY - renderedMouthHeight / 2} width={renderedMouthWidth} height={renderedMouthHeight} />}</g>
     {glasses?.visible && <image data-face-accessory="sunglasses" href={resolveAssetUrl("/production_character/illustrator2024/face/accessories/black-sunglasses.svg")} x={824 + glasses.offsetX} y={139 + glasses.offsetY} width={140 * glasses.scale} height={64 * glasses.scale} opacity={glasses.opacity} transform={`rotate(${glasses.rotation} ${894 + glasses.offsetX} ${171 + glasses.offsetY})`} />}
     <g className="face-debug">{calibration.showEyeCenters && <><circle cx={eyeCenters.left + gazeX} cy={176 + gazeY} r="2"/><circle cx={eyeCenters.right + gazeX} cy={176 + gazeY} r="2"/></>}</g>
   </g>;

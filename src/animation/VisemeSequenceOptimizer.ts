@@ -58,3 +58,20 @@ export class VisemeSequenceOptimizer {
   }
 }
 function clamp(value: number, min: number, max: number) { return Math.max(min, Math.min(max, value)); }
+
+/** Limited animation: three original attachments, at most three decisions/second.
+ * Bucket actual phonemes by duration, so openings still follow the spoken sound. */
+export function limitedSpeechCues(raw: VisemeInput[]): VisemeInput[] {
+  const result: VisemeInput[]=[];
+  for (const cue of raw.filter(c=>Number.isFinite(c.start)&&c.end>c.start).slice().sort((a,b)=>a.start-b.start)) {
+    const shape=productionViseme(cue.viseme);
+    const viseme: ProductionViseme=shape==='MBP'||shape==='REST'?'MBP':['OH','OOW','UH'].includes(shape)?'OH':'AA';
+    const previous=result.at(-1);
+    if(previous && cue.start-previous.end<.09 && (cue.start-previous.start<1/3 || previous.viseme===viseme)) {
+      previous.end=Math.max(previous.end,cue.end);
+      // A sustained closure wins its hold; otherwise retain the opening already chosen.
+      if(viseme==='MBP' && cue.end-cue.start>=.12) previous.viseme=viseme;
+    } else result.push({...cue,viseme});
+  }
+  return result;
+}

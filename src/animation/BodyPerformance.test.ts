@@ -125,8 +125,21 @@ describe('whole-body performance', () => {
     const a=bodyPerformanceTracks(input,profile), b=bodyPerformanceTracks(input,profile);
     expect(a).toEqual(b);
     const events=a.find(t=>t.target==='body.gesture')!.keyframes.filter(k=>k.value!=='idle');
-    for(let i=1;i<events.length;i++) expect(events[i].time-events[i-1].time).toBeGreaterThan(2.8);
+    const timeline=a.find(t=>t.target==='body.gesture')!.keyframes;
+    for(let i=1;i<events.length;i++) {
+      const release=timeline.find(k=>k.time>events[i-1].time && k.value==='idle')!;
+      expect(events[i].time-release.time).toBeGreaterThanOrEqual(.35);
+    }
     expect(bodyPerformanceTracks(input,{...profile,gestureFrequency:0})).toEqual([]);
+  });
+  it('plans more than one meaningful action inside a long timed sentence', () => {
+    const transcript=transcriptFromText('Hello everyone welcome to this lesson today we have three things to explain and then you can try them yourself',12);
+    const long={...segment(transcript.segments.map(s=>s.text).join(' ')),end:12};
+    const tracks=bodyPerformanceTracks(plan([long]),profile,transcript);
+    const actions=tracks.find(t=>t.target==='body.gesture')!.keyframes.filter(k=>k.value!=='idle');
+    expect(actions.length).toBeGreaterThan(1);
+    expect(actions[0].value).toBe('wave');
+    expect(actions.some(k=>k.value==='counting')).toBe(true);
   });
   it.each([['three things','counting','three'],["I don't know",'shrug',undefined],['पता नहीं','shrug',undefined],['మూడు','counting','three']])('directs %s semantically', (text,gesture,hand) => {
     expect(directBody(segment(text),0)).toMatchObject({gesture,handPose:hand});
