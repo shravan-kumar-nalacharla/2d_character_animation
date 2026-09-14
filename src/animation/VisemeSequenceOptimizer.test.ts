@@ -4,11 +4,12 @@ import { transcriptFromText } from "../director/PerformanceProviders";
 import { limitedSpeechCues, VisemeSequenceOptimizer, type VisemeInput } from "./VisemeSequenceOptimizer";
 
 describe("VisemeSequenceOptimizer", () => {
-  it('limits talking to three original shapes with sustained holds', () => {
+  it('limits talking to three original shapes at the speed of speech', () => {
     const raw:VisemeInput[]=Array.from({length:120},(_,i)=>({start:i*.05,end:(i+1)*.05,viseme:(['AA','OH','MBP','FV','L','EEI'] as const)[i%6],strength:.8,sourceText:'speech'}));
     const result=limitedSpeechCues(raw);
     expect(new Set(result.map(c=>c.viseme)).size).toBeLessThanOrEqual(3);
-    for(let i=1;i<result.length;i++) expect(result[i].start-result[i-1].start).toBeGreaterThanOrEqual(1/3);
+    for(let i=1;i<result.length;i++) expect(result[i].start-result[i-1].start).toBeGreaterThanOrEqual(.07);
+    expect(result.length).toBeGreaterThan(18);
     expect(result).toEqual(limitedSpeechCues(raw));
   });
   it("collapses duplicates and short A-B-A flicker without losing closures", () => {

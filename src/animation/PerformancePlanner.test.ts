@@ -3,10 +3,23 @@ import { analyzeSamples } from "../audio/AudioAnalysisEngine";
 import { defaultFace, defaultPerformanceProfile } from "../project/project";
 import { RuleBasedPerformanceProvider, transcriptFromText } from "../director/PerformanceProviders";
 import { evaluateFace, evaluateTrack } from "./evaluate";
-import { planAnimation, wordVisemes } from "./PerformancePlanner";
+import { audioGatedVisemes, planAnimation, wordVisemes } from "./PerformancePlanner";
 import type { AnimationTrack } from "../project/schema";
 
 describe("animation planning", () => {
+  it('closes the mouth in measured silence even when transcript timing spans it', async () => {
+    const samples=new Float32Array(48000*3); samples.fill(.3,48000,96000);
+    const analysis=analyzeSamples(samples,48000),transcript=transcriptFromText('Hello there',3),profile=defaultPerformanceProfile();
+    const audio={name:'voice.wav',mimeType:'audio/wav',size:1,duration:3,hash:'silence'};
+    const plan=await new RuleBasedPerformanceProvider().analyzePerformance(audio,transcript,analysis,profile);
+    plan.segments[0].direction={gesture:'turn-side',characterView:'left'};
+    const tracks=await planAnimation(audio,transcript,analysis,plan,profile,381);
+    const mouth=tracks.find(t=>t.target==='face.mouth')!;
+    expect(evaluateTrack(mouth,.5)).toBe('MBP');
+    expect(evaluateTrack(mouth,2.5)).toBe('MBP');
+    expect(tracks.some(t=>t.target==='body.view'||t.target==='body.headView')).toBe(false);
+    expect(audioGatedVisemes([],analysis)).toEqual([]);
+  });
   it("turns a plan into editable deterministic tracks", async () => {
     const audio = { name: "test.wav", mimeType: "audio/wav", size: 1, duration: 3, hash: "hash" };
     const transcript = transcriptFromText("Wait... WHAT?!", 3);
@@ -52,7 +65,7 @@ describe("animation planning", () => {
     const plan = await new RuleBasedPerformanceProvider().analyzePerformance(audio, transcript, analysis, profile);
     const tracks = await planAnimation(audio, transcript, analysis, plan, profile, 381);
     expect(tracks.some((track) => track.target === "face.mouthOffsetX" && track.keyframes.some((frame) => frame.value !== 0))).toBe(true);
-    expect(tracks.find((track) => track.target === "face.mouth")?.keyframes.some((frame) => frame.value === "REST")).toBe(true);
+    expect(tracks.find((track) => track.target === "face.mouth")?.keyframes.some((frame) => frame.value === "MBP")).toBe(true);
     expect(tracks.find((track) => track.target === "face.gazeX")?.keyframes.length).toBeGreaterThanOrEqual(4);
     expect(tracks.find((track) => track.target === "face.jawOpen")?.keyframes.some((frame) => typeof frame.value === "number" && frame.value > 0)).toBe(true);
   });

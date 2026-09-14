@@ -77,13 +77,13 @@ export function bodyPerformanceTracks(plan: PerformancePlan, profile: CharacterP
     track.keyframes.push({ id: `${target}-${track.keyframes.length}`, time, value, source: 'rule-performance', interpolation: typeof value === 'number' ? 'ease-in-out' : 'hold' });
   };
   const segments=plan.segments.flatMap(segment=>{
-    if(!transcript || segment.direction || segment.end-segment.start<6) return [segment];
+    if(!transcript || (segment.direction && !['idle','explain-left','explain-right','explain-both','small-beat','large-beat'].includes(segment.direction.gesture)) || segment.end-segment.start<6) return [segment];
     const words=transcript.segments.flatMap(s=>s.words).filter(w=>w.start>=segment.start && w.start<segment.end);
     if(!words.length) return [segment];
     const phrases:PerformanceSegment[]=[];
     for(const word of words) {
       const phrase=phrases.at(-1);
-      if(!phrase || word.start-phrase.start>=4.5) phrases.push({...segment,id:`${segment.id}-body-${phrases.length}`,start:word.start,end:word.end,text:word.text});
+      if(!phrase || word.start-phrase.start>=4.5) phrases.push({...segment,direction:undefined,id:`${segment.id}-body-${phrases.length}`,start:word.start,end:word.end,text:word.text});
       else { phrase.end=word.end; phrase.text+=' '+word.text; }
     }
     return phrases;

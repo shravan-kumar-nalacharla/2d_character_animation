@@ -23,6 +23,13 @@ const plan = (segments: PerformanceSegment[]): PerformancePlan => ({ version: 1,
 const profile = defaultPerformanceProfile();
 
 describe('whole-body performance', () => {
+  it('renders angular elbows and holds generated body poses on twos at 12fps', () => {
+    expect(limbCurve({x:0,y:0},{x:20,y:40},{x:60,y:40},true).path).toBe('M 0.000 0.000 L 20.000 40.000 L 60.000 40.000');
+    const tracks=bodyPerformanceTracks(plan([{...segment(),direction:{gesture:'explain-right'}}]),profile);
+    expect(bodyState(tracks,.51)).toEqual(bodyState(tracks,.55));
+    const manual={...tracks.find(t=>t.target==='body.handRX')!,generated:false,layer:'manual' as const};
+    expect(bodyState([manual],.51)).not.toEqual(bodyState([manual],.55));
+  });
   it.each(['hoodie','stick'] as const)('keeps %s chin elbows below the shoulder without stretching', mode => {
     const project=createDefaultProject(); project.character.mode=mode;
     for(const gesture of ['thinking','hand-on-chin','facepalm']) {

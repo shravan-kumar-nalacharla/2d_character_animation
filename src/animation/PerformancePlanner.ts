@@ -20,21 +20,29 @@ export const allPlannerOptions: PlannerOptions = { lipSync: true, expressions: t
 
 export async function planAnimation(audio: AudioSource, transcript: TimedTranscript, analysis: AudioAnalysis, performance: PerformancePlan, profile: CharacterPerformanceProfile, seed: number, options: PlannerOptions = allPlannerOptions, alignmentProvider: PhonemeAlignmentProvider = new TranscriptHeuristicAlignmentProvider()): Promise<AnimationTrack[]> {
   const tracks: AnimationTrack[] = [];
-  if (options.lipSync) { const raw = await alignmentProvider.align(audio, transcript, analysis), optimized = new VisemeSequenceOptimizer().optimize(limitedSpeechCues(raw), transcript, profile); tracks.push(mouthTrack(optimized.events, profile, optimized.diagnostics, raw), ...continuousMouthTracks(optimized.events)); }
+  if (options.lipSync) { const raw = await alignmentProvider.align(audio, transcript, analysis), optimized = new VisemeSequenceOptimizer().optimize(limitedSpeechCues(raw), transcript, profile); const audible=audioGatedVisemes(optimized.events,analysis); tracks.push(mouthTrack(audible, profile, optimized.diagnostics, raw), ...continuousMouthTracks(audible)); }
   if (options.expressions) tracks.push(...expressionTracks(performance), eyeOpennessTrack(performance), ...mouthPerformanceTracks(performance), ...emotionalMouthTracks(performance));
   if (options.eyes) tracks.push(...gazeTracks(performance, profile));
   if (options.eyebrows) tracks.push(...eyebrowTracks(performance, profile));
   if (options.head) tracks.push(...headTracks(performance, profile));
-  if (options.body) tracks.push(bodyTrack(performance, profile), pauseBreathingTrack(analysis), ...bodyPerformanceTracks(performance, profile, transcript));
+  if (options.body) tracks.push(bodyTrack(performance, profile), pauseBreathingTrack(analysis), ...bodyPerformanceTracks({...performance,segments:performance.segments.map(original=>{
+    const speech=analysis.speechRegions.filter(r=>r.end>original.start && r.start<original.end);
+    const segment=analysis.envelope.length ? {...original,start:Math.max(original.start,speech[0]?.start??original.end),end:Math.min(original.end,speech.at(-1)?.end??original.end)} : original;
+    const allowTurn=/\b(turn|side|profile|back view|walk|enter|exit)\b/i.test(profile.sceneDescription??'');
+    if(allowTurn || !segment.direction) return segment;
+    const direction={...segment.direction,characterView:undefined};
+    if(['turn-side','return-front','walk','slow-walk','confident-walk','sad-walk','run','enter-left','enter-right','exit-left','exit-right'].includes(direction.gesture)) direction.gesture='explain-right';
+    return {...segment,direction};
+  })}, profile, transcript));
   if (options.blink) tracks.push(blinkTrack(audio.duration, performance, seed));
   return sanitizeMotionTracks(tracks.filter((track) => track.keyframes.length > 0));
 }
 
 function mouthTrack(cues: OptimizedViseme[], profile: CharacterPerformanceProfile, diagnostics: VisemeOptimizationDiagnostics, raw: VisemeCue[]): AnimationTrack {
-  const keys: AnimationKeyframe[] = [key("mouth-rest", 0, "REST", "hold", "auto-lipsync")];
+  const keys: AnimationKeyframe[] = [key("mouth-rest", 0, "MBP", "hold", "auto-lipsync")];
   cues.forEach((cue, index) => {
-    keys.push(key(`mouth-${index}-in`, cue.apex, cue.viseme, "hold", "auto-lipsync", Math.min(1, cue.strength * profile.mouthStrength)));
-    if (index === cues.length - 1 || cues[index + 1].onset - cue.offset > 0.09) keys.push(key(`mouth-${index}-rest`, cue.offset, "REST", "hold", "auto-lipsync"));
+    keys.push(key(`mouth-${index}-in`, cue.start, cue.viseme, "hold", "auto-lipsync", Math.min(1, cue.strength * profile.mouthStrength)));
+    if (index === cues.length - 1 || cues[index + 1].start - cue.end > 0.055) keys.push(key(`mouth-${index}-rest`, cue.end, "MBP", "hold", "auto-lipsync"));
   });
   return track("auto-mouth", "Mouth / Optimized Viseme", "lipSync", "face.mouth", "string", keys, { visemeOptimization: diagnostics, rawSequence: raw.map((cue) => ({ viseme: cue.viseme, start: cue.start, end: cue.end })), optimizedSequence: cues.map((cue) => ({ viseme: cue.viseme, onset: cue.onset, apex: cue.apex, offset: cue.offset })) });
 }
@@ -268,4 +276,13 @@ function emotionalMouthTracks(plan: PerformancePlan): AnimationTrack[] {
     for (const segment of plan.segments) { const emotion = mouthEmotion(segment.emotion.primary); keys.push(key(`${segment.id}-${property}`, segment.start + Math.min(.3,(segment.end-segment.start)*.3), (property === 'mouthSmile' ? emotion.smile : emotion.tension) * segment.emotion.intensity, 'ease-in-out', source(plan)), key(`${segment.id}-${property}-end`, segment.end, 0, 'ease-in-out', source(plan))); }
     return track(`auto-${property}`, property, 'aiExpression', `face.${property}`, 'number', dedupe(keys));
   });
+}
+
+/** Clip speech shapes to measured voice regions; silence always gets a closure. */
+export function audioGatedVisemes(cues: OptimizedViseme[], analysis: AudioAnalysis): OptimizedViseme[] {
+  if(!analysis.envelope.length) return cues;
+  return cues.flatMap(cue=>analysis.speechRegions.flatMap(region=>{
+    const start=Math.max(cue.start,region.start),end=Math.min(cue.end,region.end);
+    return end>start ? [{...cue,start,end,onset:start,apex:Math.min(end,Math.max(start,cue.apex)),offset:end}] : [];
+  }));
 }

@@ -28,12 +28,12 @@ export function solveLimb(start: Point, target: Point, upper: number, lower: num
 }
 
 /** Two cubics share both endpoint and derivative at the joint (C1 continuity). */
-export function limbCurve(a: Point, b: Point, c: Point) {
+export function limbCurve(a: Point, b: Point, c: Point, angular = false) {
   const span = Math.max(.001, distance(a, c)), radius = Math.min(distance(a, b), distance(b, c)) * .48;
   const tangent = { x: (c.x - a.x) / span * radius, y: (c.y - a.y) / span * radius };
   const controls = [mixPoint(a, b, .55), { x: b.x - tangent.x, y: b.y - tangent.y }, { x: b.x + tangent.x, y: b.y + tangent.y }, mixPoint(c, b, .55)];
   const p = (v: Point) => `${v.x.toFixed(3)} ${v.y.toFixed(3)}`;
-  return { controls, path: `M ${p(a)} C ${p(controls[0])} ${p(controls[1])} ${p(b)} C ${p(controls[2])} ${p(controls[3])} ${p(c)}` };
+  return { controls, path: angular ? `M ${p(a)} L ${p(b)} L ${p(c)}` : `M ${p(a)} C ${p(controls[0])} ${p(controls[1])} ${p(b)} C ${p(controls[2])} ${p(controls[3])} ${p(c)}` };
 }
 
 /** Stance remains in world space; only the swing phase moves the foot. No frame history. */

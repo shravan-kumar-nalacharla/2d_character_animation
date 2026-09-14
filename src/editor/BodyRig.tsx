@@ -6,7 +6,7 @@ import type { AnimationTrack, Bone, ProjectDocument } from '../project/schema';
 
 export function bodyState(tracks: AnimationTrack[], time: number) {
   const values: Record<string, number | string> = {};
-  for (const track of orderedTracks(tracks)) if (track.target.startsWith('body.')) { const value = evaluateTrack(track, time); if (typeof value === 'number' || typeof value === 'string') values[track.target.slice(5)] = value; }
+  for (const track of orderedTracks(tracks)) if (track.target.startsWith('body.')) { const value = evaluateTrack(track, track.generated && !track.locked && track.layer === 'gesture' ? Math.floor(time*12)/12 : time); if (typeof value === 'number' || typeof value === 'string') values[track.target.slice(5)] = value; }
   for (const track of tracks) if (evaluateTrack(track,time) !== undefined && (track.layer === 'manual' || track.locked || track.keyframes.some(k => k.source === 'manual'))) {
     if (track.target.startsWith('bone.torso.')) values.lean = 0;
     if (track.target.startsWith('bone.hips.')) { values.shift = 0; values.crouch = 0; values.travel = 0; }
@@ -93,7 +93,7 @@ export function BodyRig({ project, bones, world, state, time, pass, resolveAsset
     const startId = `${leg ? 'thigh' : 'upperArm'}${side}`, jointId = `${leg ? 'shin' : 'forearm'}${side}`, endId = `${leg ? 'foot' : 'hand'}${side}`;
     if (!bones.some(b => b.id === startId) || bones.find(b => b.id === startId)?.visible === false) return null;
     const {parent,start,target,pole,solved,upper,lower,animatedEnd}=solveBodyLimb(project,bones,world,state,side,leg);
-    const curve=limbCurve(start,solved.joint,solved.end);
+    const curve=limbCurve(start,solved.joint,solved.end,true);
     const width = leg ? skin.legWidth : skin.armWidth, color = leg ? skin.legColor : skin.armColor;
     const rotation = Math.atan2(solved.end.y - solved.joint.y, solved.end.x - solved.joint.x) * 180 / Math.PI - 90 + Number(state[`wrist${side}`] ?? 0) + animatedEnd.rotation + (bones.find(b => b.id === `wrist${side}`)?.rotation ?? 0);
     const hand = (state[`hand${side}Pose`] ?? 'relaxed') as HandPose;
