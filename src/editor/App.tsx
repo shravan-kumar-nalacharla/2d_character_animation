@@ -49,6 +49,7 @@ export function App({ rehearsal = false }: { rehearsal?: boolean }) {
   const [plannerOptions, setPlannerOptions] = useState<PlannerOptions>(allPlannerOptions);
   const [generating, setGenerating] = useState(false);
   const [progress, setProgress] = useState("");
+  const [generationStage, setGenerationStage] = useState(0);
   const [aiError, setAiError] = useState("");
   const [errorDetails, setErrorDetails] = useState("");
   const history = useRef(new CommandHistory<ProjectDocument>());
@@ -110,6 +111,8 @@ export function App({ rehearsal = false }: { rehearsal?: boolean }) {
 
   const generate = async (forcedProvider?: Provider, only?: keyof PlannerOptions) => {
     if (!project.audio || !project.audioAnalysis) { setAiError("Import an audio file first."); setAiOpen(true); return; }
+    if (generating) return;
+    setPlaying(false); setGenerationStage(1);
     const selectedProvider = forcedProvider ?? provider; setGenerating(true); setAiError(""); setErrorDetails(""); setProgress("Preparing timed transcript…");
     try {
       let transcript: TimedTranscript;
@@ -118,21 +121,25 @@ export function App({ rehearsal = false }: { rehearsal?: boolean }) {
       else if (selectedProvider === "gemini" && audioFile) transcript = await new GeminiTranscriptionProvider().transcribe(audioFile, project.audio.duration);
       else throw new Error(audioFile ? "Enter a transcript for local analysis, or configure Gemini transcription." : "Relink the audio file or paste a transcript.");
       if (transcript.diagnostics?.length) setProgress("Some transcript timing data needed correction. Animation can continue.");
+      setGenerationStage(2); setProgress("Building mouth animation — eyes and body are still pending…");
+      await new Promise<void>(resolve => requestAnimationFrame(() => setTimeout(resolve, 0)));
       if (plannerOptions.lipSync && !only) {
         const lipOnly = await planAnimation(project.audio, transcript, project.audioAnalysis, emptyPerformance(transcript, selectedProvider), project.performanceProfile, project.seed, { ...disabledOptions(), lipSync: true });
         setProject((current) => ({ ...current, transcript, animation: { tracks: mergeGeneratedTracks(current.animation.tracks, lipOnly, "lipSync") } }));
       }
+      setGenerationStage(3);
       setProgress(selectedProvider === "gemini" ? "Understanding dialogue with Gemini…" : "Understanding dialogue with local rules…");
       const cacheKey = performanceCacheKey(project.audio.hash, selectedProvider, transcript, project.performanceProfile);
       const cached = only ? project.performance : readPerformanceCache(cacheKey);
       const analyzer = selectedProvider === "gemini" ? new GeminiPerformanceProvider() : new RuleBasedPerformanceProvider();
       const performance = cached?.provider === selectedProvider ? cached : await analyzer.analyzePerformance(project.audio, transcript, project.audioAnalysis, project.performanceProfile);
       if (!cached) localStorage.setItem(cacheKey, JSON.stringify(performance));
-      setProgress("Planning expressions, gaze, head motion and lip sync…");
+      setGenerationStage(4); setProgress("Finishing eyes, expressions, hands and body tracks…");
+      await new Promise<void>(resolve => requestAnimationFrame(() => setTimeout(resolve, 0)));
       const options = only ? { ...disabledOptions(), [only]: true } : plannerOptions;
       const generated = await planAnimation(project.audio, transcript, project.audioAnalysis, performance, project.performanceProfile, project.seed, options);
       setProject((current) => ({ ...current, transcript, performance, animation: { tracks: mergeGeneratedTracks(current.animation.tracks, generated, only) } }));
-      setTranscriptText(transcriptTextOf(transcript)); setMode("animate"); setProgress("Performance generated · editable keyframes are on the timeline"); setStatus(`Auto animation ready · ${performance.segments.length} segments`);
+      setTranscriptText(transcriptTextOf(transcript)); setMode("animate"); setGenerationStage(5); setProgress("Animation ready — all selected channels are complete"); setStatus(`Auto animation ready · ${performance.segments.length} segments`);
     } catch (reason) { const message = reason instanceof Error ? reason.message : "Performance generation failed."; setAiError(message); setErrorDetails(reason instanceof TranscriptNormalizationError ? JSON.stringify(reason.diagnostics, null, 2) : reason instanceof Error ? reason.stack ?? reason.message : String(reason)); setProgress(message); setStatus("Auto animation needs attention"); }
     finally { setGenerating(false); }
   };
@@ -192,6 +199,12 @@ export function App({ rehearsal = false }: { rehearsal?: boolean }) {
   }, []);
 
   return <div className="app-shell" data-history-revision={historyRevision}>
+    {generationStage>0 && <aside className={`generation-banner ${aiError?'failed':''}`} role="status" aria-live="polite" aria-busy={generating}>
+      <strong>{aiError?'Animation failed':generating?`Auto Animate · Step ${generationStage} of 4`:'Animation ready'}</strong>
+      <span>{aiError || progress}</span>
+      <progress aria-label="Auto Animate stages completed" max={4} value={aiError?generationStage-1:generating?generationStage-1:4}/>
+      {generating ? <small>Keep waiting: mouth preview does not mean the full animation is finished.</small> : <button onClick={()=>setGenerationStage(0)} aria-label="Dismiss animation status">Dismiss</button>}
+    </aside>}
     <header className="topbar"><div className="brand"><span className="brand-mark">A</span><strong>ALGOWZXD</strong><small>ANIMATOR</small></div><div className="mode-switch"><button className={mode === "rig" ? "active" : ""} onClick={() => setMode("rig")}>Rig</button><button className={mode === "animate" ? "active" : ""} onClick={() => setMode("animate")}>Animate</button></div>
       <div className="top-actions"><button className="icon-button" disabled={!history.current.canUndo} onClick={undo}>↶</button><button className="icon-button" disabled={!history.current.canRedo} onClick={redo}>↷</button><span className="divider" /><button className={`tool-toggle ${showBones ? "active" : ""}`} onClick={() => setShowBones(!showBones)}>Bones</button><button className={`tool-toggle ${showControls ? "active" : ""}`} onClick={() => setShowControls(!showControls)}>Controls</button><button className={`tool-toggle ${editPivots ? "active" : ""}`} onClick={() => setEditPivots(!editPivots)}>Edit Pivots</button><select aria-label="Preview Quality" value={previewQuality} onChange={(event) => setPreviewQuality(event.target.value as typeof previewQuality)}><option>Auto</option><option>Full</option><option>Performance</option></select><button className={showPerformance ? "tool-toggle active" : "tool-toggle"} onClick={() => setShowPerformance(!showPerformance)}>Show Performance</button><span className="divider" /><button onClick={() => audioInput.current?.click()}>Import Audio</button><button onClick={() => loadInput.current?.click()}>Open</button><button onClick={saveProject}>Save</button><button onClick={resetProject}>Reset</button><button onClick={() => { location.href = "/character/duik-import"; }}>Import Duik Rig</button><button onClick={() => setExportOpen(true)}>EXPORT</button><button className="auto-animate" disabled={!project.audio || generating} onClick={() => { setAiOpen(true); if (project.audio) void generate(); }}>AUTO ANIMATE</button>
         <input ref={audioInput} hidden type="file" accept="audio/*,.wav,.mp3,.m4a,.ogg,.flac" onChange={(event) => { const file = event.target.files?.[0]; if (file) void importAudio(file); event.target.value = ""; }} /><input ref={loadInput} hidden type="file" accept="application/json,.json" onChange={(event) => { const file = event.target.files?.[0]; if (file) void loadProject(file); event.target.value = ""; }} /></div></header>
