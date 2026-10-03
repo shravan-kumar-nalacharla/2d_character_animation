@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { validateLimb } from '../rig/PoseValidation';
 import { applyToPoint, inverse, toSvgMatrix, type Matrix } from '../core/math/matrix';
 import { evaluateTrack, orderedTracks } from '../animation/evaluate';
@@ -68,7 +69,7 @@ export function solveBodyLimb(project:ProjectDocument,bones:Bone[],world:Map<str
         solved={start,joint:elbow,end:{x:elbow.x+Math.cos(angle)*lower,y:elbow.y+Math.sin(angle)*lower},clamped:true};
       }
     }
-    const pocketTarget=applyToPoint(parentInverse,applyToPoint(world.get('torso')!,{x:side==='R'?850:940,y:510}));
+    const pocketTarget=applyToPoint(parentInverse,applyToPoint(world.get('torso')!,{x:side==='R'?834:967,y:492}));
     const pocketRest=skin.id==='hoodie' && view==='front' && !leg && !manual;
     if(!leg && !manual) {
       const rest=solveLimb(start,pocketRest?pocketTarget:fkEnd,upper,lower,pole);
@@ -89,6 +90,7 @@ export function solveBodyLimb(project:ProjectDocument,bones:Bone[],world:Map<str
 }
 
 export function BodyRig({ project, bones, world, state, time, pass, resolveAssetUrl, debug = false, onTargetDrag }: { project: ProjectDocument; bones: Bone[]; world: Map<string, Matrix>; state: Record<string, number | string>; time: number; pass: 'back' | 'front'; resolveAssetUrl(url: string): string; debug?: boolean; onTargetDrag?(event: React.PointerEvent, boneId: string): void }) {
+  const pocketClipId=useId().replace(/:/g,'');
   const skin = bodyManifests[project.character.mode ?? 'hoodie'], view = (state.view ?? project.character.view ?? 'front') as BodyView, info = viewInfo(view);
   const headTransform = world.get('head'), headView = (state.headView ?? view) as BodyView;
   const limb = (side: 'L' | 'R', leg: boolean) => {
@@ -105,8 +107,7 @@ export function BodyRig({ project, bones, world, state, time, pass, resolveAsset
       {skin.id === 'hoodie' && (leg ? <g transform={`translate(${solved.end.x} ${solved.end.y})`}><path d="M -25 -8 Q -32 7 -32 16 Q -10 25 33 15 L 32 4 Q 12 -10 -25 -8" fill={skin.id === 'hoodie' ? '#181820' : '#111'} stroke="#111" strokeWidth="3" /></g> : <g transform={`translate(${solved.end.x} ${solved.end.y}) rotate(${rotation}) scale(${side === 'L' ? -1 : 1} 1)`}>
         {!pocketed && <image href={resolveAssetUrl(`/production_character/performance/hands/${hand}.svg`)} x={-32*skin.handScale} y={-2*skin.handScale-6} width={64*skin.handScale} height={78*skin.handScale} />}
         <path d="M -24 -14 Q 0 -18 24 -14 L 22 7 Q 0 11 -22 7 Z" fill="#ba0000" stroke="#181818" strokeWidth="3" />
-        {pocketed && <path data-pocket-cover={side} d="M -27 1 Q 0 10 27 1 L 27 27 L -27 27 Z" fill="#e60000" stroke="none"/>}
-        {pocketed && <path d="M -27 1 Q 0 10 27 1" fill="none" stroke="#181818" strokeWidth="3"/>}
+
       </g>)}
       {debug && <g className="body-debug" fill="none" stroke="#17bda7" strokeWidth="2"><circle fill="transparent" style={{cursor:'grab'}} onPointerDown={event => onTargetDrag?.(event,endId)} cx={target.x} cy={target.y} r="14" /><circle fill="transparent" style={{cursor:'grab'}} onPointerDown={event => onTargetDrag?.(event,`${leg ? 'knee' : 'elbow'}Pole${side}`)} cx={solved.joint.x} cy={solved.joint.y} r="9" /><circle cx={pole.x} cy={pole.y} r="6" stroke="#ee9900"/><path pointerEvents="none" d={`M ${start.x} ${start.y} L ${solved.joint.x} ${solved.joint.y} L ${solved.end.x} ${solved.end.y}`} /></g>}
     </g>;
@@ -129,6 +130,19 @@ export function BodyRig({ project, bones, world, state, time, pass, resolveAsset
         <path d={info.rear ? 'M 822 295 Q 896 373 965 295 Q 896 241 822 295 Z' : 'M 850 286 Q 898 329 932 300'} fill="#ba0000" stroke="#181818" strokeWidth="4" />
       </g>}
       {front && limb(far, false)}{!info.rear && limb(info.near, false)}
+      {front && skin.id==='hoodie' && (['R','L'] as const).map(side=>{
+        const {pocketed}=solveBodyLimb(project,bones,world,state,side,false);
+        if(!pocketed) return null;
+        // Reuse the original pocket panel in torso space, over the inserted cuff.
+        // Its curved opening is the actual artwork seam, not a wrist-local patch.
+        const opening=side==='R'
+          ? 'M 846.7 442.6 C 846.1 454.9 844 466 840.6 475.8 C 835.1 490 824 509 804 526.1 L 804 570 L 895 570 L 895 442.6 Z'
+          : 'M 945.3 442.6 C 947.8 467.1 950.5 482.9 953.4 489.9 C 960 506 969 516 985.1 524.8 L 985.1 570 L 895 570 L 895 442.6 Z';
+        return <g key={`pocket-${side}`} data-pocket-cover={side} transform={toSvgMatrix(world.get('torso')!)}>
+          <defs><clipPath id={`${pocketClipId}-${side}`}><path d={opening}/></clipPath></defs>
+          <image href={resolveAssetUrl('/production_character/illustrator2024/hoodie/layer-18.svg')} width="1920" height="1080" clipPath={`url(#${pocketClipId}-${side})`}/>
+        </g>;
+      })}
       {headView !== 'front' && <g transform={headTransform ? toSvgMatrix(headTransform) : undefined}><image href={resolveAssetUrl(`/production_character/performance/${headView}.svg`)} x="775" y="42" width="245" height="238" preserveAspectRatio="none" /></g>}
       {state.debug && <g className="body-debug" pointerEvents="none" transform={toSvgMatrix(world.get('torso')!)} fill="none" stroke="#cf3c99" strokeWidth="2">
         {String(state.debug).includes('Collision') && <><rect x="840" y="330" width="110" height="220"/><ellipse cx="895" cy="150" rx="115" ry="125"/></>}
