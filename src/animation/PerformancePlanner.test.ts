@@ -1,7 +1,8 @@
+import { eyeExpressions } from "../character/FaceAssets";
 import { describe, expect, it } from "vitest";
 import { analyzeSamples } from "../audio/AudioAnalysisEngine";
 import { defaultFace, defaultPerformanceProfile } from "../project/project";
-import { RuleBasedPerformanceProvider, transcriptFromText } from "../director/PerformanceProviders";
+import { RuleBasedPerformanceProvider, transcriptFromText, validatePerformancePlan } from "../director/PerformanceProviders";
 import { evaluateFace, evaluateTrack } from "./evaluate";
 import { audioGatedVisemes, planAnimation, wordVisemes } from "./PerformancePlanner";
 import type { AnimationTrack } from "../project/schema";
@@ -69,4 +70,20 @@ describe("animation planning", () => {
     expect(tracks.find((track) => track.target === "face.gazeX")?.keyframes.length).toBeGreaterThanOrEqual(4);
     expect(tracks.find((track) => track.target === "face.jawOpen")?.keyframes.some((frame) => typeof frame.value === "number" && frame.value > 0)).toBe(true);
   });
+});
+
+it("keeps every expression and bounds reaction mouths", async () => {
+ const audio={name:"test.wav",mimeType:"audio/wav",size:1,duration:3,hash:"reaction"};
+ const transcript=transcriptFromText("Hello there",3), profile=defaultPerformanceProfile(), analysis=analyzeSamples(new Float32Array(3000).fill(.3),1000);
+ const plan=await new RuleBasedPerformanceProvider().analyzePerformance(audio,transcript,analysis,profile);
+ for(const preset of eyeExpressions){plan.segments[0].expression.preset=preset;expect(validatePerformancePlan(plan,3,"gemini").segments[0].expression.preset).toBe(preset);}
+ for(const mode of ["hold","laugh","sob"] as const){
+ plan.segments[0]={...plan.segments[0],start:1,end:2,expression:{...plan.segments[0].expression,preset:"crying",mouthMode:mode}};
+ const tracks=await planAnimation(audio,transcript,analysis,plan,profile,381);
+ expect(evaluateFace(defaultFace(),tracks,1.3).mouth).toBe("REST");
+ const reaction=tracks.find(t=>t.id.endsWith("reaction-mouth"))!;
+ expect(evaluateTrack(reaction,.9)).toBeUndefined();expect(evaluateTrack(reaction,2.1)).toBeUndefined();
+ if(mode==="laugh") expect(evaluateFace(defaultFace(),tracks,1.3).eyeExpression).toBe("laughClosed");
+ if(mode!=="hold") expect(evaluateFace(defaultFace(),tracks,1).jawOpen).not.toBe(evaluateFace(defaultFace(),tracks,1.16).jawOpen);
+ }
 });

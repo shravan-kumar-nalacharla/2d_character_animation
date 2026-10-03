@@ -190,6 +190,7 @@ export interface AnimationKeyframe {
     strength?: number;
 }
 export interface AnimationTrack {
+    activeRange?: [number, number];
     id: string;
     name: string;
     layer: "base" | "manual" | "gesture" | "lipSync" | "aiExpression" | "aiEyebrows" | "aiGaze" | "blink" | "aiHead" | "speechMotion" | "idle";
@@ -280,6 +281,7 @@ export interface PerformanceSegment {
     };
     intent: Intent;
     expression: {
+        mouthMode?: "speech" | "hold" | "laugh" | "sob";
         preset: EyeExpression;
         intensity: number;
         transitionIn: number;
@@ -335,6 +337,8 @@ export interface PerformancePlan {
     };
 }
 export interface CharacterPerformanceProfile {
+    sceneDescription?: string;
+    characterVariant?: 'hoodie' | 'stick';
     fullBodyStrength?: number;
     gestureStrength?: number;
     gestureFrequency?: number;

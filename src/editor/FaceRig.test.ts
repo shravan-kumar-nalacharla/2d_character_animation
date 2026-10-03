@@ -71,3 +71,11 @@ describe("face preview", () => {
     expect(crying).toContain('data-face-effect="anime-tears"');
   });
 });
+
+it("renders coordinated original laughter and crying pieces", () => {
+ const project=createDefaultProject();
+ for(const [expression,slug] of [["laughClosed","laughing-hard"],["crying","crying-breakdown"]] as const){
+ const svg=renderToStaticMarkup(createElement(FaceRig,{expressionDriven:true,face:{...defaultFace(),eyeExpression:expression,mouth:"REST",jawOpen:1},assets:{...project.character.faceAssets!,activeEyePack:"modular-v2"},calibration:project.character.calibration,time:1,playing:true}));
+ expect(svg).toContain(`${slug}_mouth.png`);expect(svg).toContain(`${slug}_right-eye.png`);
+ }
+});

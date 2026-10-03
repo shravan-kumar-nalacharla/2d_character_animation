@@ -1,3 +1,4 @@
+import { eyeExpressions } from "../character/FaceAssets";
 import { gestures, type BodyDirection } from '../animation/BodyPerformance';
 import { bodyViews, handPoses } from '../rig/FullBody';
 import type { AudioAnalysis, AudioSource, CharacterPerformanceProfile, Emotion, EyeExpression, GazeTarget, HeadInstruction, Intent, PerformancePlan, PerformanceSegment, TimedTranscript } from "../project/schema";
@@ -111,7 +112,7 @@ const emotions: Emotion[] = ["neutral", "happy", "amused", "excited", "sad", "an
 const intents: Intent[] = ["statement", "question", "explanation", "agreement", "disagreement", "reaction", "joke", "sarcasm", "disbelief", "warning", "complaint", "storytelling", "instruction", "thinking", "realization", "greeting", "conclusion"];
 const gazes: GazeTarget[] = ["camera", "return-camera", "thinking-away", "thinking-left", "thinking-right", "reaction-left", "reaction-right", "slightly-left", "slightly-right", "up-left", "up-right", "down-left", "down-right", "left", "right", "up", "down"];
 const heads: HeadInstruction[] = ["hold", "tiny_nod", "micro_nod", "normal_nod", "strong_nod", "question_tilt", "question_tilt_left", "question_tilt_right", "confused_tilt", "small_turn_left", "small_turn_right", "thinking_turn", "small_shake", "disagreement_shake", "disbelief_shake", "reaction_back", "surprise_recoil", "reaction_forward", "thinking_tilt", "emphasis_forward", "emphasis_down", "settle", "settle_to_neutral"];
-const expressions: EyeExpression[] = ["neutral", "friendly", "soft", "happy", "happyClosed", "laughClosed", "sad", "verySad", "teary", "crying", "sobCrying", "concerned", "worried", "fear", "panic", "shock", "shocked", "extremeShock", "curious", "confused", "thinking", "suspicious", "cunning", "unimpressed", "bored", "tired", "sleepy", "serious", "focused", "determined", "coldGlare", "angry", "angrySqueezed", "veryAngry", "rage", "shadowRage", "disgusted", "annoyed", "embarrassed", "awkward", "nervous", "excited", "veryExcited", "sparkleExcited", "sparkleCute", "pleading", "proud", "smug", "deadpan", "animeDetermined", "animeShock", "animeCute", "winkLeft", "winkRight"];
+const expressions = eyeExpressions;
 
 function directSegment(segment: TimedTranscript["segments"][number], index: number, analysis: AudioAnalysis, profile: CharacterPerformanceProfile): PerformanceSegment {
   const lower = segment.text.toLowerCase();
@@ -167,7 +168,7 @@ function validateSegment(raw: unknown, index: number, duration: number, transcri
     direction: validateDirection(item.direction),
     emotion: { primary, secondary: enumOptional(emotion.secondary, emotions), intensity: clampNumber(emotion.intensity, 0.5) },
     intent: enumValue(item.intent, intents, "statement"),
-    expression: { preset: enumValue(expression.preset, expressions, emotionExpression(primary)), intensity: clampNumber(expression.intensity, 0.5), transitionIn: clampSeconds(expression.transitionIn, 0.2), transitionOut: clampSeconds(expression.transitionOut, 0.28) },
+    expression: { preset: enumValue(expression.preset, expressions, emotionExpression(primary)), mouthMode: enumValue(expression.mouthMode, ["speech", "hold", "laugh", "sob"] as const, "speech"), intensity: clampNumber(expression.intensity, 0.5), transitionIn: clampSeconds(expression.transitionIn, 0.2), transitionOut: clampSeconds(expression.transitionOut, 0.28) },
     gaze: { target: enumValue(gaze.target, gazes, "camera"), intensity: clampNumber(gaze.intensity, 0.4) },
     eyebrowEvents: validateEvents(item.eyebrowEvents, start, end, ["raise", "lower", "one-brow", "concern", "surprise", "angry"]),
     headEvents: validateEvents(item.headEvents, start, end, heads),

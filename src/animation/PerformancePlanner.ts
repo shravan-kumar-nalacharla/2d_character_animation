@@ -21,7 +21,7 @@ export const allPlannerOptions: PlannerOptions = { lipSync: true, expressions: t
 export async function planAnimation(audio: AudioSource, transcript: TimedTranscript, analysis: AudioAnalysis, performance: PerformancePlan, profile: CharacterPerformanceProfile, seed: number, options: PlannerOptions = allPlannerOptions, alignmentProvider: PhonemeAlignmentProvider = new TranscriptHeuristicAlignmentProvider()): Promise<AnimationTrack[]> {
   const tracks: AnimationTrack[] = [];
   if (options.lipSync) { const raw = await alignmentProvider.align(audio, transcript, analysis), optimized = new VisemeSequenceOptimizer().optimize(limitedSpeechCues(raw), transcript, profile); const audible=audioGatedVisemes(optimized.events,analysis); tracks.push(mouthTrack(audible, profile, optimized.diagnostics, raw), ...continuousMouthTracks(audible)); }
-  if (options.expressions) tracks.push(...expressionTracks(performance), eyeOpennessTrack(performance), ...mouthPerformanceTracks(performance), ...emotionalMouthTracks(performance));
+  if (options.expressions) tracks.push(...expressionTracks(performance), eyeOpennessTrack(performance), ...mouthPerformanceTracks(performance), ...emotionalMouthTracks(performance), ...reactionMouthTracks(performance));
   if (options.eyes) tracks.push(...gazeTracks(performance, profile));
   if (options.eyebrows) tracks.push(...eyebrowTracks(performance, profile));
   if (options.head) tracks.push(...headTracks(performance, profile));
@@ -253,7 +253,7 @@ function dedupe(keys: AnimationKeyframe[]) {
 }
 
 function source(plan: PerformancePlan): AnimationKeyframe["source"] { return plan.provider === "gemini" ? "ai-performance" : "rule-performance"; }
-function canonicalEyeExpression(value: PerformancePlan["segments"][number]["expression"]["preset"]) { if (value.startsWith("curious")) return "curious"; if (value === "lookLeft" || value === "lookRight" || value === "closed") return "neutral"; return value; }
+function canonicalEyeExpression(value: PerformancePlan["segments"][number]["expression"]["preset"]) { if (value.startsWith("curious")) return "curious"; if (value === "lookLeft" || value === "lookRight") return "neutral"; return value; }
 function browPresetFor(expression: string) {
   if (["sad", "verySad", "teary"].includes(expression)) return "sad";
   if (["crying", "sobCrying", "concerned"].includes(expression)) return "concerned";
@@ -286,4 +286,20 @@ export function audioGatedVisemes(cues: OptimizedViseme[], analysis: AudioAnalys
     const start=Math.max(cue.start,region.start),end=Math.min(cue.end,region.end);
     return end>start ? [{...cue,start,end,onset:start,apex:Math.min(end,Math.max(start,cue.apex)),offset:end}] : [];
   }));
+}
+
+function reactionMouthTracks(plan: PerformancePlan): AnimationTrack[] {
+  return plan.segments.flatMap(segment => {
+    const mode = segment.expression.mouthMode;
+    if (!mode || mode === "speech") return [];
+    const start = segment.start, end = segment.end;
+    const bounded = (id: string, target: string, value: string) => ({...track(`${segment.id}-${id}`, "Reaction", "aiExpression", target, "string", [key(`${segment.id}-${id}`, start, value, "hold", source(plan))]), activeRange: [start, end] as [number, number]});
+    const mouth = bounded("reaction-mouth", "face.mouth", "REST");
+    if (mode === "hold") return [mouth, {...track(`${segment.id}-reaction-still`, "Reaction hold", "aiExpression", "face.jawOpen", "number", [key(`${segment.id}-still`, start, 0, "hold", source(plan))]), activeRange: [start, end]}];
+    const jaw = track(`${segment.id}-reaction-jaw`, "Reaction rhythm", "aiExpression", "face.jawOpen", "number", []);
+    jaw.activeRange = [start, end];
+    for (let time = start, index = 0; time < end; time += mode === "laugh" ? .16 : .32, index++) jaw.keyframes.push(key(`${segment.id}-pulse-${index}`, time, index % 2 ? .35 : 1, "ease-in-out", source(plan)));
+    const expression = mode === "laugh" ? "laughClosed" : segment.expression.preset === "crying" ? "crying" : "sobCrying";
+    return [mouth, jaw, ...["face.eyeExpression", "face.eyeSystem.left.expression", "face.eyeSystem.right.expression"].map((target,index) => bounded(`reaction-eye-${index}`,target,expression))];
+  });
 }

@@ -181,7 +181,7 @@ export interface PerformanceSegment {
   text: string;
   emotion: { primary: Emotion; secondary?: Emotion; intensity: number };
   intent: Intent;
-  expression: { preset: EyeExpression; intensity: number; transitionIn: number; transitionOut: number };
+  expression: { mouthMode?: "speech" | "hold" | "laugh" | "sob"; preset: EyeExpression; intensity: number; transitionIn: number; transitionOut: number };
   gaze: { target: GazeTarget; intensity: number };
   eyebrowEvents: Array<{ type: "raise" | "lower" | "one-brow" | "concern" | "surprise" | "angry"; time: number; duration: number; strength: number }>;
   headEvents: Array<{ type: HeadInstruction; time: number; duration: number; strength: number }>;

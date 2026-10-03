@@ -74,7 +74,7 @@ export function FaceRig({ expressionDriven = false, view = 'front', face, calibr
   const modularSlug = modularSlugFor(baseExpression), useSilentExpressionMouth = (assetState.activeEyePack === "modular-v2" || baseExpression !== "neutral") && preview.mouth === "REST";
   const showModularShading = assetState.activeEyePack === "modular-v2" && modularSlug !== "sad-teary" && modularSlug !== "crying-breakdown";
   const mouthHref = useSilentExpressionMouth ? modularExpressionUrl(modularSlug, "mouth") : shadowRage && preview.mouth === "REST" ? "/production_character/illustrator2024/mouths/frown.svg" : assetState.mouthOverrides[preview.mouth]?.dataUrl ?? `${mouthPackBase}/${preview.mouth}.svg`, glasses = face.accessories?.sunglasses;
-  const renderedMouthWidth = useSilentExpressionMouth ? 70 * mouthTransform.scaleX : width, renderedMouthHeight = useSilentExpressionMouth ? 70 * mouthTransform.scaleY : height;
+  const renderedMouthWidth = useSilentExpressionMouth ? 70 * mouthTransform.scaleX : width, renderedMouthHeight = useSilentExpressionMouth ? 70 * mouthTransform.scaleY * (1 + (["laughClosed", "crying", "sobCrying"].includes(baseExpression) ? (face.jawOpen ?? 0) * .16 : 0)) : height;
   return <g className="face-rig" pointerEvents="none">
     <defs><linearGradient id="eyeSparkle" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#2d3540"/><stop offset="1" stopColor="#080a0d"/></linearGradient><clipPath id={`expression-face-${cryId}`}><path d={faceInteriorPath}/></clipPath></defs>
     {showModularShading && <image data-face-effect="expression-shading-v2" href={resolveAssetUrl(modularExpressionUrl(modularSlug, "face-shading"))} x="824" y="118" width="140" height="140" opacity=".72" clipPath={`url(#expression-face-${cryId})`}/>}
